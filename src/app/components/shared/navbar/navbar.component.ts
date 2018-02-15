@@ -1,18 +1,21 @@
 import { Component, OnInit } from '@angular/core';
+import { SessionUtilsModule } from '../../../utils/session-utils/session-utils.module';
 import { Router } from '@angular/router';
 
-import { SessionUtilsModule } from '../../utils/session-utils/session-utils.module';
-
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-navbar',
+  templateUrl: './navbar.component.html',
+  styleUrls: ['./navbar.component.css']
 })
-export class HomeComponent implements OnInit {
+export class NavbarComponent implements OnInit {
 
   constructor(private router: Router) { }
 
   ngOnInit() {
+  }
+
+  logout():void{
+    SessionUtilsModule.clearCurrentLoggedInUser();
     this.checkForLoggedUser();
   }
 
@@ -29,7 +32,4 @@ export class HomeComponent implements OnInit {
     }
   }
 
-
-
 }
-

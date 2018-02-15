@@ -1,0 +1,14 @@
+.login{
+    margin-top: 15%;
+    border:2px solid #E5E5E5;
+    padding: 10px 40px 10px 40px;
+    border-radius: 10px;
+}
+
+span{
+    color:red;
+}
+
+.required{
+    margin: 10px;
+}

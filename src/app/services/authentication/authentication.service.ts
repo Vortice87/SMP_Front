@@ -4,8 +4,6 @@ import { Observable } from "rxjs";
 import { of } from "rxjs/Observable/of";
 import 'rxjs/add/operator/map';
 import { RequestOptions } from '@angular/http';
-
-//import model credentials
 import { Credentials } from '../../models/credentials';
 
 
@@ -17,14 +15,14 @@ export class AuthenticationService {
   credentials: Credentials;
   constructor(private http:HttpClient) { }
 
-  authlogin(username : string, password:string) : Observable <Credentials>{
-
+  authlogin(username : string, password:string) : Observable <Credentials>
+  {
     this.credentials = {
-      id:0,
+      id: null,
       username: username,
       password: password,
-      profile:""
-    }
+      profile: null
+  }
 
     return this.http.post<Credentials>(this.usersURL + "/authentication", this.credentials);
 

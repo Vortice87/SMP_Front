@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserAccountsService } from '../../../services/user-accounts/user-accounts.service';
+import { Credentials } from '../../../models/credentials';
 
 @Component({
   selector: 'app-administration',
@@ -7,9 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdministrationComponent implements OnInit {
 
-  constructor() { }
+  private users: Credentials[];
+
+  constructor(private userAccount: UserAccountsService) { }
 
   ngOnInit() {
+    this.getAllUsers();
   }
 
+  getAllUsers():void
+  {
+    this.userAccount.getAllUsers().subscribe(
+      (response: Credentials[]) =>
+      {
+        this.users = response;
+      },
+      (error)  =>
+      {  
+        console.log("error:"+ JSON.stringify(error));
+      }
+    );
+  }
 }

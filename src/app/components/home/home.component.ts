@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { SessionUtilsModule } from '../../utils/session-utils/session-utils.module';
+import { Input } from '@angular/core/src/metadata/directives';
 
 @Component({
   selector: 'app-home',
@@ -10,6 +11,8 @@ import { SessionUtilsModule } from '../../utils/session-utils/session-utils.modu
 })
 export class HomeComponent implements OnInit {
 
+
+  isAdmin: boolean = false;
   constructor(private router: Router) { }
 
   ngOnInit() {
@@ -20,7 +23,11 @@ export class HomeComponent implements OnInit {
   {
     if (SessionUtilsModule.checkIfLogin()) {
 
-      this.router.navigate(["/home"]);
+      if(SessionUtilsModule.getCurrentLoggedInUser().profile == "admin"){
+        this.isAdmin = true;
+      }else{
+        this.isAdmin = false;
+      }
 
     }else{
 

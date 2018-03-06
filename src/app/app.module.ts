@@ -10,6 +10,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 //import the services
 import { AuthenticationService } from './services/authentication/authentication.service';
+import { UserAccountsService } from './services/user-accounts/user-accounts.service';
 import { AuthGuard } from './guards/auth.guard';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { SidebarComponent } from './components/shared/sidebar/sidebar.component';
@@ -31,7 +32,7 @@ import { HomeComponent } from './components/home/home.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [HttpClient, AuthenticationService, AuthGuard],
+  providers: [HttpClient, AuthenticationService, AuthGuard ,UserAccountsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

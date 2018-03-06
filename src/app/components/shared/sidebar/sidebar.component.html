@@ -2,13 +2,17 @@
   <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
   <div class="menu-list">
       <ul id="menu-content" class="menu-content collapse out">
-          <li>
-              <a routerLink="admin">
-                    	
 
-                  <i class="fa fa-dashboard fa-lg"></i> <span>Administrar cuentas</span>
-              </a>
-          </li>
+          <li *ngIf="isAdmin" data-toggle="collapse" data-target="#service" class="collapsed">
+                <a routerLink="admin">
+                    <i class="fa fa-dashboard fa-lg"></i> <span>Manage accounts</span>
+                    <span class="arrow"></span>
+                </a>
+            </li>
+            <ul class="sub-menu collapse" id="service">
+                <li class="sublist">New account</li>
+            </ul>
+
           <li data-toggle="collapse" data-target="#service" class="collapsed">
               <a href="#">
                   <i class="fa fa-globe fa-lg"></i> <span>Services</span>

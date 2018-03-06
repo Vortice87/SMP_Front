@@ -37,8 +37,8 @@ export class LoginComponent implements OnInit {
       }
     }
 
-  login(){
-    console.log("Checkeamos las credenciales..."+ this.username + " " + this.password);
+  login():void
+  {
     this.authentication.authlogin(this.username,this.password).subscribe(
       (response: Credentials) =>
       {
@@ -52,14 +52,8 @@ export class LoginComponent implements OnInit {
     
         }else{
           this.loginError = false;
-    
         }
       }
     );
-
-    
-
-
   }
-
 }

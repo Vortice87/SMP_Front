@@ -1,0 +1,31 @@
+h3{
+    text-decoration: underline;
+    font-variant: small-caps;
+}
+
+.content{
+    padding-left: 50px;
+}
+
+p{
+    color:grey;
+}
+.textAlign{
+    text-align: center;
+}
+
+span{
+    color:red;
+}
+
+.required{
+    margin: 10px;
+}
+
+.ng-valid[required], .ng-valid.required  {
+    border-left: 5px solid #42A948; /* green */
+  }
+  
+  .ng-invalid:not(form)  {
+    border-left: 5px solid #a94442; /* red */
+  }

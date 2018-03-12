@@ -4,7 +4,7 @@ import { Observable } from "rxjs";
 import { of } from "rxjs/Observable/of";
 import 'rxjs/add/operator/map';
 import { RequestOptions } from '@angular/http';
-import { Credentials } from '../../models/credentials';
+import { UserAccount } from '../../models/userAccount';
 
 
 @Injectable()
@@ -12,19 +12,19 @@ export class AuthenticationService {
 
   private usersURL = "http://localhost:8060/users";
 
-  credentials: Credentials;
+  userAccount: UserAccount;
   constructor(private http:HttpClient) { }
 
-  authlogin(username : string, password:string) : Observable <Credentials>
+  authlogin(username : string, password:string) : Observable <UserAccount>
   {
-    this.credentials = {
+    this.userAccount = {
       id: null,
       username: username,
       password: password,
       profile: null
   }
 
-    return this.http.post<Credentials>(this.usersURL + "/authentication", this.credentials);
+    return this.http.post<UserAccount>(this.usersURL + "/authentication", this.userAccount);
 
   }
 

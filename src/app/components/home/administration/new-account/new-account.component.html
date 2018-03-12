@@ -1,0 +1,31 @@
+<div class="row animated fadeInRight content">
+            <h3>New Account</h3>
+<div class="col-md-4">
+    <form name="formNewAccount" #newaccount="ngForm" (ngSubmit)="createAccount()" novalidate>
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" name="username" [(ngModel)]="username" #user="ngModel" required />
+          <div class="required" *ngIf="!user.valid && user.dirty"><span>Username is required</span></div>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" name="password" [(ngModel)]="password" #pass="ngModel" required />
+          <div class="required" *ngIf="!pass.valid && pass.dirty"><span>Password is required</span></div>
+        </div>
+        <div class="form-group">
+            <label for="password2">Repeat Password</label>
+            <input type="password" class="form-control" name="password2" [(ngModel)]="password2" #passrepeat="ngModel" required />
+          <div class="required" *ngIf="!passrepeat.valid && passrepeat.dirty"><span>Repeat password is required</span></div>
+          <div class="required" *ngIf="passrepeat.value != passrepeat.value"><span>el password no es el mismo</span></div>          
+        </div>
+        <div class="form-group">
+            <label for="profile">Profile</label>
+            <input type="text" class="form-control" name="profile" [(ngModel)]="profile" #prof="ngModel" required />
+          <div class="required" *ngIf="!prof.valid && prof.dirty"><span>Profile is required</span></div>
+        </div>
+        <div class="form-group">
+            <button  class="btn btn-primary" [disabled]="!newaccount.valid">Create</button>
+        </div>
+    </form>
+  </div>
+</div>

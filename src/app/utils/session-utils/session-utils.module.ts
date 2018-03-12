@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Credentials } from '../../models/credentials'
+import { UserAccount } from '../../models/userAccount'
 
 @NgModule({
   imports: [
@@ -12,9 +12,9 @@ import { Credentials } from '../../models/credentials'
 export class SessionUtilsModule { 
 
   //Gets current logged user
-  public static getCurrentLoggedInUser(): Credentials
+  public static getCurrentLoggedInUser(): UserAccount
   {
-    return Credentials.createUserFromJson(JSON.parse(localStorage.getItem("loggedInUser")));
+    return UserAccount.createUserFromJson(JSON.parse(localStorage.getItem("loggedInUser")));
   }
 
   //Checks if user is logged in

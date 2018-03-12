@@ -1,0 +1,13 @@
+h3{
+    text-decoration: underline;
+    font-variant: small-caps;
+}
+
+.content{
+    padding-left: 50px;
+    text-align: center;
+}
+
+p{
+    color:grey;
+}

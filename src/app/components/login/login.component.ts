@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Credentials } from '../../models/credentials';
+import { UserAccount } from '../../models/userAccount';
 
 //import the authenticationService
 import { AuthenticationService } from '../../services/authentication/authentication.service';
@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
 
   public username : string;
   public password : string;
-  private credentials: Credentials;
+  private userAccount: UserAccount;
   private loginError : boolean = true;
 
   constructor(private authentication: AuthenticationService, private router: Router) { }
@@ -40,11 +40,11 @@ export class LoginComponent implements OnInit {
   login():void
   {
     this.authentication.authlogin(this.username,this.password).subscribe(
-      (response: Credentials) =>
+      (response: UserAccount) =>
       {
-        this.credentials = response;
+        this.userAccount = response;
         
-        if(this.credentials != null){
+        if(this.userAccount != null){
           this.loginError = true;
           localStorage.setItem("loggedInUser", JSON.stringify(response));
           

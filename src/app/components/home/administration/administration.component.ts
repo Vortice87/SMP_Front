@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserAccountsService } from '../../../services/user-accounts/user-accounts.service';
-import { Credentials } from '../../../models/credentials';
+import { UserAccount } from '../../../models/userAccount';
 
 @Component({
   selector: 'app-administration',
@@ -9,7 +9,7 @@ import { Credentials } from '../../../models/credentials';
 })
 export class AdministrationComponent implements OnInit {
 
-  private users: Credentials[];
+  private users: UserAccount[];
 
   constructor(private userAccount: UserAccountsService) { }
 
@@ -20,9 +20,10 @@ export class AdministrationComponent implements OnInit {
   getAllUsers():void
   {
     this.userAccount.getAllUsers().subscribe(
-      (response: Credentials[]) =>
+      (response: UserAccount[]) =>
       {
         this.users = response;
+        console.log(this.users);
       },
       (error)  =>
       {  

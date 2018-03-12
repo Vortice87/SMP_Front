@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { of } from 'rxjs/Observable/of';
 import 'rxjs/add/operator/map';
 import { RequestOptions } from '@angular/http';
-import { Credentials } from '../../models/credentials';
+import { UserAccount } from '../../models/userAccount';
 
 @Injectable()
 export class UserAccountsService {
@@ -13,7 +13,7 @@ export class UserAccountsService {
 
   constructor(private http: HttpClient) { }
 
-  getAllUsers(): Observable<Credentials[]>
+  getAllUsers(): Observable<UserAccount[]>
   {
     return this.http.get<any>(this.usersURL + "/all");
   }

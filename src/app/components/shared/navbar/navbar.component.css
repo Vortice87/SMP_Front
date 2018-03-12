@@ -3,6 +3,7 @@ nav{
     border-bottom-color: white;
     font-family: verdana;
     font-size: 13px;
+    z-index: 1030;
 }
 
 .container {
@@ -15,7 +16,7 @@ nav{
 }
 
 .dropdown-toggle{
-    padding-right: 100px;
+    padding-right: 50px;
 }
 .dropdown-toggle:hover{
     color:#ffffff !important;

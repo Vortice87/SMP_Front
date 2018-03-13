@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UserAccount } from '../../../../models/userAccount';
+import { UserAccountService } from '../../../../services/user-accounts/user-accounts.service';
+
+import swal from 'sweetalert2'
+import { NgForm } from '@angular/forms/src/directives/ng_form';
 
 @Component({
   selector: 'app-new-account',
@@ -8,20 +12,34 @@ import { UserAccount } from '../../../../models/userAccount';
 })
 export class NewAccountComponent implements OnInit {
 
-  username: string;
-  password: string;
-  password2: string;  
-  profile: string;
+  user: UserAccount = new UserAccount(null, "", "", "");
+  passwordAux:string;
+  insertUser:boolean;
+  profiles: string[] = ["admin", "sourcing", "provider", "area"];
 
-  constructor() { }
+  constructor(private userAccount: UserAccountService){
+
+  }
 
   ngOnInit() {
   }
 
-  createAccount(): void {
-
-    let user = new UserAccount(null,this.username, this.password, this.profile);
-
+  createAccount( form : NgForm): void {
+    this.userAccount.createUser(this.user).subscribe(
+      (response: boolean) =>
+      {
+        this.insertUser = response;
+        console.log(response);
+        if(!this.insertUser){
+          swal(
+            'User Created',
+            'User has been created successfully',
+            'success'
+          )
+        }
+        form.reset();
+      }
+    )
   }
 
 }

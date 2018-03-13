@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserAccountsService } from '../../../services/user-accounts/user-accounts.service';
+import { UserAccountService } from '../../../services/user-accounts/user-accounts.service';
 import { UserAccount } from '../../../models/userAccount';
 
 @Component({
@@ -11,7 +11,7 @@ export class AdministrationComponent implements OnInit {
 
   private users: UserAccount[];
 
-  constructor(private userAccount: UserAccountsService) { }
+  constructor(private userAccount: UserAccountService) { }
 
   ngOnInit() {
     this.getAllUsers();
@@ -27,7 +27,7 @@ export class AdministrationComponent implements OnInit {
       },
       (error)  =>
       {  
-        console.log("error:"+ JSON.stringify(error));
+        console.log("error:"+ error);
       }
     );
   }

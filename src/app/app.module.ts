@@ -10,7 +10,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 //import the services
 import { AuthenticationService } from './services/authentication/authentication.service';
-import { UserAccountsService } from './services/user-accounts/user-accounts.service';
+import { UserAccountService } from './services/user-accounts/user-accounts.service';
 import { AuthGuard } from './guards/auth.guard';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { SidebarComponent } from './components/shared/sidebar/sidebar.component';
@@ -34,7 +34,7 @@ import { NewAccountComponent } from './components/home/administration/new-accoun
     FormsModule,
     HttpClientModule
   ],
-  providers: [HttpClient, AuthenticationService, AuthGuard ,UserAccountsService],
+  providers: [HttpClient, AuthenticationService, AuthGuard ,UserAccountService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -2,8 +2,13 @@ nav{
     background-color: #FC001A;
     border-bottom-color: white;
     font-family: verdana;
-    font-size: 13px;
-    z-index: 1030;
+    font-size: 14px;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    border-radius: 0px;
 }
 
 .container {
@@ -17,9 +22,10 @@ nav{
 
 .dropdown-toggle{
     padding-right: 50px;
+    background-color: #FC001A;
 }
 .dropdown-toggle:hover{
-    color:#ffffff !important;
+    background-color:#c22727 !important;
 }
 .navbar-nav>li>.dropdown-menu{
     background: black;
@@ -29,7 +35,6 @@ nav{
     font-size: 13px;
     padding-bottom: 8px;
     padding-top: 8px;
-    
 }
 
 .dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover{
@@ -37,22 +42,9 @@ nav{
     -webkit-transition: all 1s ease;
     transition: all 1s ease;
 }
-.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover{
-    background-color: #c22727;
-}
-.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover{
-    color: #fff;
-}
-.navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover{
-    color:#fff;
-}
 
-.navbar-default .navbar-nav>li>a {
-    color: #fff;
-}
-
-.navbar-default .navbar-brand {
-    color: #fff;
+.nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
+     background-color:#c22727; 
 }
 
 .dropdown-menu .divider {
@@ -67,3 +59,9 @@ ul{
 .pointer{
     cursor: pointer;
 }
+
+a{
+    color: white;
+}
+
+

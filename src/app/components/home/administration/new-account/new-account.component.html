@@ -1,14 +1,18 @@
 <div class="row animated fadeInRight content">
-  <h3>New Account</h3>
-  <div class="col-md-4">
+  
+  <div class="col-md-offset-1 col-md-5">
+      <h3>New Account</h3>
     <form name="formNewAccount" #newaccount="ngForm" (ngSubmit)="createAccount(newaccount)" novalidate>
       <div class="form-group">
         <label for="username">Username</label>
-        <input type="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" class="form-control" name="username" [(ngModel)]="user.username" #usn="ngModel" required [ngStyle]="{ border: !usn.valid && usn.dirty  ?  '1px solid red': '' }"
-        />
+        <input type="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" class="form-control" name="username" [(ngModel)]="user.username" #usn="ngModel" required [ngStyle]="{ border: (!usn.valid && usn.dirty) || usernameExists  ?  '1px solid red': '' }"
+        (focusout)="userExists()" />
 
         <div class="required animated fadeInDown" *ngIf="!usn.valid && usn.dirty">
           <span>Username is required</span>
+        </div>
+        <div class="required animated fadeInDown" *ngIf="usernameExists">
+          <span>Username exist</span>
         </div>
       </div>
       <div class="form-group">

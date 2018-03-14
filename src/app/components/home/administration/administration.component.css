@@ -1,13 +1,28 @@
 h3{
     text-decoration: underline;
     font-variant: small-caps;
+    margin-bottom: 30px;
 }
 
 .content{
     padding-left: 50px;
-    text-align: center;
+    /* text-align: center; */
 }
 
 p{
     color:grey;
+    padding: 10px;
+}
+
+i{
+    padding: 10px;
+}
+
+.pointer{
+    cursor: pointer;
+    font-size: 20px;    
+}
+
+a:hover{
+    color:red;
 }

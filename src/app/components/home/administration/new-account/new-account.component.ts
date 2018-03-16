@@ -30,12 +30,14 @@ export class NewAccountComponent implements OnInit {
   userExists():boolean
   {
     this.usernameExists = false;
+    if(this.user.username != ""){
+    
     this.userAccount.userExists(this.user.username).subscribe(
       (response: boolean) =>
       {
         this.usernameExists = response;
       }
-    )
+    )}
     return true;
   }
 

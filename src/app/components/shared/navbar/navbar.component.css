@@ -64,10 +64,18 @@ a{
     color: white;
 }
 
-img{
+.profile{
     width: 30px;
     margin-right: 10px;
     border-radius: 100%;
 }
 
+.logo{
+    width: 170px;
+}
+
+
+.navbar-brand {
+    padding: 7px 15px;
+}
 

@@ -31,22 +31,31 @@ export class AdministrationComponent implements OnInit {
       }
     );
   }
-  deleteUser(user:UserAccount):boolean
+  deleteUser(user:UserAccount):void
   {
-     this.userAccount.deleteUser(user.id).subscribe(
-       (response: boolean) =>
-       {
-          if(!response){
-            swal({
-              type: 'success',
-              title: 'User has been eliminated successfully',
-              showConfirmButton: false,
-              timer: 1500
-            })
-            this.getAllUsers();
+    swal({
+      title: 'Are you sure?',
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes'
+    }).then((result) => {
+      if (result.value) {
+        this.userAccount.deleteUser(user.id).subscribe(
+          (response: boolean) =>
+          {
+             if(!response){
+              swal(
+                'Deleted',
+                'User has been eliminated successfully',
+                'success'
+              )
+               this.getAllUsers();
+             }
           }
-       }
-     )
-     return true;
+        )
+      }
+    })
   }
 }

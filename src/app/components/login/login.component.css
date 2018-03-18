@@ -3,6 +3,7 @@
     border:2px solid #E5E5E5;
     padding: 10px 40px 10px 40px;
     border-radius: 10px;
+    background-color:white;
 }
 
 span{
@@ -12,3 +13,15 @@ span{
 .required{
     margin: 10px;
 }
+
+
+.background {
+    background: linear-gradient(90deg, red 65%, #f7f7f7  35%);
+}
+.row {
+    height: 100%;
+    margin-right: 0px; 
+    margin-left: 0px; 
+}
+
+

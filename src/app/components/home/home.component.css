@@ -1,6 +1,16 @@
 .container{
-    margin-top:60px!important;
+    margin-top:100px!important;  
+    margin-bottom:50px;
 }
+
+.row {
+    background-color: #f7f7f7;
+    width:101%; 
+    height: 100%!important;
+}
+
+
+
 
 
 

@@ -1,7 +1,10 @@
-<div class="row animated fadeInRight content">
+<div class="col-md-4">
+<div class="row animated fadeInRight list">
   
-  <div class="col-md-offset-2 col-md-5">
+  <div class="col-md-12">
+    <div class="row header">
       <h3>New Account</h3>
+    </div>
     <form name="formNewAccount" #newaccount="ngForm" (ngSubmit)="createAccount(newaccount)" novalidate>
       <div class="form-group">
         <label for="username">Username</label>
@@ -50,4 +53,5 @@
       </div>
     </form>
   </div>
+</div>
 </div>

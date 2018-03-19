@@ -22,11 +22,16 @@ nav{
 
 .dropdown-toggle{
     padding-right: 50px;
-    background-color: #FC001A;
+    background-color: #FC001A!important;
 }
 .dropdown-toggle:hover{
     background-color:#c22727 !important;
 }
+
+.dropdown-toggle:focus{
+    background-color:#c22727 !important;
+}
+
 .navbar-nav>li>.dropdown-menu{
     background: black;
 }

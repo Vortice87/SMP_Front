@@ -1,11 +1,21 @@
 h3{
-    text-decoration: underline;
     font-variant: small-caps;
-    margin-bottom: 30px;
+    text-align: center;
 }
 
-.content{
-    padding-left: 50px;
+.list{
+    border-radius: 5px;
+    background-color:white;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,.14);
+    padding-bottom: 40px;
+}
+
+.header{
+    background-color:#dcdcdc;
+    margin-bottom: 50px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    
 }
 
 p{

@@ -1,10 +1,13 @@
 .login{
     margin-top: 15%;
-    border:2px solid #E5E5E5;
     padding: 10px 40px 10px 40px;
     border-radius: 10px;
     background-color:white;
+    border-radius: 5px;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,.14);
 }
+
+
 
 span{
     color:red;
@@ -16,7 +19,7 @@ span{
 
 
 .background {
-    background: linear-gradient(90deg, red 65%, #f7f7f7  35%);
+    background: linear-gradient(90deg, red 58%, #f7f7f7  42%);
 }
 .row {
     height: 100%;

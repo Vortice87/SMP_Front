@@ -17,6 +17,7 @@ import { SidebarComponent } from './components/shared/sidebar/sidebar.component'
 import { AdministrationComponent } from './components/home/administration/administration.component';
 import { HomeComponent } from './components/home/home.component';
 import { NewAccountComponent } from './components/home/administration/new-account/new-account.component';
+import { AdminGuard } from './guards/admin.guard';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import { NewAccountComponent } from './components/home/administration/new-accoun
     FormsModule,
     HttpClientModule
   ],
-  providers: [HttpClient, AuthenticationService, AuthGuard ,UserAccountService],
+  providers: [HttpClient, AuthenticationService, AuthGuard ,AdminGuard ,UserAccountService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

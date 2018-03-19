@@ -9,14 +9,15 @@ import { AdministrationComponent } from './components/home/administration/admini
 import { NewAccountComponent } from './components/home/administration/new-account/new-account.component';
 // import the guards
 import { AuthGuard } from './guards/auth.guard';
+import { AdminGuard } from './guards/admin.guard';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   {
     path: 'home', component: HomeComponent, canActivate: [AuthGuard], children:
       [
-        { path: 'admin', component: AdministrationComponent },
-        { path: 'newaccount', component: NewAccountComponent }
+        { path: 'admin', component: AdministrationComponent, canActivate: [AdminGuard] },
+        { path: 'newaccount', component: NewAccountComponent, canActivate: [AdminGuard] }
       ]
   },
   { path: '', redirectTo: '/home', pathMatch: 'full' },

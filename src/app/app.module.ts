@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
+import { DatePipe } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './/app-routing.module';
@@ -18,6 +18,13 @@ import { AdministrationComponent } from './components/home/administration/admini
 import { HomeComponent } from './components/home/home.component';
 import { NewAccountComponent } from './components/home/administration/new-account/new-account.component';
 import { AdminGuard } from './guards/admin.guard';
+import { CreateRequestComponent } from './components/home/sourcing/create-request/create-request.component';
+
+//import external modules
+import { NgxSelectModule } from 'ngx-select-ex';
+import { NewRowReqFunctComponent } from './components/home/sourcing/create-request/new-row-req-funct/new-row-req-funct.component';
+import { NewRowLangComponent } from './components/home/sourcing/create-request/new-row-lang/new-row-lang.component';
+import { RequestService } from './services/request/request.service';
 
 @NgModule({
   declarations: [
@@ -27,15 +34,27 @@ import { AdminGuard } from './guards/admin.guard';
     SidebarComponent,
     AdministrationComponent,
     HomeComponent,
-    NewAccountComponent
+    NewAccountComponent,
+    CreateRequestComponent,
+    NewRowReqFunctComponent,
+    NewRowLangComponent
     ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxSelectModule
   ],
-  providers: [HttpClient, AuthenticationService, AuthGuard ,AdminGuard ,UserAccountService],
+  providers: [
+    HttpClient,
+    AuthenticationService,
+    AuthGuard,
+    AdminGuard,
+    UserAccountService,
+    RequestService,
+    DatePipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

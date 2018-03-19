@@ -1,0 +1,38 @@
+<div class="form-group row">
+  <div class="col-md-3">
+    <label *ngIf="row.header" for="language">LANGUAGES</label>
+  </div>
+  <div class="col-md-2">
+    <label *ngIf="row.header" for="level">LEVEL</label>
+  </div>
+  <div class="col-md-3">
+    <label *ngIf="row.header" for="reqdesLang">REQ / DES</label>
+  </div>
+</div>
+
+<div class="form-group row">
+  <div class="col-md-3">
+    <select class="form-control" name="language" [(ngModel)]="row.language">
+      <option value="" selected>-- Select --</option>
+      <option *ngFor="let l of langs" [value]="l">{{l}}</option>
+    </select>
+  </div>
+  <div class="col-md-2">
+    <select class="form-control" name="level" [(ngModel)]="row.level" (focusout)="toClearLang()">
+      <option value="" selected>-- Select --</option>
+      <option *ngFor="let lev of levels" [value]="lev">{{lev}}</option>
+    </select>
+  </div>
+  <div class="col-md-3">
+    <select class="form-control" name="reqdesLang" [(ngModel)]="row.reqdes" (focusout)="toClearLang()">
+      <option value="" selected>-- Select --</option>
+      <option *ngFor="let rd of reqdes" [value]="rd">{{rd}}</option>
+    </select>
+
+  </div>
+  <div class="col-md-3">
+    <button class="btn btn-secondary" type="button" (click)="deleting.emit(row.currentIndex)">
+      <i class="fa fa-trash-o pointer"></i>
+    </button>
+  </div>
+</div>

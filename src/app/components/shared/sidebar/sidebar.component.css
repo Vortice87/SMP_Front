@@ -9,7 +9,8 @@
     color: #e1ffff;
     padding-right: 0;
     margin-top: 62px;
-    width: 240px;
+    width: 224px;
+    z-index: 1000;
   }
   .nav-side-menu .brand {
     background-color: #23282e;
@@ -126,13 +127,14 @@
   }
   @media (min-width: 767px) {
     .nav-side-menu .menu-list .menu-content {
-      display: block;
+      display: block;     
     }
     #main {
         width:calc(100% - 300px);
-        float: right;
+        float: right;       
     }
   }
+
   
   body {
     margin: 0px;

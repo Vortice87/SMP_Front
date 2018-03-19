@@ -1,11 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 
 h1 ,h2, h3, h4{
-    font-size: 20px;
+    font-size: 18px!important;
 }
 
 p {
-    font-size: 15px;
+    font-size: 13px;
 }
 
 html, body {
@@ -13,4 +13,17 @@ html, body {
     margin: 0;
     background-color: #f7f7f7;  
   }
+
+.ngx-select_multiple{
+    padding: 4px 0px 3px 5px!important;
+}
+
+.ngx-select__item_active {
+    color: white!important;
+    background-color: #63a6dd!important;
+}
+
+.nothing-selected div{
+    border-color: red!important;
+}
 

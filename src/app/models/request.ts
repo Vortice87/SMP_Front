@@ -9,11 +9,10 @@ export class Request {
     constructor(
         public id: number,
         public petitioner: string,
+        public title: string,        
         public reason: string,
         public substitution: string,
         public suggestedService: string,
-        public provider: Array<Provider>,
-        public sugSerJust: string,
         public observations: string,
         public categoryFunc: string,
         public limitRate: number,
@@ -26,8 +25,6 @@ export class Request {
         public department: string,
         public management: string,
         public unity: string,
-        public code: string,
-        public descProject: string,
         public reqFuncts: Array<ReqFunctional>,
         public reqTechs: Array<ReqTechnical>,
         public descTask: string,
@@ -40,7 +37,6 @@ export class Request {
         public mobile: string,
         public reasonDotation: string,
         public languages: Array<LanguagesRequest>,
-        public guards: string,
         public cvs: Array<Cv>
     ) {
 

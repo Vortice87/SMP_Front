@@ -1,5 +1,5 @@
 <div class="col-md-offset-1 col-md-10">
-  <div class="row animated fadeInRight list">
+  <div class="row  list">
 
     <div class="col-md-12">
       <div class="row header">
@@ -14,8 +14,14 @@
             <div class="form-group row">
               <label for="petitioner" class="col-md-3 col-form-label">PETITIONER</label>
               <div class="col-md-9">
-                <input type="text" class="form-control" name="petitioner" [(ngModel)]="request.petitioner" #peti="ngModel" required [ngStyle]="{ border: (!peti.valid && peti.dirty)  ?  '1px solid red': '' }"
-                />
+                {{request.petitioner}}
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="title" class="col-md-3 col-form-label">REQUEST TITLE</label>
+              <div class="col-md-9">
+                <input type="text" class="form-control" name="title" [(ngModel)]="request.title" #title="ngModel" required [ngStyle]="{ border: (!title.valid && title.dirty)  ?  '1px solid red': '' }"/>
               </div>
             </div>
 
@@ -39,23 +45,6 @@
             </div>
 
             <div class="form-group row">
-              <label for="provider" class="col-md-3 col-form-label">PROVIDER</label>
-              <div class="col-md-9">
-                <ngx-select [multiple]="true" [items]="providers" optionValueField="id" optionTextField="providerName" 
-                [(ngModel)]="selectProvider" placeholder="Nothing selected" name="provider" (focusout)="assignProvider()"
-                  #prov="ngModel" required [ngClass]="{'nothing-selected': !prov.valid && prov.dirty }">
-                </ngx-select>
-              </div>
-            </div>
-
-            <div class="form-group row">
-              <label for="suggestedSerJust" class="col-md-3 col-form-label">SUGGESTED SERVICE JUSTIFICATION</label>
-              <div class="col-md-9">
-                <input type="text" class="form-control" name="suggestedSerJust" [(ngModel)]="request.sugSerJust" />
-              </div>
-            </div>
-
-            <div class="form-group row">
               <label for="observations" class="col-md-3 col-form-label">OBSERVATIONS</label>
               <div class="col-md-9">
                 <input type="text" class="form-control" name="observations" [(ngModel)]="request.observations" />
@@ -68,7 +57,7 @@
         </fieldset>
 
         <fieldset class="form-group" *ngIf="widget==2">
-          <div class="container animated fadeInRight">
+          <div class="container ">
             <legend>PROFILE DATA</legend>
             <div class="form-group row">
               <label for="funcategory" class="col-md-3 col-form-label">FUNCTIONAL CATEGORY</label>
@@ -82,7 +71,7 @@
 
               <label for="limitrate" class="col-md-3 col-form-label">Limit Rate</label>
               <div class="col-md-3">
-                <input type="number" class="form-control" name="limitrate" [(ngModel)]="request.limitRate" />
+                <input type="number" class="form-control" name="limitrate" [(ngModel)]="request.limitRate" #limitrate="ngModel" required [ngStyle]="{ border: !limitrate.valid && limitrate.dirty  ?  '1px solid red': '' }"/>
               </div>
             </div>
 
@@ -139,7 +128,7 @@
         </fieldset>
 
         <fieldset class="form-group" *ngIf="widget==3">
-          <div class="container animated fadeInRight">
+          <div class="container ">
 
             <legend>ORGANIZATIONAL ASSIGNMENT</legend>
             <div class="form-group row">
@@ -187,38 +176,9 @@
           
         </fieldset>
 
+
         <fieldset class="form-group" *ngIf="widget==4">
-          <div class="container animated fadeInRight">
-            <legend>FINANCING</legend>
-
-            <div class="form-group row">
-              <div class="col-md-offset-3 col-md-4">
-                <label for="code">CODE</label>
-              </div>
-              <div class="col-md-offset-1 col-md-4">
-                <label for="projdes">PROJECT DESCRIPTION</label>
-              </div>
-            </div>
-
-            <div class="form-group row">
-              <label class="col-md-3 col-form-label">PEP / DEMAND</label>
-              <div class="col-md-2">
-                <input type="text" class="form-control" name="code" [(ngModel)]="request.code" #co="ngModel" required [ngStyle]="{ border: !co.valid && co.dirty  ?  '1px solid red': '' }"
-                />
-              </div>
-              <div class="col-md-offset-1 col-md-6">
-                <input type="text" class="form-control" name="projdes" [(ngModel)]="request.descProject" #project="ngModel" required [ngStyle]="{ border: !project.valid && project.dirty  ?  '1px solid red': '' }"
-                />
-              </div>
-            </div>
-          </div>
-
-          <button class="btn btn-secondary btn-previous" type="button" (click)="next()" [disabled]="!newrequest.valid">Next</button>
-          
-        </fieldset>
-
-        <fieldset class="form-group" *ngIf="widget==5">
-          <div class="container animated fadeInRight">
+          <div class="container ">
             <legend>FUNCTIONAL REQUIREMENTS
               <button class="btn btn-secondary btn-add" type="button" (click)="loadReqFuncts(false,null)">+</button>
             </legend>
@@ -229,8 +189,8 @@
           
         </fieldset>
 
-        <fieldset class="form-group" *ngIf="widget==6">
-          <div class="container animated fadeInRight">
+        <fieldset class="form-group" *ngIf="widget==5">
+          <div class="container ">
 
             <legend>TECHNICAL REQUIREMENTS</legend>
 
@@ -381,8 +341,8 @@
           
         </fieldset>
 
-        <fieldset class="form-group" *ngIf="widget==7">
-          <div class="container animated fadeInRight">
+        <fieldset class="form-group" *ngIf="widget==6">
+          <div class="container ">
             <legend>TASKS</legend>
             <div class="form-group row">
               <label for="destask" class="col-md-3 col-form-label">DESCRIPTION TASKS</label>
@@ -397,9 +357,9 @@
         </fieldset>
 
 
-        <fieldset class="form-group" *ngIf="widget==8">
-          <div class="container animated fadeInRight">
-            <legend>DOTATION</legend>
+        <fieldset class="form-group" *ngIf="widget==7">
+          <div class="container ">
+            <legend>LOCATION</legend>
 
             <div class="form-group row">
               <div class="col-md-3">
@@ -488,32 +448,21 @@
           
         </fieldset>
 
-        <fieldset class="form-group" *ngIf="widget==9">
-          <div class="container animated fadeInRight">
+        <fieldset class="form-group" *ngIf="widget==8">
+          <div class="container ">
             <legend>OTHERS
               <button class="btn btn-secondary btn-add" type="button" (click)="loadLanguages(false,null)">+</button>
             </legend>
 
             <app-new-row-lang *ngFor="let row of request.languages" [row]="row" (deleting)="removeLang($event)"></app-new-row-lang>          
 
-            <div class="form-group row">
-              <label for="guards" class="col-md-3 col-form-label">AVAILABILITY GUARDS</label>
-              <div class="col-md-2">
-                <select class="form-control" name="guards" [(ngModel)]="request.guards">
-                  <option value="" selected>-- Select --</option>
-                  <option *ngFor="let yn of yesno" [value]="yn">{{yn}}</option>
-                </select>
-
-              </div>
-            </div>
           </div>
         </fieldset>
 
-        <div class="form-group animated fadeIn" *ngIf="widget == 9">
+        <div class="form-group animated fadeIn" *ngIf="widget == 8">
           <button class="btn btn-primary" type="submit" [disabled]="!newrequest.valid">Create</button>
         </div>
         <button class="btn btn-secondary btn-next" type="button" (click)="previous()" [disabled]="widget == 1">Previous</button>
-        <!-- <button class="btn btn-secondary btn-previous" type="button" (click)="next()" [disabled]="(!newrequest.valid && widget!=5) || (!isValid && widget==5) "  *ngIf="widget != 9">Next</button> -->
 
       </form>
     </div>

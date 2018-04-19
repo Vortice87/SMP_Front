@@ -12,7 +12,8 @@ import { ReqTechnical } from '../../../../models/reqTechnical';
 import { forEach } from '@angular/router/src/utils/collection';
 
 import { Provider } from '../../../../models/provider';
-import { ClassGetter } from '@angular/compiler/src/output/output_ast';
+import { SessionUtils } from '../../../../utils/session-utils/session-utils';
+import { UserAccount } from '../../../../models/userAccount';
 
 
 @Component({
@@ -23,6 +24,7 @@ import { ClassGetter } from '@angular/compiler/src/output/output_ast';
 export class CreateRequestComponent implements OnInit {
 
   request: Request;
+  user: UserAccount;
   startDate: Date;
   estimatedDay: Date;
   today: Date;
@@ -56,8 +58,6 @@ export class CreateRequestComponent implements OnInit {
   currentAddIndexLang: number = 0;
   selectProvider = [];
 
-  // reqFuncts: Array<ReqFunctional> = new Array<ReqFunctional>();
-  // languages: Array<LanguagesRequest> = new Array<LanguagesRequest>();
   reqTechnicals: Array<ReqTechnical> = new Array<ReqTechnical>();
   isValid: boolean = false;
 
@@ -74,10 +74,12 @@ export class CreateRequestComponent implements OnInit {
     this.startDate = new Date();
     this.today = new Date();
     this.estimatedDay = this.sumarDias(this.today, 14);
+    this.user = SessionUtils.getCurrentLoggedInUser();
+    
     this.reqTechnicals = [{ id_tech: null, techscope: "", others: "", exp: "", reqdes: "" }, { id_tech: null, techscope: "", others: "", exp: "", reqdes: "" },
     { id_tech: null, techscope: "", others: "", exp: "", reqdes: "" }, { id_tech: null, techscope: "", others: "", exp: "", reqdes: "" }]
-    this.request = new Request(null, "", "", "", "", [], "", "", "", null, "", "", "", this.startDate, null, "", "", "", "",
-      "", "", [], this.reqTechnicals, "", "", null, "", "", "", "", "", "", [], "", []);
+    this.request = new Request(null, this.user.username, "", "", "", "", "", "", null, "", "", "", this.startDate, null, "", "", "", "",
+     [], this.reqTechnicals, "", "", null, "", "", "", "", "", "", [] , []);
     this.loadDataRequest();
   }
 
@@ -90,11 +92,6 @@ export class CreateRequestComponent implements OnInit {
     this.widget = this.widget - 1;
   }
 
-  assignProvider(): void {
-    this.request.provider = [];
-    this.selectProvider.map(res => this.request.provider.push(new Provider(res, null)));
-    console.log(this.request.provider);
-  }
 
   createRequest(form: NgForm): void {
 

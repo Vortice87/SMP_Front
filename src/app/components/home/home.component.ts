@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { SessionUtilsModule } from '../../utils/session-utils/session-utils.module';
+import { SessionUtils } from '../../utils/session-utils/session-utils';
 import { Input } from '@angular/core/src/metadata/directives';
 
 @Component({
@@ -21,9 +21,9 @@ export class HomeComponent implements OnInit {
 
   checkForLoggedUser():void
   {
-    if (SessionUtilsModule.checkIfLogin()) {
+    if (SessionUtils.checkIfLogin()) {
 
-      if(SessionUtilsModule.getCurrentLoggedInUser().profile == "admin"){
+      if(SessionUtils.getCurrentLoggedInUser().profile == "admin"){
         this.isAdmin = true;
       }else{
         this.isAdmin = false;

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SessionUtilsModule } from '../../../utils/session-utils/session-utils.module';
+import { SessionUtils } from '../../../utils/session-utils/session-utils';
 import { Router } from '@angular/router';
 
 @Component({
@@ -15,13 +15,13 @@ export class NavbarComponent implements OnInit {
   }
 
   logout():void{
-    SessionUtilsModule.clearCurrentLoggedInUser();
+    SessionUtils.clearCurrentLoggedInUser();
     this.checkForLoggedUser();
   }
 
   checkForLoggedUser():void
   {
-    if (SessionUtilsModule.checkIfLogin()) {
+    if (SessionUtils.checkIfLogin()) {
 
       this.router.navigate(["/home"]);
 

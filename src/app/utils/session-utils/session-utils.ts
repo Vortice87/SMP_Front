@@ -1,15 +1,6 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { UserAccount } from '../../models/userAccount'
 
-@NgModule({
-  imports: [
-    CommonModule
-  ],
-  declarations: []
-})
-
-export class SessionUtilsModule { 
+export class SessionUtils { 
 
   //Gets current logged user
   public static getCurrentLoggedInUser(): UserAccount

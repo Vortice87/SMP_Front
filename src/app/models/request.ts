@@ -1,4 +1,3 @@
-import { ReqFunctional } from "./reqFunctional";
 import { ReqTechnical } from "./reqTechnical";
 import { LanguagesRequest } from "./languagesRequest";
 import { Cv } from "./cv";
@@ -25,7 +24,6 @@ export class Request {
         public department: string,
         public management: string,
         public unity: string,
-        public reqFuncts: Array<ReqFunctional>,
         public reqTechs: Array<ReqTechnical>,
         public descTask: string,
         public location: string,
@@ -34,8 +32,6 @@ export class Request {
         public typeAccess: string,
         public platEquip: string,
         public contact: string,
-        public mobile: string,
-        public reasonDotation: string,
         public languages: Array<LanguagesRequest>,
         public cvs: Array<Cv>
     ) {

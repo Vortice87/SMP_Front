@@ -14,7 +14,7 @@ import { resetFakeAsyncZone } from '@angular/core/testing';
 })
 export class NewAccountComponent implements OnInit {
 
-  user: UserAccount = new UserAccount(null, "", "", "");
+  user: UserAccount = new UserAccount(null,"","", "", "", "");
   passwordAux:string;
   insertUser:boolean;
   usernameExists: boolean;

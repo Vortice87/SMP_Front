@@ -22,7 +22,6 @@ import { CreateRequestComponent } from './components/home/sourcing/create-reques
 
 //import external modules
 import { NgxSelectModule } from 'ngx-select-ex';
-import { NewRowReqFunctComponent } from './components/home/sourcing/create-request/new-row-req-funct/new-row-req-funct.component';
 import { NewRowLangComponent } from './components/home/sourcing/create-request/new-row-lang/new-row-lang.component';
 import { RequestService } from './services/request/request.service';
 
@@ -36,7 +35,6 @@ import { RequestService } from './services/request/request.service';
     HomeComponent,
     NewAccountComponent,
     CreateRequestComponent,
-    NewRowReqFunctComponent,
     NewRowLangComponent
     ],
   imports: [

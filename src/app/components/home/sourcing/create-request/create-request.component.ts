@@ -5,7 +5,6 @@ import { DatePipe } from '@angular/common';
 import swal from 'sweetalert2';
 import { NgForm } from '@angular/forms/src/directives/ng_form';
 import { resetFakeAsyncZone } from '@angular/core/testing';
-import { ReqFunctional } from '../../../../models/reqFunctional';
 import { LanguagesRequest } from '../../../../models/languagesRequest';
 import { Request } from '../../../../models/request';
 import { ReqTechnical } from '../../../../models/reqTechnical';
@@ -79,7 +78,7 @@ export class CreateRequestComponent implements OnInit {
     this.reqTechnicals = [{ id_tech: null, techscope: "", others: "", exp: "", reqdes: "" }, { id_tech: null, techscope: "", others: "", exp: "", reqdes: "" },
     { id_tech: null, techscope: "", others: "", exp: "", reqdes: "" }, { id_tech: null, techscope: "", others: "", exp: "", reqdes: "" }]
     this.request = new Request(null, this.user.username, "", "", "", "", "", "", null, "", "", "", this.startDate, null, "", "", "", "",
-     [], this.reqTechnicals, "", "", null, "", "", "", "", "", "", [] , []);
+    this.reqTechnicals, "", "", null, "", "", "", "", [] , []);
     this.loadDataRequest();
   }
 
@@ -119,43 +118,10 @@ export class CreateRequestComponent implements OnInit {
 
   loadDataRequest(): void {
 
-    if (this.request.reqFuncts.length == 0) {
-      this.loadReqFuncts(true, null);
-    }
-    else {
-      // op.forEach(o => {
-      //   this.loadComponent(false, o);
-      // });
-    }
-
     if (this.request.languages.length == 0) {
       this.loadLanguages(true, null);
     }
-    else {
-      // op.forEach(o => {
-      //   this.loadComponent(false, o);
-      // });
-    }
 
-  }
-
-  loadReqFuncts(showHeader: boolean, reqFunct: ReqFunctional) {
-
-    if (this.request.reqFuncts.length < 4) {
-      if (reqFunct == null) {
-        this.request.reqFuncts.push(new ReqFunctional(null, "", "", "", "", this.currentAddIndexReq, showHeader));
-      }
-      else {
-        reqFunct.currentIndex = this.currentAddIndexReq;
-        if (this.currentAddIndexReq == 0) {
-          reqFunct.header = true;
-        }
-        this.request.reqFuncts.push(reqFunct);
-      }
-
-      this.currentAddIndexReq++;
-      this.validate(true);
-    }
   }
 
   
@@ -177,14 +143,6 @@ export class CreateRequestComponent implements OnInit {
     }
   }
 
-  removeReqFunct(id: number) {
-    if (this.request.reqFuncts.length > 1) {
-      this.request.reqFuncts.splice(this.findIndex(id, "reqfunct"), 1);
-    }
-    this.request.reqFuncts[0].header = true;
-    this.validate(true);
-  }
-
   removeLang(id: number) {
     if (this.request.languages.length > 1) {
       this.request.languages.splice(this.findIndex(id, "lang"), 1);
@@ -196,15 +154,6 @@ export class CreateRequestComponent implements OnInit {
     let result: number = 0;
     let i: number = 0;
 
-    if (nameComponent == "reqfunct") {
-      this.request.reqFuncts.forEach(element => {
-        if (element.currentIndex == id) {
-          result = i;
-        }
-        i++;
-      });
-    }
-
     if (nameComponent == "lang") {
       this.request.languages.forEach(element => {
         if (element.currentIndex == id) {
@@ -215,25 +164,6 @@ export class CreateRequestComponent implements OnInit {
     }
 
     return result;
-  }
-
-
-  validate(isValid: boolean) {
-    this.isValid = true;
-    this.request.reqFuncts.forEach((element: ReqFunctional) => {
-      if (!this.validateReqFunct(element)) {
-        this.isValid = false;
-        return;
-      }
-    });
-    console.log(this.isValid)
-  }
-
-  private validateReqFunct(reqfunct: ReqFunctional): boolean {
-    if (reqfunct.functscope == '' || reqfunct.exp == null || reqfunct.reqdes == '') {
-      return false;
-    }
-    return true;
   }
 
 

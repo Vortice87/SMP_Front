@@ -1,5 +1,5 @@
 <div class="col-md-offset-1 col-md-10">
-  <div class="row  list">
+  <div class="row animated fadeInRight list">
 
     <div class="col-md-12">
       <div class="row header">
@@ -179,18 +179,6 @@
 
         <fieldset class="form-group" *ngIf="widget==4">
           <div class="container ">
-            <legend>FUNCTIONAL REQUIREMENTS
-              <button class="btn btn-secondary btn-add" type="button" (click)="loadReqFuncts(false,null)">+</button>
-            </legend>
-            <app-new-row-req-funct *ngFor="let row of request.reqFuncts" [row]="row" (validateNow)="validate($event)" (deleting)="removeReqFunct($event)"></app-new-row-req-funct>
-          </div>
-
-          <button class="btn btn-secondary btn-previous" type="button" (click)="next()" [disabled]="!isValid">Next</button>
-          
-        </fieldset>
-
-        <fieldset class="form-group" *ngIf="widget==5">
-          <div class="container ">
 
             <legend>TECHNICAL REQUIREMENTS</legend>
 
@@ -341,7 +329,7 @@
           
         </fieldset>
 
-        <fieldset class="form-group" *ngIf="widget==6">
+        <fieldset class="form-group" *ngIf="widget==5">
           <div class="container ">
             <legend>TASKS</legend>
             <div class="form-group row">
@@ -357,7 +345,7 @@
         </fieldset>
 
 
-        <fieldset class="form-group" *ngIf="widget==7">
+        <fieldset class="form-group" *ngIf="widget==6">
           <div class="container ">
             <legend>LOCATION</legend>
 
@@ -421,34 +409,13 @@
               </div>
             </div>
 
-            <div class="form-group row">
-              <div class="col-md-3">
-                <label for="mobile">MOBILE</label>
-              </div>
-
-              <div class="col-md-4">
-                <label for="reason">REASON</label>
-              </div>
-            </div>
-
-            <div class="form-group row">
-              <div class="col-md-3">
-                <select class="form-control" name="mobile" [(ngModel)]="request.mobile">
-                  <option value="" selected>-- Select --</option>
-                  <option *ngFor="let yn of yesno" [value]="yn">{{yn}}</option>
-                </select>
-              </div>
-              <div class="col-md-4">
-                <input type="text" class="form-control" name="reason" [(ngModel)]="request.reasonDotation" />
-              </div>
-            </div>
           </div>
 
           <button class="btn btn-secondary btn-previous" type="button" (click)="next()" [disabled]="!newrequest.valid">Next</button>
           
         </fieldset>
 
-        <fieldset class="form-group" *ngIf="widget==8">
+        <fieldset class="form-group" *ngIf="widget==7">
           <div class="container ">
             <legend>OTHERS
               <button class="btn btn-secondary btn-add" type="button" (click)="loadLanguages(false,null)">+</button>
@@ -459,7 +426,7 @@
           </div>
         </fieldset>
 
-        <div class="form-group animated fadeIn" *ngIf="widget == 8">
+        <div class="form-group animated fadeIn" *ngIf="widget == 7">
           <button class="btn btn-primary" type="submit" [disabled]="!newrequest.valid">Create</button>
         </div>
         <button class="btn btn-secondary btn-next" type="button" (click)="previous()" [disabled]="widget == 1">Previous</button>

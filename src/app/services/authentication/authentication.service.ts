@@ -21,6 +21,8 @@ export class AuthenticationService {
 
     let userAccount: UserAccount = {
       id: null,
+      name:"",
+      lastName: "",
       username: username,
       password: password,
       profile: null

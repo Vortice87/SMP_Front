@@ -1,10 +1,11 @@
 export class LanguagesRequest {
 
     constructor(
-        public id_lang: number,
+        public langId: number,
         public language: string,
         public level: string,
         public reqdes: string,
+        public requestId: number,
         public currentIndex: number,
         public header: boolean  
     ) {

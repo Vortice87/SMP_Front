@@ -1,13 +1,13 @@
 import { ReqTechnical } from "./reqTechnical";
 import { LanguagesRequest } from "./languagesRequest";
 import { Cv } from "./cv";
-import { Provider } from "./provider";
+import { UserAccount } from "./userAccount";
 
 export class Request {
 
     constructor(
         public id: number,
-        public petitioner: string,
+        public petitioner: UserAccount,
         public title: string,        
         public reason: string,
         public substitution: string,

@@ -1,17 +1,19 @@
 export class UserAccount {
 
-    constructor(public id: number,
+    constructor(
+        public id: number,
         public name: string,
         public lastName: string,
         public username: string,
         public password: string,
-        public profile: string) {
+        public profile: string,
+        public requests: Array<Request>) {
 
     }
 
     public static createUserFromJson(entity: any): UserAccount {
         
-        let user = new UserAccount(entity.id,entity.name,entity.lastName,entity.username,entity.password,entity.profile);
+        let user = new UserAccount(entity.id,entity.name,entity.lastName,entity.username,entity.password,entity.profile,entity.requests);
         return user;
 
     }

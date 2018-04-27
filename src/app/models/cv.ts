@@ -1,9 +1,10 @@
 export class Cv {
 
     constructor(
-        public id_cv: string,
+        public cvId: string,
         public dni: string,
-        public name: string
+        public name: string,
+        public requestId:number
     ) {
     }
 }

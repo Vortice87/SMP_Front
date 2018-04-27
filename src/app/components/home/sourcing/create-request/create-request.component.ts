@@ -10,7 +10,6 @@ import { Request } from '../../../../models/request';
 import { ReqTechnical } from '../../../../models/reqTechnical';
 import { forEach } from '@angular/router/src/utils/collection';
 
-import { Provider } from '../../../../models/provider';
 import { SessionUtils } from '../../../../utils/session-utils/session-utils';
 import { UserAccount } from '../../../../models/userAccount';
 
@@ -34,8 +33,6 @@ export class CreateRequestComponent implements OnInit {
   categoryFunc: string[] = ["Director", "Gerente"];
   nResources: string[] = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
   nResource: string = "";
-
-  providers: Array<Provider> = new Array<Provider>();
 
   reqProfiles: string[] = ["Consultor", "Desarrollador"];
   technologies: string[] = ["Java", ".Net"];
@@ -61,9 +58,6 @@ export class CreateRequestComponent implements OnInit {
   isValid: boolean = false;
 
   constructor(private requestService: RequestService, private datePipe: DatePipe) {
-    this.providers.push(new Provider(1, "Experis IT"));
-    this.providers.push(new Provider(2, "KPMG IT"));
-    this.providers.push(new Provider(3, "Proveedor 3"));
 
   }
 
@@ -74,10 +68,11 @@ export class CreateRequestComponent implements OnInit {
     this.today = new Date();
     this.estimatedDay = this.sumarDias(this.today, 14);
     this.user = SessionUtils.getCurrentLoggedInUser();
+    console.log(this.user);
     
-    this.reqTechnicals = [{ id_tech: null, techscope: "", others: "", exp: "", reqdes: "" }, { id_tech: null, techscope: "", others: "", exp: "", reqdes: "" },
-    { id_tech: null, techscope: "", others: "", exp: "", reqdes: "" }, { id_tech: null, techscope: "", others: "", exp: "", reqdes: "" }]
-    this.request = new Request(null, this.user.username, "", "", "", "", "", "", null, "", "", "", this.startDate, null, "", "", "", "",
+    this.reqTechnicals = [{ techId: null, techscope: "", others: "", exp: "", reqdes: "", requestId: null }, { techId: null, techscope: "", others: "", exp: "", reqdes: "", requestId: null },
+    { techId: null, techscope: "", others: "", exp: "", reqdes: "" , requestId: null}, { techId: null, techscope: "", others: "", exp: "", reqdes: "", requestId: null }]
+    this.request = new Request(null, this.user, "", "", "", "", "", "", null, "", "", "", this.startDate, null, "", "", "", "",
     this.reqTechnicals, "", "", null, "", "", "", "", [] , []);
     this.loadDataRequest();
   }
@@ -130,7 +125,7 @@ export class CreateRequestComponent implements OnInit {
 
     if (this.request.languages.length < 3) {
       if (lang == null) {
-        this.request.languages.push(new LanguagesRequest(null, "", "", "", this.currentAddIndexLang, showHeader));
+        this.request.languages.push(new LanguagesRequest(null, "", "", "",null, this.currentAddIndexLang, showHeader));
       }
       else {
         lang.currentIndex = this.currentAddIndexLang;

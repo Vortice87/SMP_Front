@@ -25,7 +25,8 @@ export class AuthenticationService {
       lastName: "",
       username: username,
       password: password,
-      profile: null
+      profile: null,
+      requests:[]
     }
 
     let body: any = JSON.stringify(userAccount);

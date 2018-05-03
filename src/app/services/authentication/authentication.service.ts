@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { of } from "rxjs/Observable/of";
 import { RequestOptions } from '@angular/http';
-import { UserAccount } from '../../models/userAccount';
+import { UserAccountDTO } from '../../models/UserAccountDTO';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch'; 
@@ -17,9 +17,9 @@ export class AuthenticationService {
 
   constructor(private http: HttpClient) { }
 
-  authlogin(username: string, password: string): Observable<UserAccount> {
+  authlogin(username: string, password: string): Observable<UserAccountDTO> {
 
-    let userAccount: UserAccount = {
+    let UserAccountDTO: UserAccountDTO = {
       id: null,
       name:"",
       lastName: "",
@@ -29,9 +29,9 @@ export class AuthenticationService {
       requests:[]
     }
 
-    let body: any = JSON.stringify(userAccount);
+    let body: any = JSON.stringify(UserAccountDTO);
 
-    return this.http.post<UserAccount>(this.usersURL + "/authentication", JSON.parse(body), options).catch(this.handError);
+    return this.http.post<UserAccountDTO>(this.usersURL + "/authentication", JSON.parse(body), options).catch(this.handError);
 
   }
 

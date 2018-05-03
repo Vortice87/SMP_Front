@@ -6,12 +6,12 @@ import swal from 'sweetalert2';
 import { NgForm } from '@angular/forms/src/directives/ng_form';
 import { resetFakeAsyncZone } from '@angular/core/testing';
 import { LanguagesRequest } from '../../../../models/languagesRequest';
-import { Request } from '../../../../models/request';
+import { RequestDTO } from '../../../../models/request';
 import { ReqTechnical } from '../../../../models/reqTechnical';
 import { forEach } from '@angular/router/src/utils/collection';
 
 import { SessionUtils } from '../../../../utils/session-utils/session-utils';
-import { UserAccount } from '../../../../models/userAccount';
+import { UserAccountDTO } from '../../../../models/userAccountDTO';
 
 
 @Component({
@@ -21,8 +21,8 @@ import { UserAccount } from '../../../../models/userAccount';
 })
 export class CreateRequestComponent implements OnInit {
 
-  request: Request;
-  user: UserAccount;
+  request: RequestDTO;
+  user: UserAccountDTO;
   startDate: Date;
   estimatedDay: Date;
   today: Date;
@@ -68,11 +68,11 @@ export class CreateRequestComponent implements OnInit {
     this.today = new Date();
     this.estimatedDay = this.sumarDias(this.today, 14);
     this.user = SessionUtils.getCurrentLoggedInUser();
-    console.log(this.user);
+    console.log(this.user.id);
     
     this.reqTechnicals = [{ techId: null, techscope: "", others: "", exp: "", reqdes: "", requestId: null }, { techId: null, techscope: "", others: "", exp: "", reqdes: "", requestId: null },
     { techId: null, techscope: "", others: "", exp: "", reqdes: "" , requestId: null}, { techId: null, techscope: "", others: "", exp: "", reqdes: "", requestId: null }]
-    this.request = new Request(null, this.user, "", "", "", "", "", "", null, "", "", "", this.startDate, null, "", "", "", "",
+    this.request = new RequestDTO(null, this.user.id, "", "", "", "", "", "", null, "", "", "", this.startDate, null, "", "", "", "",
     this.reqTechnicals, "", "", null, "", "", "", "", [] , []);
     this.loadDataRequest();
   }
@@ -89,10 +89,10 @@ export class CreateRequestComponent implements OnInit {
 
   createRequest(form: NgForm): void {
 
-    console.log(this.request);
     if(this.request.reqTechs[3].techscope == ''){
       this.request.reqTechs.splice(3,1);
     }
+
     this.requestService.createRequest(this.request).subscribe(
       (response: boolean) => {
         this.insertRequest = response;
@@ -104,11 +104,14 @@ export class CreateRequestComponent implements OnInit {
             timer: 1500
           })
         }
-        this.widget = 1;
-        form.reset();
-        // form.controls.profile.setValue("");
+         this.widget = 1;
+
+         this.request = new RequestDTO(null, this.user.id, "", "", "", "", "", "", null, "", "", "", this.startDate, null, "", "", "", "",
+         this.reqTechnicals, "", "", null, "", "", "", "", [] , []);
       }
     )
+   
+    
   }
 
   loadDataRequest(): void {

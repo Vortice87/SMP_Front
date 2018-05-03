@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { of } from 'rxjs/Observable/of';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-import { Request } from '../../models/request';
+import { RequestDTO } from '../../models/request';
 
 const options = {
   headers: new HttpHeaders(
@@ -19,7 +19,7 @@ export class RequestService {
 
   constructor(private http: HttpClient) { }
 
-  createRequest(request: Request): Observable<boolean> {
+  createRequest(request: RequestDTO): Observable<boolean> {
 
     let body: any = JSON.stringify(request);
 

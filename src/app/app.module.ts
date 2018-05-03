@@ -10,7 +10,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 //import the services
 import { AuthenticationService } from './services/authentication/authentication.service';
-import { UserAccountService } from './services/user-accounts/user-accounts.service';
+import { UserAccountDTOService } from './services/user-accounts/user-accounts.service';
 import { AuthGuard } from './guards/auth.guard';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { SidebarComponent } from './components/shared/sidebar/sidebar.component';
@@ -49,7 +49,7 @@ import { RequestService } from './services/request/request.service';
     AuthenticationService,
     AuthGuard,
     AdminGuard,
-    UserAccountService,
+    UserAccountDTOService,
     RequestService,
     DatePipe
   ],

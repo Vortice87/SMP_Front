@@ -1,13 +1,13 @@
 import { ReqTechnical } from "./reqTechnical";
 import { LanguagesRequest } from "./languagesRequest";
 import { Cv } from "./cv";
-import { UserAccount } from "./userAccount";
+import { UserAccountDTO } from "./userAccountDTO";
 
-export class Request {
+export class RequestDTO {
 
     constructor(
         public id: number,
-        public petitioner: UserAccount,
+        public petitionerId: number,
         public title: string,        
         public reason: string,
         public substitution: string,

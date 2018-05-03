@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserAccountService } from '../../../services/user-accounts/user-accounts.service';
-import { UserAccount } from '../../../models/userAccount';
+import { UserAccountDTOService } from '../../../services/user-accounts/user-accounts.service';
+import { UserAccountDTO } from '../../../models/userAccountDTO';
 import swal from 'sweetalert2';
 
 @Component({
@@ -10,9 +10,9 @@ import swal from 'sweetalert2';
 })
 export class AdministrationComponent implements OnInit {
 
-  private users: UserAccount[];
+  private users: UserAccountDTO[];
 
-  constructor(private userAccount: UserAccountService) { }
+  constructor(private UserAccountDTO: UserAccountDTOService) { }
 
   ngOnInit() {
     this.getAllUsers();
@@ -20,8 +20,8 @@ export class AdministrationComponent implements OnInit {
 
   getAllUsers():void
   {
-    this.userAccount.getAllUsers().subscribe(
-      (response: UserAccount[]) =>
+    this.UserAccountDTO.getAllUsers().subscribe(
+      (response: UserAccountDTO[]) =>
       {
         this.users = response;
       },
@@ -31,7 +31,7 @@ export class AdministrationComponent implements OnInit {
       }
     );
   }
-  deleteUser(user:UserAccount):void
+  deleteUser(user:UserAccountDTO):void
   {
     swal({
       title: 'Are you sure?',
@@ -42,7 +42,7 @@ export class AdministrationComponent implements OnInit {
       confirmButtonText: 'Yes'
     }).then((result) => {
       if (result.value) {
-        this.userAccount.deleteUser(user.id).subscribe(
+        this.UserAccountDTO.deleteUser(user.id).subscribe(
           (response: boolean) =>
           {
              if(!response){

@@ -1,4 +1,4 @@
-export class UserAccount {
+export class UserAccountDTO {
 
     constructor(
         public id: number,
@@ -11,9 +11,9 @@ export class UserAccount {
 
     }
 
-    public static createUserFromJson(entity: any): UserAccount {
+    public static createUserFromJson(entity: any): UserAccountDTO {
         
-        let user = new UserAccount(entity.id,entity.name,entity.lastName,entity.username,entity.password,entity.profile,entity.requests);
+        let user = new UserAccountDTO(entity.id,entity.name,entity.lastName,entity.username,entity.password,entity.profile,entity.requests);
         return user;
 
     }

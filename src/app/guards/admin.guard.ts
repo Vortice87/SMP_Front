@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { UserAccount } from '../models/userAccount';
+import { UserAccountDTO } from '../models/userAccountDTO';
 import { SessionUtils } from '../utils/session-utils/session-utils';
 
 @Injectable()
@@ -14,7 +14,7 @@ export class AdminGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
 
-    var user: UserAccount = SessionUtils.getCurrentLoggedInUser();
+    var user: UserAccountDTO = SessionUtils.getCurrentLoggedInUser();
     if (user.profile == "admin") {
       return true;
     }

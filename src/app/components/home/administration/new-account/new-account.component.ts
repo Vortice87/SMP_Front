@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { UserAccount } from '../../../../models/userAccount';
-import { UserAccountService } from '../../../../services/user-accounts/user-accounts.service';
+import { UserAccountDTO } from '../../../../models/userAccountDTO';
+import { UserAccountDTOService } from '../../../../services/user-accounts/user-accounts.service';
 
 import swal from 'sweetalert2';
 import { NgForm } from '@angular/forms/src/directives/ng_form';
-import { resetFakeAsyncZone } from '@angular/core/testing';
-//import { ConsoleReporter } from 'jasmine';
 
 @Component({
   selector: 'app-new-account',
@@ -14,17 +12,18 @@ import { resetFakeAsyncZone } from '@angular/core/testing';
 })
 export class NewAccountComponent implements OnInit {
 
-  user: UserAccount = new UserAccount(null,"","", "", "", "",[]);
+  user: UserAccountDTO;
   passwordAux:string;
   insertUser:boolean;
   usernameExists: boolean;
   profiles: string[] = ["admin", "sourcing", "provider", "area"];
 
-  constructor(private userAccount: UserAccountService){
+  constructor(private UserAccountDTO: UserAccountDTOService){
 
   }
 
   ngOnInit() {
+    this.user = new UserAccountDTO(null,"","", "", "", "",[]);
   }
 
   userExists():boolean
@@ -32,7 +31,7 @@ export class NewAccountComponent implements OnInit {
     this.usernameExists = false;
     if(this.user.username != ""){
     
-    this.userAccount.userExists(this.user.username).subscribe(
+    this.UserAccountDTO.userExists(this.user.username).subscribe(
       (response: boolean) =>
       {
         this.usernameExists = response;
@@ -42,11 +41,10 @@ export class NewAccountComponent implements OnInit {
   }
 
   createAccount( form : NgForm): void {
-    this.userAccount.createUser(this.user).subscribe(
+    this.UserAccountDTO.createUser(this.user).subscribe(
       (response: boolean) =>
       {
         this.insertUser = response;
-        console.log(response);
         if(this.insertUser){
           swal({
             type: 'success',
@@ -55,8 +53,8 @@ export class NewAccountComponent implements OnInit {
             timer: 1500
           })
         }
-        form.reset();
-        form.controls.profile.setValue("");
+         form.reset();
+         form.controls.profile.setValue("");        
       }
     )
   }

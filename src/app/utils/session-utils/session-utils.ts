@@ -1,11 +1,11 @@
-import { UserAccount } from '../../models/userAccount'
+import { UserAccountDTO } from '../../models/userAccountDTO'
 
 export class SessionUtils { 
 
   //Gets current logged user
-  public static getCurrentLoggedInUser(): UserAccount
+  public static getCurrentLoggedInUser(): UserAccountDTO
   {
-    return UserAccount.createUserFromJson(JSON.parse(localStorage.getItem("loggedInUser")));
+    return UserAccountDTO.createUserFromJson(JSON.parse(localStorage.getItem("loggedInUser")));
   }
 
   //Checks if user is logged in

@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { of } from 'rxjs/Observable/of';
 // import { RequestOptions } from '@angular/http';
-import { UserAccount } from '../../models/userAccount';
+import { UserAccountDTO } from '../../models/userAccountDTO';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -11,21 +11,21 @@ import 'rxjs/add/operator/catch';
 const options = { headers: new HttpHeaders({ 'Content-Type': 'Application/json' }) };
 
 @Injectable()
-export class UserAccountService {
+export class UserAccountDTOService {
 
   private usersURL = "http://localhost:8060/users";
 
   constructor(private http: HttpClient) { }
 
-  getAllUsers(): Observable<UserAccount[]> {
-    return this.http.get<UserAccount[]>(this.usersURL + "/all");
+  getAllUsers(): Observable<UserAccountDTO[]> {
+    return this.http.get<UserAccountDTO[]>(this.usersURL + "/all");
   }
 
   userExists(username: String): Observable<boolean> {
     return this.http.get<boolean>(this.usersURL + "/exists/" + username).catch(this.handError);
   }
 
-  createUser(user: UserAccount): Observable<boolean> {
+  createUser(user: UserAccountDTO): Observable<boolean> {
 
     let body: any = JSON.stringify(user);
 

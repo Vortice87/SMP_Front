@@ -1,0 +1,90 @@
+h3{
+    font-variant: small-caps;
+    text-align: center;
+}
+
+.list{
+    border-radius: 5px;
+    background-color:white;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,.14);
+    padding-bottom: 40px;
+}
+
+.header{
+    background-color:#dcdcdc;
+    margin-bottom: 50px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    
+}
+
+p{
+    color:grey;
+}
+.textAlign{
+    text-align: center;
+}
+
+span{
+    color:red;
+}
+
+.required{
+    margin: 10px;
+}
+ 
+.btn-add{
+    border-radius: 50px;
+    background-color: #7ba9d0;
+    float: right;
+    padding: 2px 8px!important;
+    
+}
+
+
+.reqtech{
+    font-size: 10px;
+    color:black;
+}
+
+.no-margin-bottom{
+    margin-bottom: 0px;
+}
+
+textarea{
+    height:100px;
+    resize: none;
+}
+
+.col-md-12{
+    height: 200px;
+}
+
+.btn-next{
+    position: absolute;
+    bottom: -25px;
+}
+
+.btn-previous{
+    position: absolute;
+    bottom: -25px;
+    right: 15px;
+}
+
+fieldset{
+    overflow:hidden;
+}
+
+.container{
+    width: 100%;
+}
+
+.btn-primary {
+    position: absolute;
+    right: 15px;  
+    bottom: -25px;
+}
+
+
+
+

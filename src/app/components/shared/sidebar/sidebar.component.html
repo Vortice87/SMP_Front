@@ -6,7 +6,7 @@
             <li *ngIf="isAdmin" data-toggle="collapse" data-target="#service" class="collapsed">
                 <a>
                     <i class="fa fa-vcard-o"></i>
-                    <span>Manage accounts</span>
+                    <span>Account management</span>
                     <span class="arrow"></span>
                 </a>
             </li>
@@ -16,15 +16,15 @@
             </ul>
 
             <li data-toggle="collapse" data-target="#service2" class="collapsed">
-                <a routerLink="request">
+                <a>
                     <i class="fa fa-globe fa-lg"></i>
-                    <span>Requests</span>
+                    <span>Request management</span>
                     <span class="arrow"></span>
                 </a>
             </li>
             <ul class="sub-menu collapse" id="service2">
-                <li class="sublist" routerLink="newrequest">Create request</li>
-                <li class="sublist">New Service 2</li>
+                <li class="sublist"  routerLink="requests">Requests</li>
+                <li class="sublist" routerLink="newrequest">New request</li>
                 <li class="sublist">New Service 3</li>
             </ul>
 

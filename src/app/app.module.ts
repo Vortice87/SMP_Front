@@ -24,6 +24,7 @@ import { CreateRequestComponent } from './components/home/sourcing/create-reques
 import { NgxSelectModule } from 'ngx-select-ex';
 import { NewRowLangComponent } from './components/home/sourcing/create-request/new-row-lang/new-row-lang.component';
 import { RequestService } from './services/request/request.service';
+import { ListRequestComponent } from './components/home/sourcing/list-request/list-request.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { RequestService } from './services/request/request.service';
     HomeComponent,
     NewAccountComponent,
     CreateRequestComponent,
-    NewRowLangComponent
+    NewRowLangComponent,
+    ListRequestComponent
     ],
   imports: [
     BrowserModule,

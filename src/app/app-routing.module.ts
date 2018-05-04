@@ -11,6 +11,7 @@ import { NewAccountComponent } from './components/home/administration/new-accoun
 import { AuthGuard } from './guards/auth.guard';
 import { AdminGuard } from './guards/admin.guard';
 import { CreateRequestComponent } from './components/home/sourcing/create-request/create-request.component';
+import { ListRequestComponent } from './components/home/sourcing/list-request/list-request.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -19,7 +20,8 @@ const routes: Routes = [
       [
         { path: 'admin', component: AdministrationComponent, canActivate: [AdminGuard] },
         { path: 'newaccount', component: NewAccountComponent, canActivate: [AdminGuard] },
-        { path: 'newrequest', component: CreateRequestComponent }
+        { path: 'newrequest', component: CreateRequestComponent },
+        { path: 'requests' ,component: ListRequestComponent }
       ]
   },
   { path: '', redirectTo: '/home', pathMatch: 'full' },

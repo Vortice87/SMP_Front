@@ -335,7 +335,7 @@
             <div class="form-group row">
               <label for="destask" class="col-md-3 col-form-label">DESCRIPTION TASKS</label>
               <div class="col-md-8">
-                <textarea class="form-control" name="destask" [(ngModel)]="request.descTask" #destask="ngModel" required [ngStyle]="{ border: !destask.valid && destask.dirty  ?  '1px solid red': '' }"></textarea>
+                <textarea class="form-control" name="destask" [(ngModel)]="request.descTask" #destask="ngModel" required maxlength="260" [ngStyle]="{ border: !destask.valid && destask.dirty  ?  '1px solid red': '' }"></textarea>
               </div>
             </div>
           </div>

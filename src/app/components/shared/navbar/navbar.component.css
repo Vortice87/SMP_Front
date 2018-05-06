@@ -1,7 +1,6 @@
 nav{
-    background-color: #FC001A;
-    border-bottom-color: white;
-    font-family: verdana;
+    background-color: #3C6598;
+  font-family: verdana;
     font-size: 14px;
     position: fixed;
     width: 100%;
@@ -22,14 +21,14 @@ nav{
 
 .dropdown-toggle{
     padding-right: 50px;
-    background-color: #FC001A!important;
+    background-color: #3C6598!important;
 }
 .dropdown-toggle:hover{
-    background-color:#c22727 !important;
+    background-color:#3C6598 !important;
 }
 
 .dropdown-toggle:focus{
-    background-color:#c22727 !important;
+    background-color:#3C6598 !important;
 }
 
 .navbar-nav>li>.dropdown-menu{
@@ -43,13 +42,13 @@ nav{
 }
 
 .dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover{
-    background-color: #c22727;
+    background-color: #3C6598;
     -webkit-transition: all 1s ease;
     transition: all 1s ease;
 }
 
 .nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
-     background-color:#c22727; 
+     background-color:#3C6598; 
 }
 
 .dropdown-menu .divider {
@@ -76,7 +75,7 @@ a{
 }
 
 .logo{
-    width: 170px;
+    width: 150px;
 }
 
 

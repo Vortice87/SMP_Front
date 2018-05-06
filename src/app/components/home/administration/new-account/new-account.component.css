@@ -1,6 +1,7 @@
 h3{
     font-variant: small-caps;
     text-align: center;
+    color: white;
 }
 
 .list{
@@ -11,7 +12,8 @@ h3{
 }
 
 .header{
-    background-color:#dcdcdc;
+    background-color:#3C6598;
+    border-top:4px solid #F7C03E;
     margin-bottom: 50px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;

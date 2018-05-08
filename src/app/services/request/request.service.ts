@@ -27,6 +27,12 @@ export class RequestService {
 
   }
 
+  allRequest(): Observable<RequestDTO[]> {
+
+    return this.http.get<RequestDTO>(this.urlRequest + "/all").catch(this.handError);
+
+  }
+
   handError(error: any) {
     console.log('error: ' + error);
     return Observable.throw(error);

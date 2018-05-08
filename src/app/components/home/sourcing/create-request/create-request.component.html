@@ -52,7 +52,7 @@
             </div>
           </div>
 
-          <button class="btn btn-secondary btn-previous" type="button" (click)="next()" [disabled]="!newrequest.valid">Next</button>
+          <button class="btn btn-secondary btn-previous" type="button" (click)="next()" [disabled]="!newrequest.valid"><i class="fa fa-angle-double-right"></i></button>
 
         </fieldset>
 
@@ -123,7 +123,7 @@
             </div>
           </div>
 
-          <button class="btn btn-secondary btn-previous" type="button" (click)="next()" [disabled]="!newrequest.valid">Next</button>
+          <button class="btn btn-secondary btn-previous" type="button" (click)="next()" [disabled]="!newrequest.valid"><i class="fa fa-angle-double-right"></i></button>
 
         </fieldset>
 
@@ -172,7 +172,7 @@
             </div>
           </div>
 
-          <button class="btn btn-secondary btn-previous" type="button" (click)="next()" [disabled]="!newrequest.valid">Next</button>
+          <button class="btn btn-secondary btn-previous" type="button" (click)="next()" [disabled]="!newrequest.valid"><i class="fa fa-angle-double-right"></i></button>
           
         </fieldset>
 
@@ -325,7 +325,7 @@
             </div>
           </div>
 
-          <button class="btn btn-secondary btn-previous" type="button" (click)="next()" [disabled]="!newrequest.valid">Next</button>
+          <button class="btn btn-secondary btn-previous" type="button" (click)="next()" [disabled]="!newrequest.valid"><i class="fa fa-angle-double-right"></i></button>
           
         </fieldset>
 
@@ -335,12 +335,12 @@
             <div class="form-group row">
               <label for="destask" class="col-md-3 col-form-label">DESCRIPTION TASKS</label>
               <div class="col-md-8">
-                <textarea class="form-control" name="destask" [(ngModel)]="request.descTask" #destask="ngModel" required maxlength="260" [ngStyle]="{ border: !destask.valid && destask.dirty  ?  '1px solid red': '' }"></textarea>
+                <textarea class="form-control" name="destask" [(ngModel)]="request.descTask" #destask="ngModel" required maxlength="250" [ngStyle]="{ border: !destask.valid && destask.dirty  ?  '1px solid red': '' }"></textarea>
               </div>
             </div>
           </div>
 
-          <button class="btn btn-secondary btn-previous" type="button" (click)="next()" [disabled]="!newrequest.valid">Next</button>
+          <button class="btn btn-secondary btn-previous" type="button" (click)="next()" [disabled]="!newrequest.valid"><i class="fa fa-angle-double-right"></i></button>
           
         </fieldset>
 
@@ -411,7 +411,7 @@
 
           </div>
 
-          <button class="btn btn-secondary btn-previous" type="button" (click)="next()" [disabled]="!newrequest.valid">Next</button>
+          <button class="btn btn-secondary btn-previous" type="button" (click)="next()" [disabled]="!newrequest.valid"><i class="fa fa-angle-double-right"></i></button>
           
         </fieldset>
 
@@ -429,10 +429,11 @@
         <div class="form-group animated fadeIn" *ngIf="widget == 7">
           <button class="btn btn-primary" type="submit" [disabled]="!newrequest.valid">Create</button>
         </div>
-        <button class="btn btn-secondary btn-next" type="button" (click)="previous()" [disabled]="widget == 1">Previous</button>
+        <button class="btn btn-secondary btn-next" type="button" (click)="previous()" [disabled]="widget == 1"><i class="fa fa-angle-double-left"></i></button>
 
       </form>
     </div>
   </div>
 
 </div>
+

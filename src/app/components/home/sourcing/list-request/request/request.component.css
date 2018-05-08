@@ -1,0 +1,128 @@
+h3{
+    font-variant: small-caps;
+    text-align: center;
+}
+
+.list{
+    background-color:white;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,.14);
+}
+
+.arrow{
+    background-color:transparent!important;
+    text-align: left; 
+    color:#3C6598;
+    padding-top: 55px;
+}
+
+i{
+    font-size: 70px;
+    cursor: pointer;
+    transition: color 0.1s ease-out 0.1s;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    
+}
+
+i:hover{
+    color:rgb(96, 156, 230);
+    transform: translateX(20px);
+}
+
+
+.id{
+    font-size: 20px;
+    padding: 50px;
+    margin-bottom: 0px;
+    background-color: #3C6598;
+    padding-bottom: 100px;
+    color: white;
+    text-align: center;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+/* color de plexus : #F7C03E */
+
+.no-margin-bottom{
+    margin-bottom: 0px;
+}
+
+.container{
+    width: 100%;
+}
+
+.request-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #3C6598;
+    padding-left: 20px!important;    
+}
+
+.request-description {
+    padding-left: 20px!important;
+}
+
+.col-md-2{
+    padding-left: 0px;
+    padding-right: 0px;
+    border-top-left-radius : 5px;  
+    border-bottom-left-radius : 5px;  
+}
+
+.col-md-10{
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+.request-date{
+    text-align: right;
+    padding-top: 5px;
+    margin-bottom: 8px;
+    padding-right: 20px!important;
+}
+
+.requester{
+    color: green;
+    padding-left: 20px!important;
+}
+
+.request-inf{
+    border-top:4px solid #F7C03E;
+    padding-bottom: 15px;  
+    padding-top: 15px;
+    border-top-right-radius : 5px;  
+    border-bottom-right-radius : 5px;  
+}
+
+.profile{
+    width: 30px;
+    margin-right: 10px;
+    border-radius: 100%;
+}
+
+.dropdown-toggle{
+    padding-right: 50px;
+    background-color: transparent!important;
+}
+.dropdown-toggle:hover{
+    background-color:transparent !important;
+}
+
+.dropdown-toggle:focus{
+    background-color:transparent !important;
+}
+
+.dropdown-menu {
+    top: 37px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+
+.dropdown-menu>li>a {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+

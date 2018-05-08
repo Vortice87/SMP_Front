@@ -26,6 +26,10 @@ import { NewRowLangComponent } from './components/home/sourcing/create-request/n
 import { RequestService } from './services/request/request.service';
 import { ListRequestComponent } from './components/home/sourcing/list-request/list-request.component';
 
+import { InputFileModule } from 'ngx-input-file';
+import { RequestComponent } from './components/home/sourcing/list-request/request/request.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,14 +41,16 @@ import { ListRequestComponent } from './components/home/sourcing/list-request/li
     NewAccountComponent,
     CreateRequestComponent,
     NewRowLangComponent,
-    ListRequestComponent
+    ListRequestComponent,
+    RequestComponent
     ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    NgxSelectModule
+    NgxSelectModule,
+    InputFileModule
   ],
   providers: [
     HttpClient,

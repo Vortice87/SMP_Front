@@ -68,10 +68,9 @@ export class CreateRequestComponent implements OnInit {
     this.today = new Date();
     this.estimatedDay = this.sumarDias(this.today, 14);
     this.user = SessionUtils.getCurrentLoggedInUser();
-    console.log(this.user.id);
     
     this.reqTechnicals = [{ techId: null, techscope: "", others: "", exp: "", reqdes: "", requestId: null }, { techId: null, techscope: "", others: "", exp: "", reqdes: "", requestId: null },
-    { techId: null, techscope: "", others: "", exp: "", reqdes: "" , requestId: null}, { techId: null, techscope: "", others: "", exp: "", reqdes: "", requestId: null }]
+    { techId: null, techscope: "", others: "", exp: "", reqdes: "" , requestId: null}, { techId: null, techscope: "", others: "", exp: "", reqdes: "", requestId: null }];
     this.request = new RequestDTO(null, this.user.id, "", "", "", "", "", "", null, "", "", "", this.startDate, null, "", "", "", "",
     this.reqTechnicals, "", "", null, "", "", "", "", [] , []);
     this.loadDataRequest();
@@ -106,8 +105,11 @@ export class CreateRequestComponent implements OnInit {
         }
          this.widget = 1;
 
+         this.reqTechnicals = [{ techId: null, techscope: "", others: "", exp: "", reqdes: "", requestId: null }, { techId: null, techscope: "", others: "", exp: "", reqdes: "", requestId: null },
+         { techId: null, techscope: "", others: "", exp: "", reqdes: "" , requestId: null}, { techId: null, techscope: "", others: "", exp: "", reqdes: "", requestId: null }];
          this.request = new RequestDTO(null, this.user.id, "", "", "", "", "", "", null, "", "", "", this.startDate, null, "", "", "", "",
          this.reqTechnicals, "", "", null, "", "", "", "", [] , []);
+         this.loadDataRequest();         
       }
     )
    

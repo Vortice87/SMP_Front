@@ -1,37 +1,37 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Observable } from "rxjs";
-import { of } from "rxjs/Observable/of";
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { of } from 'rxjs/Observable/of';
 import { RequestOptions } from '@angular/http';
 import { UserAccountDTO } from '../../models/UserAccountDTO';
 
 import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch'; 
+import 'rxjs/add/operator/catch';
 
 const options = { headers: new HttpHeaders({ 'Content-Type': 'Application/json' }) };
 
 @Injectable()
 export class AuthenticationService {
 
-  private usersURL = "http://localhost:8060/users";
+  private usersURL = 'http://localhost:8060/users';
 
   constructor(private http: HttpClient) { }
 
   authlogin(username: string, password: string): Observable<UserAccountDTO> {
 
-    let UserAccountDTO: UserAccountDTO = {
+    const user: UserAccountDTO = {
       id: null,
-      name:"",
-      lastName: "",
+      name: '',
+      lastName: '',
       username: username,
       password: password,
       profile: null,
-      requests:[]
-    }
+      requests: []
+    };
 
-    let body: any = JSON.stringify(UserAccountDTO);
+    const body: any = JSON.stringify(user);
 
-    return this.http.post<UserAccountDTO>(this.usersURL + "/authentication", JSON.parse(body), options).catch(this.handError);
+    return this.http.post<UserAccountDTO>(this.usersURL + '/authentication', JSON.parse(body), options).catch(this.handError);
 
   }
 

@@ -21,11 +21,11 @@ const routes: Routes = [
         { path: 'admin', component: AdministrationComponent, canActivate: [AdminGuard] },
         { path: 'newaccount', component: NewAccountComponent, canActivate: [AdminGuard] },
         { path: 'newrequest', component: CreateRequestComponent },
-        { path: 'requests' ,component: ListRequestComponent }
+        { path: 'requests', component: ListRequestComponent }
       ]
   },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: "**", redirectTo: "/login" }
+  { path: '**', redirectTo: '/login' }
 ];
 
 

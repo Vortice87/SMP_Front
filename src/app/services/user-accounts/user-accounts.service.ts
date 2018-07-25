@@ -13,27 +13,27 @@ const options = { headers: new HttpHeaders({ 'Content-Type': 'Application/json' 
 @Injectable()
 export class UserAccountDTOService {
 
-  private usersURL = "http://localhost:8060/users";
+  private usersURL = 'http://localhost:8060/users';
 
   constructor(private http: HttpClient) { }
 
   getAllUsers(): Observable<UserAccountDTO[]> {
-    return this.http.get<UserAccountDTO[]>(this.usersURL + "/all");
+    return this.http.get<UserAccountDTO[]>(this.usersURL + '/all');
   }
 
   userExists(username: String): Observable<boolean> {
-    return this.http.get<boolean>(this.usersURL + "/exists/" + username).catch(this.handError);
+    return this.http.get<boolean>(this.usersURL + '/exists/' + username).catch(this.handError);
   }
 
   createUser(user: UserAccountDTO): Observable<boolean> {
 
-    let body: any = JSON.stringify(user);
+    const body: any = JSON.stringify(user);
 
-    return this.http.post<boolean>(this.usersURL + "/create", JSON.parse(body), options).catch(this.handError);
+    return this.http.post<boolean>(this.usersURL + '/create', JSON.parse(body), options).catch(this.handError);
   }
 
   deleteUser(id: number): Observable<boolean> {
-    return this.http.get<boolean>(this.usersURL + "/delete/" + id).catch(this.handError);
+    return this.http.get<boolean>(this.usersURL + '/delete/' + id).catch(this.handError);
   }
 
   handError(error: any) {

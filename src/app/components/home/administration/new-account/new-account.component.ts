@@ -13,50 +13,48 @@ import { NgForm } from '@angular/forms/src/directives/ng_form';
 export class NewAccountComponent implements OnInit {
 
   user: UserAccountDTO;
-  passwordAux:string;
-  insertUser:boolean;
+  passwordAux: string;
+  insertUser: boolean;
   usernameExists: boolean;
-  profiles: string[] = ["admin", "sourcing", "provider", "area"];
+  profiles: string[] = ['admin', 'sourcing', 'area'];
 
-  constructor(private UserAccountDTO: UserAccountDTOService){
+  constructor(private UserAccountDTOservice: UserAccountDTOService) {
 
   }
 
   ngOnInit() {
-    this.user = new UserAccountDTO(null,"","", "", "", "",[]);
+    this.user = new UserAccountDTO(null, '', '', '', '', '', []);
   }
 
-  userExists():boolean
-  {
+  userExists(): boolean {
     this.usernameExists = false;
-    if(this.user.username != ""){
-    
-    this.UserAccountDTO.userExists(this.user.username).subscribe(
-      (response: boolean) =>
-      {
-        this.usernameExists = response;
-      }
-    )}
+    if (this.user.username !== '') {
+
+      this.UserAccountDTOservice.userExists(this.user.username).subscribe(
+        (response: boolean) => {
+          this.usernameExists = response;
+        }
+      );
+    }
     return true;
   }
 
-  createAccount( form : NgForm): void {
-    this.UserAccountDTO.createUser(this.user).subscribe(
-      (response: boolean) =>
-      {
+  createAccount(form: NgForm): void {
+    this.UserAccountDTOservice.createUser(this.user).subscribe(
+      (response: boolean) => {
         this.insertUser = response;
-        if(this.insertUser){
+        if (this.insertUser) {
           swal({
             type: 'success',
-            title: 'User has been created successfully',
+            title: 'Usuario creado satisfactoriamente',
             showConfirmButton: false,
             timer: 1500
-          })
+          });
         }
-         form.reset();
-         form.controls.profile.setValue("");        
+        form.reset();
+        form.controls.profile.setValue('');
       }
-    )
+    );
   }
 
 }

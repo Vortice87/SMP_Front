@@ -8,7 +8,7 @@ import { AppRoutingModule } from './/app-routing.module';
 import { LoginComponent } from './components/login/login.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
-//import the services
+// import the services
 import { AuthenticationService } from './services/authentication/authentication.service';
 import { UserAccountDTOService } from './services/user-accounts/user-accounts.service';
 import { AuthGuard } from './guards/auth.guard';
@@ -20,9 +20,8 @@ import { NewAccountComponent } from './components/home/administration/new-accoun
 import { AdminGuard } from './guards/admin.guard';
 import { CreateRequestComponent } from './components/home/sourcing/create-request/create-request.component';
 
-//import external modules
+// import external modules
 import { NgxSelectModule } from 'ngx-select-ex';
-import { NewRowLangComponent } from './components/home/sourcing/create-request/new-row-lang/new-row-lang.component';
 import { RequestService } from './services/request/request.service';
 import { ListRequestComponent } from './components/home/sourcing/list-request/list-request.component';
 
@@ -40,7 +39,6 @@ import { RequestComponent } from './components/home/sourcing/list-request/reques
     HomeComponent,
     NewAccountComponent,
     CreateRequestComponent,
-    NewRowLangComponent,
     ListRequestComponent,
     RequestComponent
     ],

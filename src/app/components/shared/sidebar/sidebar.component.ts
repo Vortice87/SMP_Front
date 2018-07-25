@@ -8,7 +8,8 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
-  @Input() isAdmin;
+  @Input()
+  public isAdmin;
 
   constructor() { }
 

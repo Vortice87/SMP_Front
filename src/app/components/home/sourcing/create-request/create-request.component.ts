@@ -11,6 +11,8 @@ import { forEach } from '@angular/router/src/utils/collection';
 
 import { SessionUtils } from '../../../../utils/session-utils/session-utils';
 import { UserAccountDTO } from '../../../../models/userAccountDTO';
+import { Area } from '../../../../models/area';
+import { ConfigurationService } from '../../../../services/configuration/configuration.service';
 
 
 @Component({
@@ -20,27 +22,32 @@ import { UserAccountDTO } from '../../../../models/userAccountDTO';
 })
 export class CreateRequestComponent implements OnInit {
 
-  request: RequestDTO;
-  user: UserAccountDTO;
-  startDate: Date;
-  estimatedDay: Date;
-  today: Date;
-  passwordAux: string;
-  insertRequest: boolean;
-  usernameExists: boolean;
-  nResources: string[] = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
-  nResource: string;
-  developEnv: string[] = ['Entorno desarrollo 1', 'Entorno desarrollo 2', 'Entorno desarrollo 3', 'Entorno desarrollo 4'];
-  programLang: string[] = ['Lenguaje programacion 1', 'Lenguaje programacion 2', 'Lenguaje programacion 3'];
-  infraBd: string[] = ['Infraestructura 1', 'Infraestructura 2', 'Infraestructura 3'];
-  reqdes: string[] = ['Requerido', 'Deseable'];
-  expyears: string[] = ['', '', '', ''];
-  widget: number;
+  public request: RequestDTO;
+  public user: UserAccountDTO;
+  public startDate: Date;
+  public estimatedDay: Date;
+  public today: Date;
+  public passwordAux: string;
+  public insertRequest: boolean;
+  public usernameExists: boolean;
+  public nResources: string[] = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
+  public nResource: string;
+  public developEnv: string[] = ['Entorno desarrollo 1', 'Entorno desarrollo 2', 'Entorno desarrollo 3', 'Entorno desarrollo 4'];
+  public programLang: string[] = ['Lenguaje programacion 1', 'Lenguaje programacion 2', 'Lenguaje programacion 3'];
+  public infraBd: string[] = ['Infraestructura 1', 'Infraestructura 2', 'Infraestructura 3'];
+  public reqdes: string[] = ['Requerido', 'Deseable'];
+  public expyears: string[] = ['', '', '', ''];
+  public widget: number;
+  public areas: Array<Area> = [];
 
   reqTechnicals: Array<ReqTechnical> = new Array<ReqTechnical>();
   isValid: boolean;
 
-  constructor(private requestService: RequestService, private datePipe: DatePipe) {
+  constructor(
+    private requestService: RequestService,
+    private datePipe: DatePipe,
+    private configurationService: ConfigurationService
+    ) {
 
   }
 
@@ -50,12 +57,8 @@ export class CreateRequestComponent implements OnInit {
     this.startDate = new Date();
     this.today = new Date();
     this.user = SessionUtils.getCurrentLoggedInUser();
-
-    this.reqTechnicals = [{ techId: null, techscope: '', exp: '', reqdes: '', requestId: null },
-     { techId: null, techscope: '', exp: '', reqdes: '', requestId: null },
-     { techId: null, techscope: '', exp: '', reqdes: '' , requestId: null}];
-
-    this.request = new RequestDTO(null, this.user.id, '', '', this.startDate , '', this.reqTechnicals, []);
+    this.getAllAreas();
+    this.request = new RequestDTO(null, this.user.id, '', '', this.startDate , '', [], []);
   }
 
   next(): void {
@@ -86,6 +89,7 @@ export class CreateRequestComponent implements OnInit {
          this.reqTechnicals = [{ techId: null, techscope: '', exp: '', reqdes: '', requestId: null },
          { techId: null, techscope: '', exp: '', reqdes: '', requestId: null },
          { techId: null, techscope: '', exp: '', reqdes: '' , requestId: null}];
+         
         this.request = new RequestDTO(null, this.user.id, '', '', this.startDate , '', this.reqTechnicals, []);
       }
     );
@@ -98,6 +102,16 @@ export class CreateRequestComponent implements OnInit {
   sumarDias(fecha, dias): Date {
     fecha.setDate(fecha.getDate() + dias);
     return fecha;
+  }
+
+  getAllAreas(): void {
+    this.configurationService.getAllAreas().subscribe((res: Array<Area>) => {
+      this.areas = res;
+      if (this.areas !== null) {
+        console.log(this.areas);
+
+      }
+    });
   }
 
 }

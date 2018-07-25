@@ -93,11 +93,16 @@ select {
 
 .align-center{
     text-align: center;
-    padding-bottom: 50px;
+    padding-top: 30px;
+    padding-bottom: 20px;
 }
 
 .padding-bottom{
     padding-bottom: 10px;
+}
+
+.header {
+    margin-bottom: 25px;
 }
 
 

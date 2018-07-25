@@ -27,6 +27,7 @@ import { ListRequestComponent } from './components/home/sourcing/list-request/li
 
 import { InputFileModule } from 'ngx-input-file';
 import { RequestComponent } from './components/home/sourcing/list-request/request/request.component';
+import { ConfigurationService } from './services/configuration/configuration.service';
 
 
 @NgModule({
@@ -57,7 +58,8 @@ import { RequestComponent } from './components/home/sourcing/list-request/reques
     AdminGuard,
     UserAccountDTOService,
     RequestService,
-    DatePipe
+    DatePipe,
+    ConfigurationService
   ],
   bootstrap: [AppComponent]
 })

@@ -64,7 +64,11 @@
 
             <div class="form-group row no-margin-bottom">
 
-              <div class="col-md-8">
+              <div class="col-md-3 align-center">
+                  <label for="area">AREA</label>
+              </div>
+              <div class="col-md-3 align-center">
+                  <label for="detalle">DETALLE</label>
               </div>
               <div class="col-md-2 align-center">
                 <label for="expyearsreq">EXP. AÑOS</label>
@@ -75,12 +79,13 @@
             </div>
 
             <div class="form-group row padding-bottom">
-              <div class="col-md-4">
-                <label for="devenv">
-                  ENTORNOS DE DESARROLLO
-                </label>
-              </div>
-              <div class="col-md-4">
+                <div class="col-md-3">
+                    <select class="form-control" name="devenv" [(ngModel)]="request.reqTechs[0].techscope" #dve="ngModel" required [ngStyle]="{ border: !dve.valid && dve.dirty  ?  '1px solid red': '' }">
+                      <option value="" selected>- Seleccionar -</option>
+                      <option *ngFor="let dev of developEnv" [value]="dev">{{dev}}</option>
+                    </select>
+                  </div>
+              <div class="col-md-3">
                 <select class="form-control" name="devenv" [(ngModel)]="request.reqTechs[0].techscope" #dve="ngModel" required [ngStyle]="{ border: !dve.valid && dve.dirty  ?  '1px solid red': '' }">
                   <option value="" selected>- Seleccionar -</option>
                   <option *ngFor="let dev of developEnv" [value]="dev">{{dev}}</option>
@@ -96,61 +101,6 @@
               </div>
               <div class="col-md-2">
                 <select class="form-control" name="reqdesDE" [(ngModel)]="request.reqTechs[0].reqdes" #reqdesDE="ngModel" required [ngStyle]="{ border: !reqdesDE.valid && reqdesDE.dirty  ?  '1px solid red': '' }">
-                  <option value="" selected>- Selecionar -</option>
-                  <option *ngFor="let rd of reqdes" [value]="rd">{{rd}}</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="form-group row padding-bottom">
-                <div class="col-md-4">
-                    <label for="proglang">
-                      LENGUAJES DE PROGRAMACION
-                    </label>
-                  </div>
-              <div class="col-md-4">
-                <select class="form-control" name="proglang" [(ngModel)]="request.reqTechs[1].techscope" #proglang="ngModel" required [ngStyle]="{ border: !proglang.valid && proglang.dirty  ?  '1px solid red': '' }">
-                  <option value="" selected>- Seleccionar -</option>
-                  <option *ngFor="let pr of programLang" [value]="pr">{{pr}}</option>
-                </select>
-              </div>
-
-              <div class="col-md-2">
-                <select class="form-control" name="expyearsreqPL" [(ngModel)]="request.reqTechs[1].exp" #expyearsreqPL="ngModel" required
-                  [ngStyle]="{ border: !expyearsreqPL.valid && expyearsreqPL.dirty    ?  '1px solid red': '' }">
-                  <option value="" selected>- Seleccionar-</option>
-                  <option *ngFor="let ex of nResources" [value]="ex">{{ex}}</option>
-                </select>
-              </div>
-              <div class="col-md-2">
-                <select class="form-control" name="reqdesPL" [(ngModel)]="request.reqTechs[1].reqdes" #reqdesPL="ngModel" required [ngStyle]="{ border: !reqdesPL.valid && reqdesPL.dirty  ?  '1px solid red': '' }">
-                  <option value="" selected>- Seleccionar -</option>
-                  <option *ngFor="let rd of reqdes" [value]="rd">{{rd}}</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="form-group row padding-bottom">
-                <div class="col-md-4">
-                    <label for="infbdd">
-                      INFRASTRUCTURA / BBDD
-                    </label>
-                  </div>
-              <div class="col-md-4">
-                <select class="form-control" name="infbdd" [(ngModel)]="request.reqTechs[2].techscope" #infbdd="ngModel" required [ngStyle]="{ border: !infbdd.valid && infbdd.dirty  ?  '1px solid red': '' }">
-                  <option value="" selected>- Selecionar -</option>
-                  <option *ngFor="let bd of infraBd" [value]="bd">{{bd}}</option>
-                </select>
-              </div>
-              <div class="col-md-2">
-                <select class="form-control" name="expyearsreqBD" [(ngModel)]="request.reqTechs[2].exp" #expyearsreqBD="ngModel" required
-                  [ngStyle]="{ border: !expyearsreqBD.valid && expyearsreqBD.dirty    ?  '1px solid red': '' }">
-                  <option value="" selected>- Selecionar -</option>
-                  <option *ngFor="let ex of nResources" [value]="ex">{{ex}}</option>
-                </select>
-              </div>
-              <div class="col-md-2">
-                <select class="form-control" name="reqdesBD" [(ngModel)]="request.reqTechs[2].reqdes" #reqdesBD="ngModel" required [ngStyle]="{ border: !reqdesBD.valid && reqdesBD.dirty  ?  '1px solid red': '' }">
                   <option value="" selected>- Selecionar -</option>
                   <option *ngFor="let rd of reqdes" [value]="rd">{{rd}}</option>
                 </select>

@@ -64,11 +64,11 @@
 
             <div class="form-group row no-margin-bottom">
 
-              <div class="col-md-3 align-center">
-                  <label for="area">AREA</label>
+              <div class="col-md-4 align-center">
+                <label for="area">AREA</label>
               </div>
               <div class="col-md-3 align-center">
-                  <label for="detalle">DETALLE</label>
+                <label for="detalle">DETALLE</label>
               </div>
               <div class="col-md-2 align-center">
                 <label for="expyearsreq">EXP. AÑOS</label>
@@ -79,31 +79,35 @@
             </div>
 
             <div class="form-group row padding-bottom">
-                <div class="col-md-3">
-                    <select class="form-control" name="devenv" [(ngModel)]="request.reqTechs[0].techscope" #dve="ngModel" required [ngStyle]="{ border: !dve.valid && dve.dirty  ?  '1px solid red': '' }">
-                      <option value="" selected>- Seleccionar -</option>
-                      <option *ngFor="let dev of developEnv" [value]="dev">{{dev}}</option>
-                    </select>
-                  </div>
-              <div class="col-md-3">
-                <select class="form-control" name="devenv" [(ngModel)]="request.reqTechs[0].techscope" #dve="ngModel" required [ngStyle]="{ border: !dve.valid && dve.dirty  ?  '1px solid red': '' }">
+              <div class="col-md-4">
+                <select class="form-control" id="reqArea" name="area" [(ngModel)]="area"  #ar="ngModel" (ngModelChange)="loadDetails()" required [ngStyle]="{ border: !ar.valid && ar.dirty  ?  '1px solid red': '' }">
                   <option value="" selected>- Seleccionar -</option>
-                  <option *ngFor="let dev of developEnv" [value]="dev">{{dev}}</option>
+                  <option *ngFor="let a of areas" [ngValue]="a" >{{a.nombreArea}}</option>
+                </select>
+              </div>
+              <div class="col-md-3">
+                <select class="form-control" name="det" [(ngModel)]="detalle" #det="ngModel" required [ngStyle]="{ border: !det.valid && det.dirty  ?  '1px solid red': '' }">
+                  <option value="" selected>- Seleccionar -</option>
+                  <option *ngFor="let d of details" [value]="d.nombreDetalle">{{d.nombreDetalle}}</option>
                 </select>
               </div>
 
               <div class="col-md-2">
-                <select class="form-control" name="expyearsreqDE" [(ngModel)]="request.reqTechs[0].exp" #expyearsreqDE="ngModel" required
-                  [ngStyle]="{ border: !expyearsreqDE.valid && expyearsreqDE.dirty    ?  '1px solid red': '' }">
+                <select class="form-control" name="expyearsreqDE" [(ngModel)]="experience" #expyearsreqDE="ngModel" required [ngStyle]="{ border: !expyearsreqDE.valid && expyearsreqDE.dirty    ?  '1px solid red': '' }">
                   <option value="" selected>- Selecionar -</option>
                   <option *ngFor="let ex of nResources" [value]="ex">{{ex}}</option>
                 </select>
               </div>
               <div class="col-md-2">
-                <select class="form-control" name="reqdesDE" [(ngModel)]="request.reqTechs[0].reqdes" #reqdesDE="ngModel" required [ngStyle]="{ border: !reqdesDE.valid && reqdesDE.dirty  ?  '1px solid red': '' }">
+                <select class="form-control" name="reqdesDE" [(ngModel)]="requeriment" #reqdesDE="ngModel" required [ngStyle]="{ border: !reqdesDE.valid && reqdesDE.dirty  ?  '1px solid red': '' }">
                   <option value="" selected>- Selecionar -</option>
                   <option *ngFor="let rd of reqdes" [value]="rd">{{rd}}</option>
                 </select>
+              </div>
+              <div class="cold-md-1">
+                <button class="btn btn-secondary" type="button" (click)="addRequeriment()" [disabled]="!newrequest.valid">
+                    Añadir
+                </button>
               </div>
             </div>
 

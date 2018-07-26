@@ -13,6 +13,7 @@ import { SessionUtils } from '../../../../utils/session-utils/session-utils';
 import { UserAccountDTO } from '../../../../models/userAccountDTO';
 import { Area } from '../../../../models/area';
 import { ConfigurationService } from '../../../../services/configuration/configuration.service';
+import { Detalles } from '../../../../models/detalles';
 
 
 @Component({
@@ -39,7 +40,11 @@ export class CreateRequestComponent implements OnInit {
   public expyears: string[] = ['', '', '', ''];
   public widget: number;
   public areas: Array<Area> = [];
-
+  public area: Area;
+  public detalle: string = '';
+  public experience: string = '';
+  public requeriment: string = '';
+  public details: Array<Detalles> = [];
   reqTechnicals: Array<ReqTechnical> = new Array<ReqTechnical>();
   isValid: boolean;
 
@@ -57,21 +62,23 @@ export class CreateRequestComponent implements OnInit {
     this.startDate = new Date();
     this.today = new Date();
     this.user = SessionUtils.getCurrentLoggedInUser();
+    this.area = new Area();
+    this.area.nombreArea = '';
     this.getAllAreas();
     this.request = new RequestDTO(null, this.user.id, '', '', this.startDate , '', [], []);
   }
 
-  next(): void {
+  public next(): void {
     this.widget = this.widget + 1;
   }
 
 
-  previous(): void {
+  public previous(): void {
     this.widget = this.widget - 1;
   }
 
 
-  createRequest(form: NgForm): void {
+  public createRequest(form: NgForm): void {
 
     this.requestService.createRequest(this.request).subscribe(
       (response: boolean) => {
@@ -89,22 +96,32 @@ export class CreateRequestComponent implements OnInit {
          this.reqTechnicals = [{ techId: null, techscope: '', exp: '', reqdes: '', requestId: null },
          { techId: null, techscope: '', exp: '', reqdes: '', requestId: null },
          { techId: null, techscope: '', exp: '', reqdes: '' , requestId: null}];
-         
         this.request = new RequestDTO(null, this.user.id, '', '', this.startDate , '', this.reqTechnicals, []);
       }
     );
   }
 
-  assignStartDate(event): void {
+  public loadDetails() {
+     this.details = this.area.detalles;
+     if (this.area !== undefined || this.area !== null) {
+      this.detalle = '';
+     }
+  }
+
+  public addRequeriment() {
+    console.log(this.area.nombreArea + ' - ' + this.detalle + ' - ' + this.experience + ' - ' + this.requeriment);
+  }
+
+  private assignStartDate(event): void {
     this.request.startDate = event;
   }
 
-  sumarDias(fecha, dias): Date {
+  private sumarDias(fecha, dias): Date {
     fecha.setDate(fecha.getDate() + dias);
     return fecha;
   }
 
-  getAllAreas(): void {
+  private getAllAreas(): void {
     this.configurationService.getAllAreas().subscribe((res: Array<Area>) => {
       this.areas = res;
       if (this.areas !== null) {

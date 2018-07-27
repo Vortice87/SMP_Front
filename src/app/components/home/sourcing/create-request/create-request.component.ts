@@ -54,7 +54,7 @@ export class CreateRequestComponent implements OnInit {
     private requestService: RequestService,
     private datePipe: DatePipe,
     private configurationService: ConfigurationService
-    ) {
+  ) {
 
   }
 
@@ -66,7 +66,7 @@ export class CreateRequestComponent implements OnInit {
     this.today = new Date();
     this.user = SessionUtils.getCurrentLoggedInUser();
     this.getAllAreas();
-    this.request = new RequestDTO(null, this.user.id, this.creationDate, '', '', this.startDate , '', this.reqTechnicals, []);
+    this.request = new RequestDTO(null, this.user.id, this.creationDate, '', '', this.startDate, '', this.reqTechnicals, []);
   }
 
   public next(): void {
@@ -92,28 +92,44 @@ export class CreateRequestComponent implements OnInit {
             timer: 1500
           });
         }
-         this.widget = 1;
-
-        this.request = new RequestDTO(null, this.user.id, this.creationDate, '', '', this.startDate , '', [], []);
+        this.widget = 1;
+        this.reqTechnicals = [];
+        this.selectedArea = new Area();
+        this.detalle = '';
+        this.experience = '';
+        this.requeriment = '';
+        this.request = new RequestDTO(null, this.user.id, this.creationDate, '', '', this.startDate, '', [], []);
       }
     );
   }
 
   public loadDetails() {
-     this.details = this.selectedArea.detalles;
-     if (this.selectedArea !== undefined || this.selectedArea !== null) {
+    this.details = this.selectedArea.detalles;
+    if (this.selectedArea !== undefined || this.selectedArea !== null) {
       this.detalle = '';
-     }
+    }
   }
 
   public addRequeriment() {
     const req = new ReqTechnical(null, this.selectedArea.nombreArea, this.detalle, this.experience, this.requeriment, null);
-    this.reqTechnicals.push(req);
-    console.log(this.selectedArea.nombreArea + ' - ' + this.detalle + ' - ' + this.experience + ' - ' + this.requeriment);
-    console.log("-----------");
-    console.log(this.reqTechnicals[0].area);
+    if (!this.checkTechnicalScope()) {
+      this.reqTechnicals.push(req);
+    }
   }
 
+  public deleteRequeriment(i: number) {
+    this.reqTechnicals.splice(i, 1);
+  }
+
+  private checkTechnicalScope(): boolean {
+    let match = false;
+    this.reqTechnicals.forEach(req => {
+      if (req.techscope === this.detalle) {
+        match = true;
+      }
+    });
+    return match;
+  }
   private assignStartDate(event): void {
     this.request.startDate = event;
   }

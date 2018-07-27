@@ -1,10 +1,7 @@
 <div class="col-md-offset-1 col-md-10">
-  <div class="row animated fadeIn list">
+  <div class="row animated fadeIn list header">
 
-    <div class="col-md-12">
-      <div class="row header">
-        <h3>Nueva solicitud</h3>
-      </div>
+    <div class="col-md-12 row">
 
       <form name="formNewRequest" #newrequest="ngForm" (ngSubmit)="createRequest()" novalidate>
 
@@ -21,7 +18,7 @@
             <div class="form-group row">
               <label for="title" class="col-md-3 col-form-label">PERFIL</label>
               <div class="col-md-9">
-                <input type="text" class="form-control" name="title" [(ngModel)]="request.profile" #title="ngModel" required [ngStyle]="{ border: (!title.valid && title.dirty)  ?  '1px solid red': '' }"
+                <input type="text" class="form-control" name="profile" [(ngModel)]="request.profile" #profile="ngModel" required [ngStyle]="{ border: (!profile.valid && profile.dirty)  ?  '1px solid red': '' }"
                 />
               </div>
             </div>
@@ -80,8 +77,9 @@
 
             <div class="form-group row padding-bottom">
               <div class="col-md-4">
-                <select class="form-control" name="area" [(ngModel)]="selectedArea"  #ar="ngModel" (ngModelChange)="loadDetails()" required [ngStyle]="{ border: !ar.valid && ar.dirty  ?  '1px solid red': '' }">
-                 <option [value]="selectedArea" selected>- Selecionar -</option>
+                <select class="form-control" name="area" [(ngModel)]="selectedArea" #ar="ngModel" (ngModelChange)="loadDetails()" required
+                  [ngStyle]="{ border: !ar.valid && ar.dirty  ?  '1px solid red': '' }">
+                  <option [value]="selectedArea" selected>- Selecionar -</option>
                   <option *ngFor="let a of areas" [ngValue]="a">{{a.nombreArea}}</option>
                 </select>
               </div>
@@ -106,22 +104,45 @@
               </div>
               <div class="cold-md-1">
                 <button class="btn btn-secondary" type="button" (click)="addRequeriment()" [disabled]="!newrequest.valid">
-                    Añadir
+                  Añadir
                 </button>
               </div>
             </div>
-            <div *ngFor="let tech of reqTechnicals; let in =index">
-              <input class="form-control" name="tec" type="text" readonly [(ngModel)]="tech[in].area"/>
-            </div>
+
+            <div class="cuadro">
+              <div class="container">
+                  <div *ngFor="let tech of reqTechnicals; let i = index">
+                      <div class="form-group row padding-bottom-reqs animated fadeIn">
+                      <div class="col-md-4 align-center-req">
+                          <input class="form-control form-control-list" name="tec" type="text" readonly [value]="tech.area"/>
+                      </div>
+                      <div class="col-md-3">
+                          <input class="form-control form-control-list" name="tec" type="text" readonly [value]="tech.techscope"/>
+                      </div>
+                      <div class="col-md-2">
+                          <input class="form-control form-control-list" name="tec" type="text" readonly [value]="tech.exp"/>
+                      </div>
+                      <div class="col-md-2">
+                          <input class="form-control form-control-list" name="tec" type="text" readonly [value]="tech.reqdes"/>
+                      </div>
+                      <div class="col-md-1">
+                          <a (click)="deleteRequeriment(i)">
+                              <i class="fa fa-trash-o pointer"></i>
+                          </a>
+                      </div>
+                    </div>
+                </div>
+                
+              </div>
+          </div>
 
           </div>
 
 
         </fieldset>
 
-
         <div class="form-group animated fadeIn" *ngIf="widget == 2">
-          <button class="btn btn-primary" type="submit" [disabled]="!newrequest.valid">Crear</button>
+          <button class="btn btn-primary" type="submit" [disabled]="reqTechnicals.length == 0">Crear</button>
         </div>
         <button class="btn btn-secondary btn-next" type="button" (click)="previous()" [disabled]="widget == 1">
           <i class="fa fa-angle-double-left"></i>

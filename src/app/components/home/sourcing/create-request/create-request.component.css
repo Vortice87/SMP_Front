@@ -13,10 +13,8 @@ h3{
 
 .header{
     border-top:4px solid #F7C03E;
-    background-color:#3C6598;;
-    margin-bottom: 50px;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+    padding-top: 15px;
+
     
 }
 
@@ -65,12 +63,13 @@ textarea{
 .btn-next{
     position: absolute;
     bottom: -25px;
+    left: 30px;
 }
 
 .btn-previous{
     position: absolute;
     bottom: -25px;
-    right: 15px;
+    right: 0;
 }
 
 fieldset{
@@ -93,18 +92,44 @@ select {
 
 .align-center{
     text-align: center;
-    padding-top: 30px;
     padding-bottom: 20px;
 }
 
 .padding-bottom{
-    padding-bottom: 10px;
+    padding-bottom: 15px;
+}
+
+.padding-bottom-reqs{
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .header {
     margin-bottom: 25px;
 }
 
+legend {
+    margin-bottom: 50px;
+}
 
+.cuadro{
+    border: 1px solid #ccc;
+    height: 270px;
+    overflow-y: scroll;
+}
 
+.form-control-list {
+    height: 25px!important;
+    font-size: 14px!important;
+    text-align: center;
 
+}
+
+.pointer{
+    cursor: pointer;
+    font-size: 20px;    
+}
+
+a:hover{
+    color:red;
+}

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { RequestService } from '../../../../services/request/request.service';
+import { RequestDTO } from '../../../../models/request';
 
 @Component({
   selector: 'app-list-request',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListRequestComponent implements OnInit {
 
-  constructor() { }
+  public requests: Array<RequestDTO>;
+
+  constructor(private requestService: RequestService) { }
 
   ngOnInit() {
+    this.getAllRequests();
+
+  }
+
+  private getAllRequests() {
+    this.requestService.getAllRequest().subscribe((res: Array<RequestDTO>) => {
+      this.requests = res;
+      if (res !== null) {
+        console.log(this.requests);
+      }
+    });
   }
 
 }

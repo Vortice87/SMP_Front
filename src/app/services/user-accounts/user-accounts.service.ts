@@ -21,6 +21,10 @@ export class UserAccountDTOService {
     return this.http.get<UserAccountDTO[]>(this.usersURL + '/all');
   }
 
+  getUserById(userId: number): Observable<UserAccountDTO> {
+    return this.http.get<UserAccountDTO>(this.usersURL + '/user/' + userId);
+  }
+
   userExists(username: String): Observable<boolean> {
     return this.http.get<boolean>(this.usersURL + '/exists/' + username).catch(this.handError);
   }

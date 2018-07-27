@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { RequestDTO } from '../../../../../models/request';
+import { UserAccountDTOService } from '../../../../../services/user-accounts/user-accounts.service';
+import { UserAccountDTO } from '../../../../../models/userAccountDTO';
 
 @Component({
   selector: 'app-request',
@@ -7,9 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RequestComponent implements OnInit {
 
-  constructor() { }
+  @Input()
+  public request: RequestDTO;
+  public petitioner: UserAccountDTO;
+
+  constructor(private userService: UserAccountDTOService) { }
 
   ngOnInit() {
+    this.getPetitionerName(this.request.petitionerId);
+  }
+
+  private getPetitionerName(id: number) {
+    this.userService.getUserById(id).subscribe((user: UserAccountDTO) => {
+      this.petitioner = user;
+    });
   }
 
 }

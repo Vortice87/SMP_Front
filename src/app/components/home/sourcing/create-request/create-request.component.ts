@@ -25,6 +25,7 @@ export class CreateRequestComponent implements OnInit {
 
   public request: RequestDTO;
   public user: UserAccountDTO;
+  public creationDate: Date;
   public startDate: Date;
   public estimatedDay: Date;
   public today: Date;
@@ -40,12 +41,13 @@ export class CreateRequestComponent implements OnInit {
   public expyears: string[] = ['', '', '', ''];
   public widget: number;
   public areas: Array<Area> = [];
-  public area: Area;
+  public selectedArea: Area;
+  public defaultArea: Area;
   public detalle: string = '';
   public experience: string = '';
   public requeriment: string = '';
   public details: Array<Detalles> = [];
-  reqTechnicals: Array<ReqTechnical> = new Array<ReqTechnical>();
+  public reqTechnicals: Array<ReqTechnical> = new Array<ReqTechnical>();
   isValid: boolean;
 
   constructor(
@@ -59,13 +61,12 @@ export class CreateRequestComponent implements OnInit {
   ngOnInit() {
 
     this.widget = 1;
+    this.creationDate = new Date();
     this.startDate = new Date();
     this.today = new Date();
     this.user = SessionUtils.getCurrentLoggedInUser();
-    this.area = new Area();
-    this.area.nombreArea = '';
     this.getAllAreas();
-    this.request = new RequestDTO(null, this.user.id, '', '', this.startDate , '', [], []);
+    this.request = new RequestDTO(null, this.user.id, this.creationDate, '', '', this.startDate , '', this.reqTechnicals, []);
   }
 
   public next(): void {
@@ -93,23 +94,24 @@ export class CreateRequestComponent implements OnInit {
         }
          this.widget = 1;
 
-         this.reqTechnicals = [{ techId: null, techscope: '', exp: '', reqdes: '', requestId: null },
-         { techId: null, techscope: '', exp: '', reqdes: '', requestId: null },
-         { techId: null, techscope: '', exp: '', reqdes: '' , requestId: null}];
-        this.request = new RequestDTO(null, this.user.id, '', '', this.startDate , '', this.reqTechnicals, []);
+        this.request = new RequestDTO(null, this.user.id, this.creationDate, '', '', this.startDate , '', [], []);
       }
     );
   }
 
   public loadDetails() {
-     this.details = this.area.detalles;
-     if (this.area !== undefined || this.area !== null) {
+     this.details = this.selectedArea.detalles;
+     if (this.selectedArea !== undefined || this.selectedArea !== null) {
       this.detalle = '';
      }
   }
 
   public addRequeriment() {
-    console.log(this.area.nombreArea + ' - ' + this.detalle + ' - ' + this.experience + ' - ' + this.requeriment);
+    const req = new ReqTechnical(null, this.selectedArea.nombreArea, this.detalle, this.experience, this.requeriment, null);
+    this.reqTechnicals.push(req);
+    console.log(this.selectedArea.nombreArea + ' - ' + this.detalle + ' - ' + this.experience + ' - ' + this.requeriment);
+    console.log("-----------");
+    console.log(this.reqTechnicals[0].area);
   }
 
   private assignStartDate(event): void {
@@ -126,7 +128,6 @@ export class CreateRequestComponent implements OnInit {
       this.areas = res;
       if (this.areas !== null) {
         console.log(this.areas);
-
       }
     });
   }

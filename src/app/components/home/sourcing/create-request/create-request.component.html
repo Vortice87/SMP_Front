@@ -45,7 +45,7 @@
               <label for="expstartdate" class="col-md-3 col-form-label">FECHA DE INCORPORACION</label>
               <div class="col-md-3">
                 <input type="date" class="form-control" name="hoy" style="text-align:center;" [ngModel]="request.startDate | date:'yyyy-MM-dd'"
-                  (ngModelChange)="assignStartDate($event)" min="{{request.startDate | date:'yyyy-MM-dd'}}" required>
+                  (ngModelChange)="assignStartDate($event)" min="{{request.creationDate | date:'yyyy-MM-dd'}}" required>
               </div>
             </div>
 
@@ -80,9 +80,9 @@
 
             <div class="form-group row padding-bottom">
               <div class="col-md-4">
-                <select class="form-control" id="reqArea" name="area" [(ngModel)]="area"  #ar="ngModel" (ngModelChange)="loadDetails()" required [ngStyle]="{ border: !ar.valid && ar.dirty  ?  '1px solid red': '' }">
-                  <option value="" selected>- Seleccionar -</option>
-                  <option *ngFor="let a of areas" [ngValue]="a" >{{a.nombreArea}}</option>
+                <select class="form-control" name="area" [(ngModel)]="selectedArea"  #ar="ngModel" (ngModelChange)="loadDetails()" required [ngStyle]="{ border: !ar.valid && ar.dirty  ?  '1px solid red': '' }">
+                 <option [value]="selectedArea" selected>- Selecionar -</option>
+                  <option *ngFor="let a of areas" [ngValue]="a">{{a.nombreArea}}</option>
                 </select>
               </div>
               <div class="col-md-3">
@@ -110,12 +110,12 @@
                 </button>
               </div>
             </div>
+            <div *ngFor="let tech of reqTechnicals; let in =index">
+              <input class="form-control" name="tec" type="text" readonly [(ngModel)]="tech[in].area"/>
+            </div>
 
           </div>
 
-          <button class="btn btn-secondary btn-previous" type="button" (click)="next()" [disabled]="!newrequest.valid">
-            <i class="fa fa-angle-double-right"></i>
-          </button>
 
         </fieldset>
 

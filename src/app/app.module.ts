@@ -28,6 +28,7 @@ import { ListRequestComponent } from './components/home/sourcing/list-request/li
 import { InputFileModule } from 'ngx-input-file';
 import { RequestComponent } from './components/home/sourcing/list-request/request/request.component';
 import { ConfigurationService } from './services/configuration/configuration.service';
+import { ComunicationService } from './services/shared/comunication.service';
 
 
 @NgModule({
@@ -59,7 +60,8 @@ import { ConfigurationService } from './services/configuration/configuration.ser
     UserAccountDTOService,
     RequestService,
     DatePipe,
-    ConfigurationService
+    ConfigurationService,
+    ComunicationService
   ],
   bootstrap: [AppComponent]
 })

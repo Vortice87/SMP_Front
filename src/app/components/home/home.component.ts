@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 
 import { SessionUtils } from '../../utils/session-utils/session-utils';
 import { Input } from '@angular/core/src/metadata/directives';
+import { ComunicationService } from '../../services/shared/comunication.service';
+import { UserAccountDTO } from '../../models/userAccountDTO';
 
 @Component({
   selector: 'app-home',
@@ -11,25 +13,40 @@ import { Input } from '@angular/core/src/metadata/directives';
 })
 export class HomeComponent implements OnInit {
 
-
+  private user: UserAccountDTO;
   public isAdmin: boolean;
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+              private comunicationService: ComunicationService) { }
 
   ngOnInit() {
-    this.checkForLoggedUser();
+    this.comunicationService.getUser().subscribe(res => {
+      this.user = res;
+      if (res !== null) {
+        this.checkForLoggedUser();
+      } else {
+        this.router.navigate(['/login']);
+      }
+    });
   }
 
   checkForLoggedUser(): void {
-    if (SessionUtils.checkIfLogin()) {
 
-      if (SessionUtils.getCurrentLoggedInUser().profile === 'admin') {
-        this.isAdmin = true;
-      } else {
-        this.isAdmin = false;
-      }
+    if (this.user.profile === 'admin') {
+      this.isAdmin = true;
     } else {
-      this.router.navigate(['/login']);
+      this.isAdmin = false;
     }
+
+    // if (SessionUtils.checkIfLogin()) {
+
+    //   if (SessionUtils.getCurrentLoggedInUser().profile === 'admin') {
+    //     this.isAdmin = true;
+    //   } else {
+    //     this.isAdmin = false;
+    //   }
+    // } else {
+    //   this.router.navigate(['/login']);
+    // }
   }
 }
 

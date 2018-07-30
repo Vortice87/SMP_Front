@@ -27,7 +27,7 @@
               <label for="destask" class="col-md-3 col-form-label">DESCRIPCION ROL</label>
               <div class="col-md-9">
                 <textarea class="form-control" name="destask" [(ngModel)]="request.descTask" #destask="ngModel" required maxlength="250"
-                  [ngStyle]="{ border: !destask.valid && destask.dirty  ?  '1px solid red': '' }"></textarea>
+                maxlength="200" [ngStyle]="{ border: !destask.valid && destask.dirty  ?  '1px solid red': '' }"></textarea>
               </div>
             </div>
 

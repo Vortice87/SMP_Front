@@ -1,19 +1,19 @@
 <div class="col-md-offset-1 col-md-4">
-  <div class="row animated fadeInRight list">
+  <div class="row animated fadeIn list">
 
     <div class="col-md-12">
       <div class="row header">
-        <h3>New Account</h3>
+        <h3>Nueva cuenta</h3>
       </div>
       <form name="formNewAccount" #newaccount="ngForm" (ngSubmit)="createAccount(newaccount)" novalidate>
 
         <div class="form-group">
-          <label for="name">Name</label>
+          <label for="name">Nombre</label>
           <input type="text" class="form-control" name="name" [(ngModel)]="user.name" #name="ngModel" required [ngStyle]="{ border: !name.valid && name.dirty  ?  '1px solid red': '' }"
           />
         </div>
         <div class="form-group">
-            <label for="lastname">Last Name</label>
+            <label for="lastname">Apellidos</label>
             <input type="text" class="form-control" name="lastname" [(ngModel)]="user.lastName" #lastname="ngModel" required [ngStyle]="{ border: !lastname.valid && lastname.dirty  ?  '1px solid red': '' }"
             />
           </div>
@@ -23,7 +23,7 @@
             #usn="ngModel" required [ngStyle]="{ border: (!usn.valid && usn.dirty) || usernameExists  ?  '1px solid red': '' }"
             (focusout)="userExists()" />
           <div class="required animated fadeInDown" *ngIf="usernameExists">
-            <span>Username exist</span>
+            <span>Username existe</span>
           </div>
         </div>
         <div class="form-group">
@@ -32,22 +32,22 @@
           />
         </div>
         <div class="form-group">
-          <label for="password2">Repeat Password</label>
+          <label for="password2">Repetir password</label>
           <input type="password" class="form-control" name="password2" [(ngModel)]="passwordAux" #passrepeat="ngModel" required [ngStyle]="{ border: !passrepeat.valid && passrepeat.dirty  ?  '1px solid red': '' }"
           />
           <div class="required animated fadeInDown" *ngIf="(pass.value != passrepeat.value) && passrepeat.touched">
-            <span>Password must be the same</span>
+            <span>Password debe de ser el mismo</span>
           </div>
         </div>
         <div class="form-group">
           <label for="profile">Profile</label>
           <select class="form-control" name="profile" [(ngModel)]="user.profile" #prof="ngModel" required [ngStyle]="{ border: !prof.valid && prof.dirty  ?  '1px solid red': '' }">
-            <option value="" selected>-- Select Profile --</option>
+            <option value="" selected>-- Seleccionar perfil --</option>
             <option *ngFor="let profile of profiles" [value]="profile">{{profile}}</option>
           </select>
         </div>
         <div class="form-group">
-          <button class="btn btn-primary" [disabled]="!newaccount.valid">Create</button>
+          <button class="btn btn-primary" [disabled]="!newaccount.valid">Crear</button>
         </div>
       </form>
     </div>

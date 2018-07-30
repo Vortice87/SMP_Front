@@ -19,7 +19,7 @@ span{
 
 
 .background {
-    background: linear-gradient(90deg, red 58%, #f7f7f7  42%);
+    background: linear-gradient(90deg, #3C6598 58%, #f7f7f7  42%);
 }
 .row {
     height: 100%;

@@ -12,31 +12,24 @@ import { Input } from '@angular/core/src/metadata/directives';
 export class HomeComponent implements OnInit {
 
 
-  isAdmin: boolean = false;
+  public isAdmin: boolean;
   constructor(private router: Router) { }
 
   ngOnInit() {
     this.checkForLoggedUser();
   }
 
-  checkForLoggedUser():void
-  {
+  checkForLoggedUser(): void {
     if (SessionUtils.checkIfLogin()) {
 
-      if(SessionUtils.getCurrentLoggedInUser().profile == "admin"){
+      if (SessionUtils.getCurrentLoggedInUser().profile === 'admin') {
         this.isAdmin = true;
-      }else{
+      } else {
         this.isAdmin = false;
       }
-
-    }else{
-
-      this.router.navigate(["/login"]);      
-
+    } else {
+      this.router.navigate(['/login']);
     }
   }
-
-
-
 }
 

@@ -12,9 +12,9 @@ export class UserAccountDTO {
     }
 
     public static createUserFromJson(entity: any): UserAccountDTO {
-        
-        let user = new UserAccountDTO(entity.id,entity.name,entity.lastName,entity.username,entity.password,entity.profile,entity.requests);
-        return user;
+
+        return new UserAccountDTO(entity.id, entity.name,
+            entity.lastName, entity.username, entity.password, entity.profile, entity.requests);
 
     }
 }

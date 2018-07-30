@@ -14,22 +14,16 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
   }
 
-  logout():void{
+  logout(): void {
     SessionUtils.clearCurrentLoggedInUser();
     this.checkForLoggedUser();
   }
 
-  checkForLoggedUser():void
-  {
+  checkForLoggedUser(): void {
     if (SessionUtils.checkIfLogin()) {
-
-      this.router.navigate(["/home"]);
-
-    }else{
-
-      this.router.navigate(["/login"]);      
-
+      this.router.navigate(['/home']);
+    } else {
+      this.router.navigate(['/login']);
     }
   }
-
 }

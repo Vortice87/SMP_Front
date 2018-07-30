@@ -4,7 +4,7 @@ export class Cv {
         public cvId: string,
         public dni: string,
         public name: string,
-        public requestId:number
+        public requestId: number
     ) {
     }
 }

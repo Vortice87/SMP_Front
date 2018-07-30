@@ -5,54 +5,25 @@
 
             <li *ngIf="isAdmin" data-toggle="collapse" data-target="#service" class="collapsed">
                 <a>
-                    <i class="fa fa-vcard-o"></i>
-                    <span>Manage accounts</span>
+                    <span>Administración de cuentas</span>
                     <span class="arrow"></span>
                 </a>
             </li>
             <ul class="sub-menu collapse" id="service">
-                <li class="sublist" routerLink="admin">Accounts</li>
-                <li class="sublist" routerLink="newaccount">New account</li>
+                <li class="sublist" routerLink="admin">Cuentas</li>
+                <li class="sublist" routerLink="newaccount">Crear cuenta</li>
             </ul>
 
             <li data-toggle="collapse" data-target="#service2" class="collapsed">
-                <a routerLink="request">
-                    <i class="fa fa-globe fa-lg"></i>
-                    <span>Requests</span>
+                <a>
+                    <span>Solicitudes</span>
                     <span class="arrow"></span>
                 </a>
             </li>
             <ul class="sub-menu collapse" id="service2">
-                <li class="sublist" routerLink="newrequest">Create request</li>
-                <li class="sublist">New Service 2</li>
-                <li class="sublist">New Service 3</li>
+                <li class="sublist"  routerLink="requests">Ver solicitudes</li>
+                <li class="sublist" routerLink="newrequest">Crear solicitud</li>
             </ul>
-
-
-            <li data-toggle="collapse" data-target="#new" class="collapsed">
-                <a href="#">
-                    <i class="fa fa-car fa-lg"></i>
-                    <span>New</span>
-                    <span class="arrow"></span>
-                </a>
-            </li>
-            <ul class="sub-menu collapse" id="new">
-                <li class="sublist">New Service 1</li>
-                <li class="sublist">New Service 2</li>
-                <li class="sublist">New Service 3</li>
-            </ul>
-            <li>
-                <a href="#">
-                    <i class="fa fa-user fa-lg"></i>
-                    <span>Profile</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="fa fa-users fa-lg"></i>
-                    <span>Users</span>
-                </a>
-            </li>
         </ul>
     </div>
 </div>

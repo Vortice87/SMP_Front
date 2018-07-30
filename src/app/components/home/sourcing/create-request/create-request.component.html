@@ -1,435 +1,152 @@
 <div class="col-md-offset-1 col-md-10">
-  <div class="row animated fadeInRight list">
+  <div class="row animated fadeIn list header">
 
-    <div class="col-md-12">
-      <div class="row header">
-        <h3>New Request</h3>
-      </div>
+    <div class="col-md-12 row">
 
       <form name="formNewRequest" #newrequest="ngForm" (ngSubmit)="createRequest()" novalidate>
 
         <fieldset class="form-group" *ngIf="widget==1">
           <div class="container">
-            <legend>GENERAL DATA</legend>
+            <legend>DATOS GENERALES</legend>
             <div class="form-group row">
-              <label for="petitioner" class="col-md-3 col-form-label">PETITIONER</label>
+              <label for="petitioner" class="col-md-3 col-form-label">SOLICITANTE</label>
               <div class="col-md-9">
-                {{user.name}} {{user.lastName}} 
+                {{user.name}} {{user.lastName}}
               </div>
             </div>
 
             <div class="form-group row">
-              <label for="title" class="col-md-3 col-form-label">REQUEST TITLE</label>
+              <label for="title" class="col-md-3 col-form-label">PERFIL</label>
               <div class="col-md-9">
-                <input type="text" class="form-control" name="title" [(ngModel)]="request.title" #title="ngModel" required [ngStyle]="{ border: (!title.valid && title.dirty)  ?  '1px solid red': '' }"/>
-              </div>
-            </div>
-
-            <div class="form-group row">
-              <label for="reason" class="col-md-3 col-form-label">REASON FOR REQUEST</label>
-              <div class="col-md-3">
-                <input type="text" class="form-control" name="reason" [(ngModel)]="request.reason" #rea="ngModel" required [ngStyle]="{ border: (!rea.valid && rea.dirty)  ?  '1px solid red': '' }"
+                <input type="text" class="form-control" name="profile" [(ngModel)]="request.profile" #profile="ngModel" required [ngStyle]="{ border: (!profile.valid && profile.dirty)  ?  '1px solid red': '' }"
                 />
               </div>
-              <label for="subfrom" class="col-md-3 col-form-label">SUBSTITUTION FROM:</label>
-              <div class="col-md-3">
-                <input type="text" class="form-control" name="substitution" [(ngModel)]="request.substitution" />
-              </div>
             </div>
 
             <div class="form-group row">
-              <label for="suggestedSer" class="col-md-3 col-form-label">SUGGESTED SERVICE</label>
+              <label for="destask" class="col-md-3 col-form-label">DESCRIPCION ROL</label>
               <div class="col-md-9">
-                <input type="text" class="form-control" name="suggestedSer" [(ngModel)]="request.suggestedService" />
+                <textarea class="form-control" name="destask" [(ngModel)]="request.descTask" #destask="ngModel" required maxlength="250"
+                  [ngStyle]="{ border: !destask.valid && destask.dirty  ?  '1px solid red': '' }"></textarea>
               </div>
             </div>
 
             <div class="form-group row">
-              <label for="observations" class="col-md-3 col-form-label">OBSERVATIONS</label>
-              <div class="col-md-9">
-                <input type="text" class="form-control" name="observations" [(ngModel)]="request.observations" />
-              </div>
-            </div>
-          </div>
-
-          <button class="btn btn-secondary btn-previous" type="button" (click)="next()" [disabled]="!newrequest.valid">Next</button>
-
-        </fieldset>
-
-        <fieldset class="form-group" *ngIf="widget==2">
-          <div class="container ">
-            <legend>PROFILE DATA</legend>
-            <div class="form-group row">
-              <label for="funcategory" class="col-md-3 col-form-label">FUNCTIONAL CATEGORY</label>
-
+              <label for="nres" class="col-md-3 col-form-label">RECURSOS</label>
               <div class="col-md-3">
-                <select class="form-control" name="funcategory" [(ngModel)]="request.categoryFunc" #funca="ngModel" required [ngStyle]="{ border: !funca.valid && funca.dirty  ?  '1px solid red': '' }">
-                  <option value="" selected>-- Select Category --</option>
-                  <option *ngFor="let cat of categoryFunc" [value]="cat">{{cat}}</option>
-                </select>
-              </div>
-
-              <label for="limitrate" class="col-md-3 col-form-label">Limit Rate</label>
-              <div class="col-md-3">
-                <input type="number" class="form-control" name="limitrate" [(ngModel)]="request.limitRate" #limitrate="ngModel" required [ngStyle]="{ border: !limitrate.valid && limitrate.dirty  ?  '1px solid red': '' }"/>
-              </div>
-            </div>
-
-            <div class="form-group row">
-              <label for="nres" class="col-md-3 col-form-label">No. OF RESOURCES</label>
-              <div class="col-md-2">
-                <select class="form-control" name="nres" [(ngModel)]="request.nResources" #numrec="ngModel"
-                  required [ngStyle]="{ border: !numrec.valid && numrec.dirty ?  '1px solid red': '' }">
-                  <option value="" selected>-- Select --</option>
+                <select class="form-control" name="nres" [(ngModel)]="request.nResources" #numrec="ngModel" required [ngStyle]="{ border: !numrec.valid && numrec.dirty ?  '1px solid red': '' }">
+                  <option value="" selected>- Seleccionar -</option>
                   <option *ngFor="let nr of nResources" [value]="nr">{{nr}}</option>
                 </select>
               </div>
-            </div>
-
-            <div class="form-group row">
-              <label for="prof" class="col-md-3 col-form-label">PROFILE</label>
+              <label for="expstartdate" class="col-md-3 col-form-label">FECHA DE INCORPORACION</label>
               <div class="col-md-3">
-                <select class="form-control" name="prof" [(ngModel)]="request.profile" #prof="ngModel" required [ngStyle]="{ border: !prof.valid && prof.dirty  ?  '1px solid red': '' }">
-                  <option value="" selected>-- Select Profile --</option>
-                  <option *ngFor="let pro of reqProfiles" [value]="pro">{{pro}}</option>
-                </select>
+                <input type="date" class="form-control" name="hoy" style="text-align:center;" [ngModel]="request.startDate | date:'yyyy-MM-dd'"
+                  (ngModelChange)="assignStartDate($event)" min="{{request.creationDate | date:'yyyy-MM-dd'}}" required>
               </div>
             </div>
 
-            <div class="form-group row">
-              <label for="tech" class="col-md-3 col-form-label">TECHNOLOGY</label>
-              <div class="col-md-3">
-                <select class="form-control" name="tech" [(ngModel)]="request.technology" #tech="ngModel" required [ngStyle]="{ border: !tech.valid && tech.dirty  ?  '1px solid red': '' }">
-                  <option value="" selected>-- Select Technology --</option>
-                  <option *ngFor="let tec of technologies" [value]="tec">{{tec}}</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="form-group row">
-              <label for="expstartdate" class="col-md-3 col-form-label">EXPECTED START DATE</label>
-              <div class="col-md-3">
-                <input type="date" class="form-control" name="hoy" [ngModel]="request.startDate | date:'yyyy-MM-dd'" (ngModelChange)="assignStartDate($event)"
-                  min="{{request.startDate | date:'yyyy-MM-dd'}}" required>
-              </div>
-            </div>
-
-            <div class="form-group row">
-              <label for="estenddate" class="col-md-3 col-form-label">ESTIMATED END DATE</label>
-              <div class="col-md-3">
-                <input type="date" class="form-control" name="estenddate" [ngModel]="request.endDate | date:'yyyy-MM-dd'" (ngModelChange)="assignEndDate($event)"
-                  min="{{estimatedDay | date:'yyyy-MM-dd'}}" />
-              </div>
-            </div>
+            <button class="btn btn-secondary btn-previous" type="button" (click)="next()" [disabled]="!newrequest.valid">
+              <i class="fa fa-angle-double-right"></i>
+            </button>
           </div>
-
-          <button class="btn btn-secondary btn-previous" type="button" (click)="next()" [disabled]="!newrequest.valid">Next</button>
-
-        </fieldset>
-
-        <fieldset class="form-group" *ngIf="widget==3">
-          <div class="container ">
-
-            <legend>ORGANIZATIONAL ASSIGNMENT</legend>
-            <div class="form-group row">
-              <label for="area" class="col-md-3 col-form-label">AREA</label>
-              <div class="col-md-5">
-                <select class="form-control" name="area" [(ngModel)]="request.area" #ar="ngModel" required [ngStyle]="{ border: !ar.valid && ar.dirty  ?  '1px solid red': '' }">
-                  <option value="" selected>-- Select Area --</option>
-                  <option *ngFor="let a of areas" [value]="a">{{a}}</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="form-group row">
-              <label for="department" class="col-md-3 col-form-label">DEPARTMENT</label>
-              <div class="col-md-5">
-                <select class="form-control" name="department" [(ngModel)]="request.department" #dep="ngModel" required [ngStyle]="{ border: !dep.valid && dep.dirty  ?  '1px solid red': '' }">
-                  <option value="" selected>-- Select Department --</option>
-                  <option *ngFor="let d of departments" [value]="d">{{d}}</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="form-group row">
-              <label for="management" class="col-md-3 col-form-label">MANAGEMENT</label>
-              <div class="col-md-5">
-                <select class="form-control" name="management" [(ngModel)]="request.management" #manage="ngModel" required [ngStyle]="{ border: !manage.valid && manage.dirty  ?  '1px solid red': '' }">
-                  <option value="" selected>-- Select Managements --</option>
-                  <option *ngFor="let m of managements" [value]="m">{{m}}</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="form-group row">
-              <label for="unity" class="col-md-3 col-form-label">UNITY</label>
-              <div class="col-md-5">
-                <select class="form-control" name="unity" [(ngModel)]="request.unity">
-                  <option value="" selected>-- Select Unity --</option>
-                  <option *ngFor="let u of units" [value]="u">{{u}}</option>
-                </select>
-              </div>
-            </div>
-          </div>
-
-          <button class="btn btn-secondary btn-previous" type="button" (click)="next()" [disabled]="!newrequest.valid">Next</button>
-          
         </fieldset>
 
 
-        <fieldset class="form-group" *ngIf="widget==4">
+        <fieldset class="form-group" *ngIf="widget==2">
           <div class="container ">
 
-            <legend>TECHNICAL REQUIREMENTS</legend>
+            <legend>REQUERIMIENTOS TÉCNICOS</legend>
+
 
             <div class="form-group row no-margin-bottom">
 
-              <div class="col-md-offset-3 col-md-2">
-                <label for="othersreq">OTHERS</label>
+              <div class="col-md-4 align-center">
+                <label for="area">AREA</label>
               </div>
-              <div class="col-md-2">
-                <label for="expyearsreq">EXP. YEARS</label>
+              <div class="col-md-3 align-center">
+                <label for="detalle">DETALLE</label>
               </div>
-              <div class="col-md-2">
+              <div class="col-md-2 align-center">
+                <label for="expyearsreq">EXP. AÑOS</label>
+              </div>
+              <div class="col-md-2 align-center">
                 <label for="reqdes2">REQ / DES</label>
               </div>
             </div>
 
-            <div class="form group row">
-              <div class="col-md-3">
-                <label for="devenv">
-                  <span class="reqtech">DEVELOPMENT ENVIRONMENTS</span>
-                </label>
-              </div>
-            </div>
-            <div class="form-group row">
-              <div class="col-md-3">
-                <select class="form-control" name="devenv" [(ngModel)]="request.reqTechs[0].techscope" #dve="ngModel" required [ngStyle]="{ border: !dve.valid && dve.dirty  ?  '1px solid red': '' }">
-                  <option value="" selected>-- Select dev env --</option>
-                  <option *ngFor="let dev of developEnv" [value]="dev">{{dev}}</option>
-                </select>
-              </div>
-              <div class="col-md-2">
-                <input type="text" class="form-control" name="othersDE" [(ngModel)]="request.reqTechs[0].others" />
-              </div>
-              <div class="col-md-2">
-                <select class="form-control" name="expyearsreqDE" [(ngModel)]="request.reqTechs[0].exp" #expyearsreqDE="ngModel"
-                  required [ngStyle]="{ border: !expyearsreqDE.valid && expyearsreqDE.dirty    ?  '1px solid red': '' }">
-                  <option value="" selected>-- Select --</option>
-                  <option *ngFor="let ex of nResources" [value]="ex">{{ex}}</option>
-                </select>
-              </div>
-              <div class="col-md-2">
-                <select class="form-control" name="reqdesDE" [(ngModel)]="request.reqTechs[0].reqdes" #reqdesDE="ngModel" required [ngStyle]="{ border: !reqdesDE.valid && reqdesDE.dirty  ?  '1px solid red': '' }">
-                  <option value="" selected>-- Select --</option>
-                  <option *ngFor="let rd of reqdes" [value]="rd">{{rd}}</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="form group row">
-              <div class="col-md-3">
-                <label for="proglang">
-                  <span class="reqtech">PROGRAMMING LANGUAGES</span>
-                </label>
-              </div>
-            </div>
-            <div class="form-group row">
-              <div class="col-md-3">
-                <select class="form-control" name="proglang" [(ngModel)]="request.reqTechs[1].techscope" #proglang="ngModel" required [ngStyle]="{ border: !proglang.valid && proglang.dirty  ?  '1px solid red': '' }">
-                  <option value="" selected>-- Select prog lang --</option>
-                  <option *ngFor="let pr of programLang" [value]="pr">{{pr}}</option>
-                </select>
-              </div>
-              <div class="col-md-2">
-                <input type="text" class="form-control" name="othersDE" [(ngModel)]="request.reqTechs[1].others" />
-              </div>
-              <div class="col-md-2">
-                <select class="form-control" name="expyearsreqPL" [(ngModel)]="request.reqTechs[1].exp" #expyearsreqPL="ngModel"
-                  required [ngStyle]="{ border: !expyearsreqPL.valid && expyearsreqPL.dirty    ?  '1px solid red': '' }">
-                  <option value="" selected>-- Select --</option>
-                  <option *ngFor="let ex of nResources" [value]="ex">{{ex}}</option>
-                </select>
-              </div>
-              <div class="col-md-2">
-                <select class="form-control" name="reqdesPL" [(ngModel)]="request.reqTechs[1].reqdes" #reqdesPL="ngModel" required [ngStyle]="{ border: !reqdesPL.valid && reqdesPL.dirty  ?  '1px solid red': '' }">
-                  <option value="" selected>-- Select --</option>
-                  <option *ngFor="let rd of reqdes" [value]="rd">{{rd}}</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="form group row">
-              <div class="col-md-3">
-                <label for="infbdd">
-                  <span class="reqtech">INFRASTRUCTURE / BBDD</span>
-                </label>
-              </div>
-            </div>
-
-            <div class="form-group row">
-              <div class="col-md-3">
-                <select class="form-control" name="infbdd" [(ngModel)]="request.reqTechs[2].techscope" #infbdd="ngModel" required [ngStyle]="{ border: !infbdd.valid && infbdd.dirty  ?  '1px solid red': '' }">
-                  <option value="" selected>-- Select BBDD --</option>
-                  <option *ngFor="let bd of infraBd" [value]="bd">{{bd}}</option>
-                </select>
-              </div>
-              <div class="col-md-2">
-                <input type="text" class="form-control" name="othersBD" [(ngModel)]="request.reqTechs[2].others" />
-              </div>
-              <div class="col-md-2">
-                <select class="form-control" name="expyearsreqBD" [(ngModel)]="request.reqTechs[2].exp" #expyearsreqBD="ngModel"
-                  required [ngStyle]="{ border: !expyearsreqBD.valid && expyearsreqBD.dirty    ?  '1px solid red': '' }">
-                  <option value="" selected>-- Select --</option>
-                  <option *ngFor="let ex of nResources" [value]="ex">{{ex}}</option>
-                </select>
-              </div>
-              <div class="col-md-2">
-                <select class="form-control" name="reqdesBD" [(ngModel)]="request.reqTechs[2].reqdes" #reqdesBD="ngModel" required [ngStyle]="{ border: !reqdesBD.valid && reqdesBD.dirty  ?  '1px solid red': '' }">
-                  <option value="" selected>-- Select --</option>
-                  <option *ngFor="let rd of reqdes" [value]="rd">{{rd}}</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="form group row">
-              <div class="col-md-3">
-                <label for="othertool">
-                  <span class="reqtech">OTHER TOOLS</span>
-                </label>
-              </div>
-            </div>
-
-            <div class="form-group row">
-              <div class="col-md-3">
-                <input type="text" class="form-control" name="othertool" [(ngModel)]="request.reqTechs[3].techscope" (ngModelChange)="toClearTech()"
-                  #othertool="ngModel" />
-              </div>
-              <div class="col-md-2">
-                <input type="text" class="form-control" name="othersOP" [(ngModel)]="request.reqTechs[3].others" />
-              </div>
-              <div class="col-md-2 animated fadeIn" *ngIf="request.reqTechs[3].techscope != '' ">
-                <select class="form-control" name="expyearsreqOP" [(ngModel)]="request.reqTechs[3].exp" #expyearsreqOP="ngModel"
-                  required (focusout)="toClearTech()" [ngStyle]="{ border: othertool.value != '' && !expyearsreqOP.valid  ?  '1px solid red': '' }">
-                  <option value="" selected>-- Select --</option>
-                  <option *ngFor="let ex of nResources" [value]="ex">{{ex}}</option>
-                </select>
-              </div>
-              <div class="col-md-2 animated fadeIn" *ngIf="request.reqTechs[3].techscope != '' ">
-                <select class="form-control" name="reqdesOP" [(ngModel)]="request.reqTechs[3].reqdes" #reqdesOP="ngModel" required (focusout)="toClearTech()"
-                  [ngStyle]="{ border: othertool.value != '' && !reqdesOP.valid   ?  '1px solid red': '' }">
-                  <option value="" selected>-- Select --</option>
-                  <option *ngFor="let rd of reqdes" [value]="rd">{{rd}}</option>
-                </select>
-              </div>
-            </div>
-          </div>
-
-          <button class="btn btn-secondary btn-previous" type="button" (click)="next()" [disabled]="!newrequest.valid">Next</button>
-          
-        </fieldset>
-
-        <fieldset class="form-group" *ngIf="widget==5">
-          <div class="container ">
-            <legend>TASKS</legend>
-            <div class="form-group row">
-              <label for="destask" class="col-md-3 col-form-label">DESCRIPTION TASKS</label>
-              <div class="col-md-8">
-                <textarea class="form-control" name="destask" [(ngModel)]="request.descTask" #destask="ngModel" required [ngStyle]="{ border: !destask.valid && destask.dirty  ?  '1px solid red': '' }"></textarea>
-              </div>
-            </div>
-          </div>
-
-          <button class="btn btn-secondary btn-previous" type="button" (click)="next()" [disabled]="!newrequest.valid">Next</button>
-          
-        </fieldset>
-
-
-        <fieldset class="form-group" *ngIf="widget==6">
-          <div class="container ">
-            <legend>LOCATION</legend>
-
-            <div class="form-group row">
-              <div class="col-md-3">
-                <label for="location">LOCATION</label>
-              </div>
-              <div class="col-md-2">
-                <label for="floor">FLOOR</label>
-              </div>
-              <div class="col-md-2">
-                <label for="place">PLACE</label>
-              </div>
-              <div class="col-md-2">
-                <label for="typeaccess">TYPE ACCESS</label>
-              </div>
-            </div>
-
-            <div class="form-group row">
-              <div class="col-md-3">
-                <select class="form-control" name="location" [(ngModel)]="request.location" #location="ngModel" required [ngStyle]="{ border: !location.valid && location.dirty   ?  '1px solid red': '' }">
-                  <option value="" selected>-- Select --</option>
-                  <option *ngFor="let loc of locations" [value]="loc">{{loc}}</option>
-                </select>
-              </div>
-              <div class="col-md-2">
-                <input type="number" class="form-control" name="floor" [(ngModel)]="request.floor" #floor="ngModel" required [ngStyle]="{ border: !floor.valid && floor.dirty  ?  '1px solid red': '' }"
-                />
-              </div>
-              <div class="col-md-2">
-                <input type="text" class="form-control" name="place" [(ngModel)]="request.place" #place="ngModel" required [ngStyle]="{ border: !place.valid && place.dirty  ?  '1px solid red': '' }"
-                />
-              </div>
-              <div class="col-md-2">
-                <select class="form-control" name="typeaccess" [(ngModel)]="request.typeAccess">
-                  <option value="" selected>-- Select --</option>
-                  <option *ngFor="let type of typesAccess" [value]="type">{{type}}</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="form-group row">
-              <div class="col-md-3">
-                <label for="platequip">PLATFORMING EQUIPMENT</label>
-              </div>
-
+            <div class="form-group row padding-bottom">
               <div class="col-md-4">
-                <label for="contact">CONTACT DELIVERY TEAM</label>
-              </div>
-            </div>
-
-            <div class="form-group row">
-              <div class="col-md-3">
-                <select class="form-control" name="platequip" [(ngModel)]="request.platEquip">
-                  <option value="" selected>-- Select --</option>
-                  <option *ngFor="let pla of platEquips" [value]="pla">{{pla}}</option>
+                <select class="form-control" name="area" [(ngModel)]="selectedArea" #ar="ngModel" (ngModelChange)="loadDetails()" required
+                  [ngStyle]="{ border: !ar.valid && ar.dirty  ?  '1px solid red': '' }">
+                  <option [value]="selectedArea" selected>- Selecionar -</option>
+                  <option *ngFor="let a of areas" [ngValue]="a">{{a.nombreArea}}</option>
                 </select>
               </div>
-              <div class="col-md-4">
-                <input type="text" class="form-control" name="contact" [(ngModel)]="request.contact" />
+              <div class="col-md-3">
+                <select class="form-control" name="det" [(ngModel)]="detalle" #det="ngModel" required [ngStyle]="{ border: !det.valid && det.dirty  ?  '1px solid red': '' }">
+                  <option value="" selected>- Seleccionar -</option>
+                  <option *ngFor="let d of details" [value]="d.nombreDetalle">{{d.nombreDetalle}}</option>
+                </select>
+              </div>
+
+              <div class="col-md-2">
+                <select class="form-control" name="expyearsreqDE" [(ngModel)]="experience" #expyearsreqDE="ngModel" required [ngStyle]="{ border: !expyearsreqDE.valid && expyearsreqDE.dirty    ?  '1px solid red': '' }">
+                  <option value="" selected>- Selecionar -</option>
+                  <option *ngFor="let ex of nResources" [value]="ex">{{ex}}</option>
+                </select>
+              </div>
+              <div class="col-md-2">
+                <select class="form-control" name="reqdesDE" [(ngModel)]="requeriment" #reqdesDE="ngModel" required [ngStyle]="{ border: !reqdesDE.valid && reqdesDE.dirty  ?  '1px solid red': '' }">
+                  <option value="" selected>- Selecionar -</option>
+                  <option *ngFor="let rd of reqdes" [value]="rd">{{rd}}</option>
+                </select>
+              </div>
+              <div class="cold-md-1">
+                <button class="btn btn-secondary" type="button" (click)="addRequeriment()" [disabled]="!newrequest.valid">
+                  Añadir
+                </button>
               </div>
             </div>
 
+            <div class="cuadro">
+              <div class="container">
+                  <div *ngFor="let tech of reqTechnicals; let i = index">
+                      <div class="form-group row padding-bottom-reqs animated fadeIn">
+                      <div class="col-md-4 align-center-req">
+                          <input class="form-control form-control-list" name="tec" type="text" readonly [value]="tech.area"/>
+                      </div>
+                      <div class="col-md-3">
+                          <input class="form-control form-control-list" name="tec" type="text" readonly [value]="tech.techscope"/>
+                      </div>
+                      <div class="col-md-2">
+                          <input class="form-control form-control-list" name="tec" type="text" readonly [value]="tech.exp"/>
+                      </div>
+                      <div class="col-md-2">
+                          <input class="form-control form-control-list" name="tec" type="text" readonly [value]="tech.reqdes"/>
+                      </div>
+                      <div class="col-md-1">
+                          <a (click)="deleteRequeriment(i)">
+                              <i class="fa fa-trash-o pointer"></i>
+                          </a>
+                      </div>
+                    </div>
+                </div>
+                
+              </div>
           </div>
 
-          <button class="btn btn-secondary btn-previous" type="button" (click)="next()" [disabled]="!newrequest.valid">Next</button>
-          
-        </fieldset>
-
-        <fieldset class="form-group" *ngIf="widget==7">
-          <div class="container ">
-            <legend>OTHERS
-              <button class="btn btn-secondary btn-add" type="button" (click)="loadLanguages(false,null)">+</button>
-            </legend>
-
-            <app-new-row-lang *ngFor="let row of request.languages" [row]="row" (deleting)="removeLang($event)"></app-new-row-lang>          
-
           </div>
+
+
         </fieldset>
 
-        <div class="form-group animated fadeIn" *ngIf="widget == 7">
-          <button class="btn btn-primary" type="submit" [disabled]="!newrequest.valid">Create</button>
+        <div class="form-group animated fadeIn" *ngIf="widget == 2">
+          <button class="btn btn-primary" type="submit" [disabled]="reqTechnicals.length == 0">Crear</button>
         </div>
-        <button class="btn btn-secondary btn-next" type="button" (click)="previous()" [disabled]="widget == 1">Previous</button>
+        <button class="btn btn-secondary btn-next" type="button" (click)="previous()" [disabled]="widget == 1">
+          <i class="fa fa-angle-double-left"></i>
+        </button>
 
       </form>
     </div>

@@ -15,15 +15,21 @@ const options = {
 @Injectable()
 export class RequestService {
 
-  private urlRequest = "http://localhost:8060/requests";
+  private urlRequest = 'http://localhost:8060/requests';
 
   constructor(private http: HttpClient) { }
 
   createRequest(request: RequestDTO): Observable<boolean> {
 
-    let body: any = JSON.stringify(request);
+    const body: any = JSON.stringify(request);
 
-    return this.http.post<boolean>(this.urlRequest + "/create", JSON.parse(body), options).catch(this.handError);
+    return this.http.post<boolean>(this.urlRequest + '/create', JSON.parse(body), options).catch(this.handError);
+
+  }
+
+  getAllRequest(): Observable<RequestDTO[]> {
+
+    return this.http.get<RequestDTO[]>(this.urlRequest + '/all').catch(this.handError);
 
   }
 

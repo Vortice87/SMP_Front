@@ -5,13 +5,15 @@ import { DatePipe } from '@angular/common';
 import swal from 'sweetalert2';
 import { NgForm } from '@angular/forms/src/directives/ng_form';
 import { resetFakeAsyncZone } from '@angular/core/testing';
-import { LanguagesRequest } from '../../../../models/languagesRequest';
 import { RequestDTO } from '../../../../models/request';
 import { ReqTechnical } from '../../../../models/reqTechnical';
 import { forEach } from '@angular/router/src/utils/collection';
 
 import { SessionUtils } from '../../../../utils/session-utils/session-utils';
 import { UserAccountDTO } from '../../../../models/userAccountDTO';
+import { Area } from '../../../../models/area';
+import { ConfigurationService } from '../../../../services/configuration/configuration.service';
+import { Detalles } from '../../../../models/detalles';
 
 
 @Component({
@@ -21,77 +23,63 @@ import { UserAccountDTO } from '../../../../models/userAccountDTO';
 })
 export class CreateRequestComponent implements OnInit {
 
-  request: RequestDTO;
-  user: UserAccountDTO;
-  startDate: Date;
-  estimatedDay: Date;
-  today: Date;
-  passwordAux: string;
-  insertRequest: boolean;
-  usernameExists: boolean;
-  profiles: string[] = ["admin", "sourcing", "provider", "area"];
-  categoryFunc: string[] = ["Director", "Gerente"];
-  nResources: string[] = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
-  nResource: string = "";
+  public request: RequestDTO;
+  public user: UserAccountDTO;
+  public creationDate: Date;
+  public startDate: Date;
+  public estimatedDay: Date;
+  public today: Date;
+  public passwordAux: string;
+  public insertRequest: boolean;
+  public usernameExists: boolean;
+  public nResources: string[] = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
+  public nResource: string;
+  public developEnv: string[] = ['Entorno desarrollo 1', 'Entorno desarrollo 2', 'Entorno desarrollo 3', 'Entorno desarrollo 4'];
+  public programLang: string[] = ['Lenguaje programacion 1', 'Lenguaje programacion 2', 'Lenguaje programacion 3'];
+  public infraBd: string[] = ['Infraestructura 1', 'Infraestructura 2', 'Infraestructura 3'];
+  public reqdes: string[] = ['Requerido', 'Deseable'];
+  public expyears: string[] = ['', '', '', ''];
+  public widget: number;
+  public areas: Array<Area> = [];
+  public selectedArea: Area;
+  public defaultArea: Area;
+  public detalle: string = '';
+  public experience: string = '';
+  public requeriment: string = '';
+  public details: Array<Detalles> = [];
+  public reqTechnicals: Array<ReqTechnical> = new Array<ReqTechnical>();
+  isValid: boolean;
 
-  reqProfiles: string[] = ["Consultor", "Desarrollador"];
-  technologies: string[] = ["Java", ".Net"];
-  areas: string[] = ["28000 - Dirección General", "28600 - RRHH"];
-  departments: string[] = ["Department 1", "Department 2"];
-  managements: string[] = ["Management 1", "Management 2"];
-  developEnv: string[] = ["develop env 1", "develop env 2", "develop env 3", "develop env 4"];
-  programLang: string[] = ["Programming language 1", "Programming language 2", "Programming language 3"];
-  infraBd: string[] = ["Infra 1", "Infra 2", "Infra 3"];
-  reqdes: string[] = ["Required", "Desireable"];
-  locations: string[] = ["Location 1", "Location 2", "Location 3"];
-  platEquips: string[] = ["DA SCISB", "DA PRBES"];
-  yesno: string[] = ["Yes", "No"];
-  expyears: string[] = ["", "", "", ""];
-  typesAccess: string[] = ["PERMANENTE", "PUNTUAL(1 DÍA)", "5 DIAS/SEMANA"];
-  units: string[] = ["28310 - Metodologia y Procesos", "28210 - Ctrl. de gestion de Proyectos"];
-  widget: number;
-  currentAddIndexReq: number = 0;
-  currentAddIndexLang: number = 0;
-  selectProvider = [];
-
-  reqTechnicals: Array<ReqTechnical> = new Array<ReqTechnical>();
-  isValid: boolean = false;
-
-  constructor(private requestService: RequestService, private datePipe: DatePipe) {
+  constructor(
+    private requestService: RequestService,
+    private datePipe: DatePipe,
+    private configurationService: ConfigurationService
+  ) {
 
   }
 
   ngOnInit() {
 
     this.widget = 1;
+    this.creationDate = new Date();
     this.startDate = new Date();
     this.today = new Date();
-    this.estimatedDay = this.sumarDias(this.today, 14);
     this.user = SessionUtils.getCurrentLoggedInUser();
-    console.log(this.user.id);
-    
-    this.reqTechnicals = [{ techId: null, techscope: "", others: "", exp: "", reqdes: "", requestId: null }, { techId: null, techscope: "", others: "", exp: "", reqdes: "", requestId: null },
-    { techId: null, techscope: "", others: "", exp: "", reqdes: "" , requestId: null}, { techId: null, techscope: "", others: "", exp: "", reqdes: "", requestId: null }]
-    this.request = new RequestDTO(null, this.user.id, "", "", "", "", "", "", null, "", "", "", this.startDate, null, "", "", "", "",
-    this.reqTechnicals, "", "", null, "", "", "", "", [] , []);
-    this.loadDataRequest();
+    this.getAllAreas();
+    this.request = new RequestDTO(null, this.user.id, this.creationDate, '', '', this.startDate, '', this.reqTechnicals, []);
   }
 
-  next(): void {
+  public next(): void {
     this.widget = this.widget + 1;
   }
 
 
-  previous(): void {
+  public previous(): void {
     this.widget = this.widget - 1;
   }
 
 
-  createRequest(form: NgForm): void {
-
-    if(this.request.reqTechs[3].techscope == ''){
-      this.request.reqTechs.splice(3,1);
-    }
+  public createRequest(form: NgForm): void {
 
     this.requestService.createRequest(this.request).subscribe(
       (response: boolean) => {
@@ -102,89 +90,62 @@ export class CreateRequestComponent implements OnInit {
             title: 'Request has been created successfully',
             showConfirmButton: false,
             timer: 1500
-          })
+          });
         }
-         this.widget = 1;
-
-         this.request = new RequestDTO(null, this.user.id, "", "", "", "", "", "", null, "", "", "", this.startDate, null, "", "", "", "",
-         this.reqTechnicals, "", "", null, "", "", "", "", [] , []);
+        this.widget = 1;
+        this.reqTechnicals = [];
+        this.selectedArea = new Area();
+        this.detalle = '';
+        this.experience = '';
+        this.requeriment = '';
+        this.request = new RequestDTO(null, this.user.id, this.creationDate, '', '', this.startDate, '', [], []);
       }
-    )
-   
-    
+    );
   }
 
-  loadDataRequest(): void {
-
-    if (this.request.languages.length == 0) {
-      this.loadLanguages(true, null);
+  public loadDetails() {
+    this.details = this.selectedArea.detalles;
+    if (this.selectedArea !== undefined || this.selectedArea !== null) {
+      this.detalle = '';
     }
-
   }
 
-  
-  loadLanguages(showHeader: boolean, lang: LanguagesRequest) {
-    
+  public addRequeriment() {
+    const req = new ReqTechnical(null, this.selectedArea.nombreArea, this.detalle, this.experience, this.requeriment, null);
+    if (!this.checkTechnicalScope()) {
+      this.reqTechnicals.push(req);
+    }
+  }
 
-    if (this.request.languages.length < 3) {
-      if (lang == null) {
-        this.request.languages.push(new LanguagesRequest(null, "", "", "",null, this.currentAddIndexLang, showHeader));
+  public deleteRequeriment(i: number) {
+    this.reqTechnicals.splice(i, 1);
+  }
+
+  private checkTechnicalScope(): boolean {
+    let match = false;
+    this.reqTechnicals.forEach(req => {
+      if (req.techscope === this.detalle) {
+        match = true;
       }
-      else {
-        lang.currentIndex = this.currentAddIndexLang;
-        if (this.currentAddIndexLang == 0) {
-          lang.header = true;
-        }
-        this.request.languages.push(lang);
-      }
-      this.currentAddIndexLang++;
-    }
+    });
+    return match;
   }
-
-  removeLang(id: number) {
-    if (this.request.languages.length > 1) {
-      this.request.languages.splice(this.findIndex(id, "lang"), 1);
-    }
-    this.request.languages[0].header = true;
-  }
-
-  findIndex(id: number, nameComponent: string): number {
-    let result: number = 0;
-    let i: number = 0;
-
-    if (nameComponent == "lang") {
-      this.request.languages.forEach(element => {
-        if (element.currentIndex == id) {
-          result = i;
-        }
-        i++;
-      });
-    }
-
-    return result;
-  }
-
-
-  toClearTech(i: number): void {
-    if (this.request.reqTechs[3].techscope == "") {
-      this.request.reqTechs[3].exp = "";
-      this.request.reqTechs[3].reqdes = "";
-    }
-  }
-
-  assignStartDate(event): void {
+  private assignStartDate(event): void {
     this.request.startDate = event;
-    console.log(this.request.startDate);
   }
 
-  assignEndDate(event): void {
-    this.request.endDate = event;
-    console.log(this.request.endDate);
-  }
-
-  sumarDias(fecha, dias): Date {
+  private sumarDias(fecha, dias): Date {
     fecha.setDate(fecha.getDate() + dias);
     return fecha;
+  }
+
+  private getAllAreas(): void {
+    this.configurationService.getAllAreas().subscribe((res: Array<Area>) => {
+      this.areas = res;
+      if (this.areas !== null) {
+        console.log(this.areas);
+      }
+    });
   }
 
 }

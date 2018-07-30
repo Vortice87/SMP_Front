@@ -12,50 +12,46 @@ export class AdministrationComponent implements OnInit {
 
   private users: UserAccountDTO[];
 
-  constructor(private UserAccountDTO: UserAccountDTOService) { }
+  constructor(private userAccountDTOservice: UserAccountDTOService) { }
 
   ngOnInit() {
     this.getAllUsers();
   }
 
-  getAllUsers():void
-  {
-    this.UserAccountDTO.getAllUsers().subscribe(
-      (response: UserAccountDTO[]) =>
-      {
+  getAllUsers(): void {
+    this.userAccountDTOservice.getAllUsers().subscribe(
+      (response: UserAccountDTO[]) => {
         this.users = response;
       },
-      (error)  =>
-      {  
-        console.log("error:"+ error);
+      (error) => {
+        console.log('error:' + error);
       }
     );
   }
-  deleteUser(user:UserAccountDTO):void
-  {
+  deleteUser(user: UserAccountDTO): void {
     swal({
-      title: 'Are you sure?',
+      title: '¿Esta seguro de eliminar usuario?',
       type: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes'
+      confirmButtonText: 'Si',
+      cancelButtonText: 'No'
     }).then((result) => {
       if (result.value) {
-        this.UserAccountDTO.deleteUser(user.id).subscribe(
-          (response: boolean) =>
-          {
-             if(!response){
+        this.userAccountDTOservice.deleteUser(user.id).subscribe(
+          (response: boolean) => {
+            if (!response) {
               swal(
-                'Deleted',
-                'User has been eliminated successfully',
+                'Eliminado',
+                'El usuario seleccionado ha sido eliminado',
                 'success'
-              )
-               this.getAllUsers();
-             }
+              );
+              this.getAllUsers();
+            }
           }
-        )
+        );
       }
-    })
+    });
   }
 }

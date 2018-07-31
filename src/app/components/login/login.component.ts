@@ -4,6 +4,7 @@ import { UserAccountDTO } from '../../models/userAccountDTO';
 // import the authenticationService
 import { AuthenticationService } from '../../services/authentication/authentication.service';
 import { Router } from '@angular/router';
+import { ComunicationService } from '../../services/shared/comunication.service';
 
 
 @Component({
@@ -15,10 +16,11 @@ export class LoginComponent implements OnInit {
 
   public username: string;
   public password: string;
-  private UserAccountDTO: UserAccountDTO;
+  private user: UserAccountDTO;
   private loginError: boolean;
 
-  constructor(private authentication: AuthenticationService, private router: Router) { }
+  constructor(private authentication: AuthenticationService, private router: Router,
+              private comunicationService: ComunicationService) { }
 
   ngOnInit() {
     this.loginError = false;
@@ -27,7 +29,7 @@ export class LoginComponent implements OnInit {
 
   // Checks if user is logged in
   private checkIfLogin(): void {
-    if (localStorage.getItem('loggedInUser')) {
+    if (sessionStorage.getItem('llud;')) {
       this.router.navigate(['home']);
     } else {
       this.router.navigate(['login']);
@@ -38,12 +40,11 @@ export class LoginComponent implements OnInit {
 
     this.authentication.authlogin(this.username, this.password).subscribe(
       (response: UserAccountDTO) => {
-        this.UserAccountDTO = response;
+        this.user = response;
 
-        if (this.UserAccountDTO != null) {
+        if (this.user != null) {
           this.loginError = false;
-          localStorage.setItem('loggedInUser', JSON.stringify(response));
-
+          this.comunicationService.sendUser(this.user);
           this.router.navigate(['home']);
 
         } else {

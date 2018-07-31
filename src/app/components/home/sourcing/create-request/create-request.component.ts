@@ -14,6 +14,7 @@ import { UserAccountDTO } from '../../../../models/userAccountDTO';
 import { Area } from '../../../../models/area';
 import { ConfigurationService } from '../../../../services/configuration/configuration.service';
 import { Detalles } from '../../../../models/detalles';
+import { ComunicationService } from '../../../../services/shared/comunication.service';
 
 
 @Component({
@@ -53,7 +54,8 @@ export class CreateRequestComponent implements OnInit {
   constructor(
     private requestService: RequestService,
     private datePipe: DatePipe,
-    private configurationService: ConfigurationService
+    private configurationService: ConfigurationService,
+    private comunicationService: ComunicationService
   ) {
 
   }
@@ -64,7 +66,9 @@ export class CreateRequestComponent implements OnInit {
     this.creationDate = new Date();
     this.startDate = new Date();
     this.today = new Date();
-    this.user = SessionUtils.getCurrentLoggedInUser();
+    this.comunicationService.getUser().subscribe(res => {
+      this.user = res;
+    });
     this.getAllAreas();
     this.request = new RequestDTO(null, this.user.id, this.creationDate, '', '', this.startDate, '', this.reqTechnicals, []);
   }

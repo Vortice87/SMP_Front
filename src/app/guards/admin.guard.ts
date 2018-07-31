@@ -3,24 +3,28 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from
 import { Observable } from 'rxjs/Observable';
 import { UserAccountDTO } from '../models/userAccountDTO';
 import { SessionUtils } from '../utils/session-utils/session-utils';
+import { ComunicationService } from '../services/shared/comunication.service';
 
 @Injectable()
 export class AdminGuard implements CanActivate {
 
-  constructor(private router: Router) {
+  constructor(private router: Router,
+              private comunicationService: ComunicationService) {
   }
 
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
 
-    var user: UserAccountDTO = SessionUtils.getCurrentLoggedInUser();
-    if (user.profile == "admin") {
-      return true;
-    }
 
-    this.router.navigate(["home"]);
-    return false;
+    return this.comunicationService.getUser().map( res => {
+      if (res !== null && res.profile === 'admin') {
+        return true;
+      }
+      this.router.navigate(['/home']);
+      return false;
+    });
+
 
   }
 }

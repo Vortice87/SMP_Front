@@ -8,25 +8,23 @@ import { ComunicationService } from '../services/shared/comunication.service';
 @Injectable()
 export class AdminGuard implements CanActivate {
 
-  private user: UserAccountDTO;
-
   constructor(private router: Router,
               private comunicationService: ComunicationService) {
-                this.comunicationService.getUser().subscribe( res => {
-                  this.user = res;
-                });
   }
 
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
 
-    if (this.user.profile === 'admin') {
-      return true;
-    }
 
-    this.router.navigate(['home']);
-    return false;
+    return this.comunicationService.getUser().map( res => {
+      if (res !== null && res.profile === 'admin') {
+        return true;
+      }
+      this.router.navigate(['/home']);
+      return false;
+    });
+
 
   }
 }

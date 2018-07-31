@@ -3,7 +3,7 @@
 
     <div class="col-md-12 row">
 
-      <form name="formNewRequest" #newrequest="ngForm" (ngSubmit)="createRequest()" novalidate>
+      <form name="formNewRequest" #newrequest="ngForm" novalidate>
 
         <fieldset class="form-group" *ngIf="widget==1">
           <div class="container">
@@ -142,7 +142,7 @@
         </fieldset>
 
         <div class="form-group animated fadeIn" *ngIf="widget == 2">
-          <button class="btn btn-primary" type="submit" [disabled]="reqTechnicals.length == 0">Crear</button>
+          <button class="btn btn-primary" type="submit" (click)="createRequest()" [disabled]="reqTechnicals.length == 0">Crear</button>
         </div>
         <button class="btn btn-secondary btn-next" type="button" (click)="previous()" [disabled]="widget == 1">
           <i class="fa fa-angle-double-left"></i>

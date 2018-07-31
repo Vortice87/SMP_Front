@@ -36,17 +36,6 @@ export class HomeComponent implements OnInit {
     } else {
       this.isAdmin = false;
     }
-
-    // if (SessionUtils.checkIfLogin()) {
-
-    //   if (SessionUtils.getCurrentLoggedInUser().profile === 'admin') {
-    //     this.isAdmin = true;
-    //   } else {
-    //     this.isAdmin = false;
-    //   }
-    // } else {
-    //   this.router.navigate(['/login']);
-    // }
   }
 }
 

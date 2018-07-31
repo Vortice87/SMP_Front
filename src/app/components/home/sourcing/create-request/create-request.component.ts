@@ -66,7 +66,6 @@ export class CreateRequestComponent implements OnInit {
     this.creationDate = new Date();
     this.startDate = new Date();
     this.today = new Date();
-    // this.user = SessionUtils.getCurrentLoggedInUser();
     this.comunicationService.getUser().subscribe(res => {
       this.user = res;
     });

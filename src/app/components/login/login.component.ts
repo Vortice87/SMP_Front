@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
 
   // Checks if user is logged in
   private checkIfLogin(): void {
-    if (localStorage.getItem('loggedInUser')) {
+    if (sessionStorage.getItem('llud;')) {
       this.router.navigate(['home']);
     } else {
       this.router.navigate(['login']);
@@ -44,10 +44,7 @@ export class LoginComponent implements OnInit {
 
         if (this.user != null) {
           this.loginError = false;
-
-          //localStorage.setItem('loggedInUser', JSON.stringify(response));
           this.comunicationService.sendUser(this.user);
-
           this.router.navigate(['home']);
 
         } else {

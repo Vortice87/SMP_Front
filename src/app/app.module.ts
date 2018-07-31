@@ -29,6 +29,7 @@ import { InputFileModule } from 'ngx-input-file';
 import { RequestComponent } from './components/home/sourcing/list-request/request/request.component';
 import { ConfigurationService } from './services/configuration/configuration.service';
 import { ComunicationService } from './services/shared/comunication.service';
+import { RequestDetailsComponent } from './components/home/sourcing/list-request/request-details/request-details/request-details.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { ComunicationService } from './services/shared/comunication.service';
     NewAccountComponent,
     CreateRequestComponent,
     ListRequestComponent,
-    RequestComponent
+    RequestComponent,
+    RequestDetailsComponent
     ],
   imports: [
     BrowserModule,

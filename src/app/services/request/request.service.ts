@@ -5,6 +5,7 @@ import { of } from 'rxjs/Observable/of';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { RequestDTO } from '../../models/request';
+import { UserAccountDTO } from '../../models/userAccountDTO';
 
 const options = {
   headers: new HttpHeaders(
@@ -16,6 +17,7 @@ const options = {
 export class RequestService {
 
   private urlRequest = 'http://localhost:8060/requests';
+  private usersURL = 'http://localhost:8060/users';
 
   constructor(private http: HttpClient) { }
 
@@ -31,6 +33,23 @@ export class RequestService {
 
     return this.http.get<RequestDTO[]>(this.urlRequest + '/all').catch(this.handError);
 
+  }
+
+  // getRequestById(requestId: number){
+  //   return this.http.get<RequestDTO>(this.urlRequest + '/requestById/'+ requestId).catch(this.handError);
+  // }
+
+  getRequestById(requestId: number){
+    return this.http.get<RequestDTO>(this.urlRequest + '/requestById/'+ requestId)
+            .map((res: any) => res)
+            .flatMap((request: any) => {
+              return this.http.get<UserAccountDTO>(this.usersURL + '/user/' + request.petitionerId)
+              .map((res: any) => {
+                let petitioner = res;
+                request.petitionerUser = petitioner;
+                return request;
+              });
+            });
   }
 
   handError(error: any) {

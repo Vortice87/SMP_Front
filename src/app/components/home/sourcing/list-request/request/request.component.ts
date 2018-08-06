@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { RequestDTO } from '../../../../../models/request';
 import { UserAccountDTOService } from '../../../../../services/user-accounts/user-accounts.service';
 import { UserAccountDTO } from '../../../../../models/userAccountDTO';
+import { RequestService } from '../../../../../services/request/request.service';
 
 @Component({
   selector: 'app-request',
@@ -11,18 +12,19 @@ import { UserAccountDTO } from '../../../../../models/userAccountDTO';
 export class RequestComponent implements OnInit {
 
   @Input()
+  public requestId: number;
   public request: RequestDTO;
   public petitioner: UserAccountDTO;
 
-  constructor(private userService: UserAccountDTOService) { }
+  constructor(private requestService: RequestService) { }
 
   ngOnInit() {
-    this.getPetitionerName(this.request.petitionerId);
+      this.getRequestById(this.requestId);
   }
 
-  private getPetitionerName(id: number) {
-    this.userService.getUserById(id).subscribe((user: UserAccountDTO) => {
-      this.petitioner = user;
+  private getRequestById(id: number) {
+    this.requestService.getRequestById(this.requestId).subscribe(res => {
+      this.request = res;
     });
   }
 

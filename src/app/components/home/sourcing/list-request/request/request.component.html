@@ -1,27 +1,26 @@
 <div class="col-md-12 margin-bottom">
-  <div class="row">
+  <div class="row" *ngIf="request != null">
     <div class="col-md-2 list">
-
       <p class="id">{{request.id}}</p>
-
     </div>
     <div class="col-md-9 request-inf list">
-
       <p class="request-date">
         {{request.creationDate}}
       </p>
       <p class="request-title">
         {{request.profile}}
       </p>
-      <p *ngIf="petitioner != null"class="requester">
-        {{petitioner.name}} {{petitioner.lastName}}
+      <p class="requester">
+        {{request.petitionerUser.name}} {{request.petitionerUser.lastName}}
       </p>
       <p class="request-description">
         {{request.descTask}}
       </p>
     </div>
     <div class="col-md-1 arrow">
-      <a routerLink="../request-details/{{request.id}}"><i class="fa fa-angle-double-right"></i></a>
+      <a routerLink="../request-details/{{request.id}}">
+        <i class="fa fa-angle-double-right"></i>
+      </a>
     </div>
   </div>
 </div>

@@ -5,7 +5,7 @@
 
       <form name="formNewRequest" #newrequest="ngForm" novalidate>
 
-        <fieldset class="form-group" *ngIf="widget==1">
+        <fieldset class="form-group" >
           <div class="container">
             <legend>DATOS GENERALES</legend>
             <div class="form-group row">
@@ -45,15 +45,12 @@
                   (ngModelChange)="assignStartDate($event)" min="{{request.creationDate | date:'yyyy-MM-dd'}}" required>
               </div>
             </div>
-
-            <button class="btn btn-secondary btn-previous" type="button" (click)="next()" [disabled]="!newrequest.valid">
-              <i class="fa fa-angle-double-right"></i>
-            </button>
           </div>
         </fieldset>
 
 
-        <fieldset class="form-group" *ngIf="widget==2">
+        <fieldset class="form-group" >
+          
           <div class="container ">
 
             <legend>REQUERIMIENTOS TÉCNICOS</legend>
@@ -141,13 +138,9 @@
 
         </fieldset>
 
-        <div class="form-group animated fadeIn" *ngIf="widget == 2">
+        <div class="form-group animated fadeIn">
           <button class="btn btn-primary" type="submit" (click)="createRequest()" [disabled]="reqTechnicals.length == 0">Crear</button>
         </div>
-        <button class="btn btn-secondary btn-next" type="button" (click)="previous()" [disabled]="widget == 1">
-          <i class="fa fa-angle-double-left"></i>
-        </button>
-
       </form>
     </div>
   </div>

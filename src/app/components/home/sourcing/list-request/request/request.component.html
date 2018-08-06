@@ -13,7 +13,7 @@
       <p class="request-title">
         {{request.profile}}
       </p>
-      <p class="requester">
+      <p *ngIf="petitioner != null"class="requester">
         {{petitioner.name}} {{petitioner.lastName}}
       </p>
       <p class="request-description">
@@ -21,7 +21,7 @@
       </p>
     </div>
     <div class="col-md-1 arrow">
-      <i class="fa fa-angle-double-right"></i>
+      <a routerLink="../request-details/{{request.id}}"><i class="fa fa-angle-double-right"></i></a>
     </div>
   </div>
 </div>

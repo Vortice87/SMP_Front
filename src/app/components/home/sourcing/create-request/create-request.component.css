@@ -8,19 +8,17 @@ h3{
     border-radius: 5px;
     background-color:white;
     box-shadow: 0 1px 4px 0 rgba(0,0,0,.14);
-    padding-bottom: 40px;
 }
 
 .header{
     border-top:4px solid #F7C03E;
-    padding-top: 15px;
-
-    
+    padding-top: 15px;   
 }
 
 p{
     color:grey;
 }
+
 .textAlign{
     text-align: center;
 }
@@ -56,10 +54,6 @@ textarea{
     resize: none;
 }
 
-.col-md-12{
-    height: 500px;
-}
-
 .btn-next{
     position: absolute;
     bottom: -25px;
@@ -81,9 +75,7 @@ fieldset{
 }
 
 .btn-primary {
-    position: absolute;
-    right: 15px;  
-    bottom: -25px;
+    margin-left: 15px;
 }
 
 select {
@@ -116,6 +108,7 @@ legend {
     border: 1px solid #ccc;
     height: 270px;
     overflow-y: scroll;
+    margin-bottom: 30px;
 }
 
 .form-control-list {

@@ -1,71 +1,128 @@
 h3{
     font-variant: small-caps;
     text-align: center;
+    color:white;
 }
 
-.box{
+.list{
+    border-radius: 5px;
     background-color:white;
     box-shadow: 0 1px 4px 0 rgba(0,0,0,.14);
 }
 
+.header{
+    border-top:4px solid #F7C03E;
+    padding-top: 15px;   
+}
 
-/* .id{
-    font-size: 20px;
-    padding: 50px;
-    margin-bottom: 0px;
-    background-color: #3C6598;
-    padding-bottom: 100px;
-    color: white;
+p{
+    color:grey;
+}
+
+.textAlign{
     text-align: center;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-} */
+}
+
+span{
+    color:red;
+}
+
+.required{
+    margin: 10px;
+}
+ 
+.btn-add{
+    border-radius: 50px;
+    background-color: #7ba9d0;
+    float: right;
+    padding: 2px 8px!important;
+    
+}
+
+
+.reqtech{
+    font-size: 10px;
+    color:black;
+}
 
 .no-margin-bottom{
     margin-bottom: 0px;
+}
+
+textarea{
+    height:100px;
+    resize: none;
+}
+
+.btn-next{
+    position: absolute;
+    bottom: -25px;
+    left: 30px;
+}
+
+.btn-previous{
+    position: absolute;
+    bottom: -25px;
+    right: 0;
+}
+
+fieldset{
+    overflow:hidden;
 }
 
 .container{
     width: 100%;
 }
 
-.request-title {
-    font-size: 20px;
-    font-weight: bold;
-    color: #3C6598;
-    padding-left: 20px!important;    
+.btn-primary {
+    margin-left: 15px;
 }
 
-.request-description {
-    padding-left: 20px!important;
+select {
+      text-align-last:center;
 }
 
-
-.request-date{
-    text-align: right;
-    padding-top: 5px;
-    margin-bottom: 8px;
-    padding-right: 20px!important;
+.align-center{
+    text-align: center;
+    padding-bottom: 20px;
 }
 
-.requester{
-    color: green;
-    padding-left: 20px!important;
+.padding-bottom{
+    padding-bottom: 15px;
 }
 
-.request-inf{
-    border-top:4px solid #F7C03E;
-    padding-bottom: 15px;  
-    padding-top: 15px;
-    border-top-right-radius : 5px;  
-    border-bottom-right-radius : 5px;  
+.padding-bottom-reqs{
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
-
-.margin-bottom{
-    padding-bottom: 50px;
+.header {
+    margin-bottom: 25px;
 }
 
-.creation-date {
-    float: right;
-}   
+legend {
+    margin-bottom: 50px;
+}
+
+.cuadro{
+    border: 1px solid #ccc;
+    height: 270px;
+    overflow-y: scroll;
+    margin-bottom: 30px;
+}
+
+.form-control-list {
+    height: 25px!important;
+    font-size: 14px!important;
+    text-align: center;
+
+}
+
+.pointer{
+    cursor: pointer;
+    font-size: 20px;    
+}
+
+a:hover{
+    color:red;
+}

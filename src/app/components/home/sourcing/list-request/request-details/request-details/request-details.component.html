@@ -1,9 +1,89 @@
-<div class="col-md-12 margin-bottom">
-  <div class="row">
+<div class="col-md-offset-1 col-md-10">
+  <div class="row animated fadeIn list header">
 
-    <div class="col-md-12 request-inf box">
-      <h1><span>5</span>TITULO DE LA SOLICITUD<span class="creation-date">FECHA CREACION</span></h1>
+    <div class="col-md-12 row" *ngIf="request != null">
+
+      <form name="formNewRequest" #newrequest="ngForm" novalidate>
+
+        <fieldset class="form-group">
+          <div class="container">
+            <legend>DATOS GENERALES</legend>
+            <div class="form-group row">
+              <label for="petitioner" class="col-md-3 col-form-label">SOLICITANTE</label>
+              <div class="col-md-9">
+                {{request.petitionerUser.name}} {{request.petitionerUser.lastName}}
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="title" class="col-md-3 col-form-label">PERFIL</label>
+              <div class="col-md-9">
+                {{request.profile}}
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="destask" class="col-md-3 col-form-label">DESCRIPCION ROL</label>
+              <div class="col-md-9">
+                {{request.descTask}}
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="nres" class="col-md-3 col-form-label">RECURSOS</label>
+              <div class="col-md-3">
+                {{request.nResources}}
+              </div>
+              <label for="expstartdate" class="col-md-3 col-form-label">FECHA DE INCORPORACION</label>
+              <div class="col-md-3">
+                {{request.startDate}}
+              </div>
+            </div>
+          </div>
+        </fieldset>
+
+
+        <fieldset class="form-group">
+          <div class="container ">
+            <legend>REQUERIMIENTOS TÉCNICOS</legend>
+            <div class="form-group row no-margin-bottom">
+
+              <div class="col-md-4 align-center">
+                <label for="area">AREA</label>
+              </div>
+              <div class="col-md-3 align-center">
+                <label for="detalle">DETALLE</label>
+              </div>
+              <div class="col-md-2 align-center">
+                <label for="expyearsreq">EXP. AÑOS</label>
+              </div>
+              <div class="col-md-2 align-center">
+                <label for="reqdes2">REQ / DES</label>
+              </div>
+            </div>
+            <div class="cuadro">
+              <div class="container">
+                <div *ngFor="let tech of request.reqTechs; let i = index">
+                  <div class="form-group row padding-bottom-reqs animated fadeIn">
+                    <div class="col-md-4 align-center-req">
+                      <input class="form-control form-control-list" name="tec" type="text" readonly [value]="tech.area" />
+                    </div>
+                    <div class="col-md-3">
+                      <input class="form-control form-control-list" name="tec" type="text" readonly [value]="tech.techscope" />
+                    </div>
+                    <div class="col-md-2">
+                      <input class="form-control form-control-list" name="tec" type="text" readonly [value]="tech.exp" />
+                    </div>
+                    <div class="col-md-3">
+                      <input class="form-control form-control-list" name="tec" type="text" readonly [value]="tech.reqdes" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      </form>
     </div>
-
   </div>
 </div>

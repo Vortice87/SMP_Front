@@ -1,10 +1,12 @@
 <div class="col-md-offset-1 col-md-10">
   <div class="row animated fadeIn list header">
-
-    <div class="col-md-12 row" *ngIf="request != null">
-
+    <div class="col-md-1 back">
+      <a routerLink="../../requests">
+        <i class="fa fa-angle-left"></i>
+      </a>
+    </div>
+    <div class="col-md-11 row" *ngIf="request != null">
       <form name="formNewRequest" #newrequest="ngForm" novalidate>
-
         <fieldset class="form-group">
           <div class="container">
             <legend>DATOS GENERALES</legend>
@@ -35,7 +37,7 @@
                 {{request.nResources}}
               </div>
               <label for="expstartdate" class="col-md-3 col-form-label">FECHA DE INCORPORACION</label>
-              <div class="col-md-3">
+              <div class="col-md-3 align-right">
                 {{request.startDate}}
               </div>
             </div>
@@ -83,6 +85,57 @@
             </div>
           </div>
         </fieldset>
+
+        <fieldset class="form-group">
+          <div class="container ">
+            <legend>CURRICULUMS</legend>
+            <div class="form-group row no-margin-bottom">
+              <div class="col-md-3 align-center">
+                <label for="area">CANDIDATO</label>
+              </div>
+              <div class="col-md-2 align-center">
+                <label for="detalle">ALTA</label>
+              </div>
+              <div class="col-md-3 align-center">
+                <label for="expyearsreq">COMENTARIO</label>
+              </div>
+              <div class="col-md-2 align-right">
+                  <label for="expyearsreq">ESTADO</label>
+                </div>
+            </div>
+            <div class="cuadro">
+              <div class="container">
+                <div *ngFor="let cv of cvs; let i = index">
+                  <div class="form-group row padding-bottom-reqs animated fadeIn">
+                    <div class="col-md-3 align-center-req">
+                      <input class="form-control form-control-list" name="tec" type="text" readonly [value]="cv.name" />
+                    </div>
+                    <div class="col-md-2">
+                      <input class="form-control form-control-list" name="tec" type="text" readonly [value]="cv.createdDate" />
+                    </div>
+                    <div class="col-md-4">
+                      <input class="form-control form-control-list" name="tec" type="text" readonly [value]="cv.comment" />
+                    </div>
+                    <div class="col-md-2">
+                      <input class="form-control form-control-list" name="tec" type="text" readonly [value]="cv.status" />
+                    </div>
+                    <div class="col-md-1">
+                        <a (click)="deleteRequeriment(i)">
+                            <i class="fa fa-eye pointer"></i>
+                        </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group animated fadeIn">
+                <button class="btn btn-primary" type="submit" (click)="createRequest()" [disabled]="reqTechnicals.length == 0">Añadir CV</button>
+            </div>
+
+          </div>
+        </fieldset>
+
       </form>
     </div>
   </div>

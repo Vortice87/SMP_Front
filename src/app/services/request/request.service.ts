@@ -35,18 +35,12 @@ export class RequestService {
 
   }
 
-  // getRequestById(requestId: number){
-  //   return this.http.get<RequestDTO>(this.urlRequest + '/requestById/'+ requestId).catch(this.handError);
-  // }
-
-  getRequestById(requestId: number){
-    return this.http.get<RequestDTO>(this.urlRequest + '/requestById/'+ requestId)
-            .map((res: any) => res)
+  getRequestById(requestId: number) {
+    return this.http.get<RequestDTO>(this.urlRequest + '/requestById/' + requestId)
             .flatMap((request: any) => {
               return this.http.get<UserAccountDTO>(this.usersURL + '/user/' + request.petitionerId)
               .map((res: any) => {
-                let petitioner = res;
-                request.petitionerUser = petitioner;
+                request.petitionerUser = res;
                 return request;
               });
             });

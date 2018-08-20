@@ -1,10 +1,12 @@
 <div class="col-md-offset-1 col-md-10">
   <div class="row animated fadeIn list header">
-
-    <div class="col-md-12 row" *ngIf="request != null">
-
+    <div class="col-md-1 back">
+        <a routerLink="../../requests">
+          <i class="fa fa-angle-left"></i>
+        </a>
+    </div>
+    <div class="col-md-11 row" *ngIf="request != null">
       <form name="formNewRequest" #newrequest="ngForm" novalidate>
-
         <fieldset class="form-group">
           <div class="container">
             <legend>DATOS GENERALES</legend>
@@ -35,7 +37,7 @@
                 {{request.nResources}}
               </div>
               <label for="expstartdate" class="col-md-3 col-form-label">FECHA DE INCORPORACION</label>
-              <div class="col-md-3">
+              <div class="col-md-3 align-right">
                 {{request.startDate}}
               </div>
             </div>

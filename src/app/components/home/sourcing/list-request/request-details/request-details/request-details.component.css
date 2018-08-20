@@ -126,3 +126,16 @@ legend {
 a:hover{
     color:red;
 }
+
+.align-right {
+    text-align: right;
+}
+
+i{
+    font-size: 35px;
+    cursor: pointer;
+}
+
+.back{
+    width: 4%!important;
+}

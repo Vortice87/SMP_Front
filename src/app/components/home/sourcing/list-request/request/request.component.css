@@ -9,28 +9,15 @@ h3{
 }
 
 .arrow{
-    background-color:transparent!important;
-    text-align: left; 
+    text-align: center; 
     color:#3C6598;
-    padding-top: 55px;
+    padding-top: 45px;
 }
 
 i{
-    font-size: 70px;
-    cursor: pointer;
-    transition: color 0.1s ease-out 0.1s;
-    -webkit-transition: all 0.2s ease-in-out;
-    -moz-transition: all 0.2s ease-in-out;
-    -o-transition: all 0.2s ease-in-out;
-    transition: all 0.2s ease-in-out;
-    
+    font-size: 50px;
+    cursor: pointer;    
 }
-
-i:hover{
-    color:rgb(96, 156, 230);
-    transform: translateX(20px);
-}
-
 
 .id{
     font-size: 20px;
@@ -95,6 +82,7 @@ i:hover{
     padding-top: 15px;
     border-top-right-radius : 5px;  
     border-bottom-right-radius : 5px;  
+    height: 177px;
 }
 
 .profile{
@@ -128,4 +116,8 @@ i:hover{
 
 .margin-bottom{
     padding-bottom: 50px;
+}
+
+a:hover{
+    color:red;
 }

@@ -1,0 +1,47 @@
+<div class="modal-header">
+  <div class="row">
+    <h3>Rellene los campos y adjunte el cv en formato pdf/word
+      <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </h3>
+  </div>
+</div>
+<div class="modal-body">
+  <form name="formNewRequest" #newcv="ngForm" novalidate>
+
+    <div class="form-group row">
+      <div class="col-md-2">
+        Nombre:
+      </div>
+      <div class="col-md-9">
+        <input type="text" class="form-control" name="cvname" [(ngModel)]="cv.name" #name="ngModel" required [ngStyle]="{ border: (!name.valid && name.dirty)  ?  '1px solid red': '' }"
+        />
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-md-2">
+        comentario
+      </div>
+      <div class="col-md-9">
+        <textarea class="form-control" name="comment" [(ngModel)]="cv.comentario" #comment="ngModel" required maxlength="50"
+          [ngStyle]="{ border: !comment.valid && comment.dirty  ?  '1px solid red': '' }"></textarea> </div>
+    </div>
+
+    <div class="form-group row bottom">
+      <div class="col-md-2">
+        Curriculum:
+      </div>
+      <div class="col-md-9">
+          <input type="file" class="form-control" name="file" [(ngModel)]="miarchivo" #file="ngModel" required/>
+       </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-md-2">
+        <button class="btn btn-primary" type="submit" (click)="uploadFile()" [disabled]="!newcv.valid">Subir</button>
+      </div>
+    </div>
+
+  </form>
+</div>

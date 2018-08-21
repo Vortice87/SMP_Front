@@ -1,0 +1,36 @@
+.align-center{
+    text-align: center!important;
+}
+
+.modal-header{
+    background-color:#3C6598;
+}
+
+.modal-body{
+    padding-left: 35px;
+    padding-top: 40px;
+}
+
+h3{
+    color:white;
+    padding-left: 20px;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+p{
+    color:white;
+}
+
+.pull-right{
+    margin-right:20px!important;
+}
+
+textarea{
+    height:100px;
+    resize: none;
+}
+
+.bottom{
+    padding-bottom: 40px;
+}

@@ -19,17 +19,20 @@ import { HomeComponent } from './components/home/home.component';
 import { NewAccountComponent } from './components/home/administration/new-account/new-account.component';
 import { AdminGuard } from './guards/admin.guard';
 import { CreateRequestComponent } from './components/home/sourcing/create-request/create-request.component';
+import { UploadCvComponent } from './components/home/sourcing/list-request/request-details/upload-cv/upload-cv.component';
 
 // import external modules
-import { NgxSelectModule } from 'ngx-select-ex';
 import { RequestService } from './services/request/request.service';
 import { ListRequestComponent } from './components/home/sourcing/list-request/list-request.component';
 
-import { InputFileModule } from 'ngx-input-file';
 import { RequestComponent } from './components/home/sourcing/list-request/request/request.component';
 import { ConfigurationService } from './services/configuration/configuration.service';
 import { ComunicationService } from './services/shared/comunication.service';
-import { RequestDetailsComponent } from './components/home/sourcing/list-request/request-details/request-details/request-details.component';
+import { RequestDetailsComponent } from './components/home/sourcing/list-request/request-details/request-details.component';
+
+// Application plugins
+import { BsModalRef } from 'ngx-bootstrap/modal';
+import { ModalModule } from 'ngx-bootstrap';
 
 
 @NgModule({
@@ -44,15 +47,15 @@ import { RequestDetailsComponent } from './components/home/sourcing/list-request
     CreateRequestComponent,
     ListRequestComponent,
     RequestComponent,
-    RequestDetailsComponent
+    RequestDetailsComponent,
+    UploadCvComponent
     ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    NgxSelectModule,
-    InputFileModule
+    ModalModule.forRoot(),
   ],
   providers: [
     HttpClient,
@@ -63,8 +66,12 @@ import { RequestDetailsComponent } from './components/home/sourcing/list-request
     RequestService,
     DatePipe,
     ConfigurationService,
-    ComunicationService
+    ComunicationService,
+    BsModalRef
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    UploadCvComponent
+  ]
 })
 export class AppModule { }

@@ -5,6 +5,7 @@ export class Cv {
         public requestId: number,
         public name: string,
         public createdDate: Date,
+        public filePath: string,
         public comment: string,
         public status: string
     ) {

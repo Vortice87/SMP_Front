@@ -33,15 +33,31 @@
         Curriculum:
       </div>
       <div class="col-md-9">
-          <input type="file" class="form-control" name="file" [(ngModel)]="miarchivo" #file="ngModel" required/>
+          <input type="file" (change)="onFileChange($event)" required />
+
        </div>
+
     </div>
 
     <div class="form-group row">
       <div class="col-md-2">
-        <button class="btn btn-primary" type="submit" (click)="uploadFile()" [disabled]="!newcv.valid">Subir</button>
+        <button class="btn btn-primary" type="submit" (click)="upload()" [disabled]="!newcv.valid">Subir</button>
       </div>
     </div>
 
   </form>
+
+  <!-- <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" placeholder="Bob" formControlName="name">
+    </div>
+    <div class="form-group">
+      <label for="avatar">Avatar</label>
+      <input type="file" id="avatar" (change)="onFileChange($event)" #fileInput>
+      <button type="button" class="btn btn-sm btn-default" (click)="clearFile()">clear file</button>
+    </div>
+    <button type="submit" [disabled]="form.invalid || loading" class="btn btn-success">Submit <i class="fa fa-spinner fa-spin fa-fw" *ngIf="loading"></i></button>
+  </form> -->
+
 </div>

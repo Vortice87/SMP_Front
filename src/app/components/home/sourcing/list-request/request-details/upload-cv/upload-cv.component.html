@@ -24,8 +24,7 @@
         comentario
       </div>
       <div class="col-md-9">
-        <textarea class="form-control" name="comment" [(ngModel)]="cv.comentario" #comment="ngModel" required maxlength="50"
-          [ngStyle]="{ border: !comment.valid && comment.dirty  ?  '1px solid red': '' }"></textarea> </div>
+        <textarea class="form-control" name="comment" [(ngModel)]="cv.comentario" #comment="ngModel" required maxlength="50" [ngStyle]="{ border: !comment.valid && comment.dirty  ?  '1px solid red': '' }"></textarea> </div>
     </div>
 
     <div class="form-group row bottom">
@@ -33,12 +32,9 @@
         Curriculum:
       </div>
       <div class="col-md-9">
-          <input type="file" (change)="onFileChange($event)" required />
-
-       </div>
-
+        <input type="file" class="form-control" name="file" #file="ngModel" required (change)="onFileChange($event)" />
+      </div>
     </div>
-
     <div class="form-group row">
       <div class="col-md-2">
         <button class="btn btn-primary" type="submit" (click)="upload()" [disabled]="!newcv.valid">Subir</button>

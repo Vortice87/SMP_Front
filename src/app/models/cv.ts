@@ -3,11 +3,13 @@ export class Cv {
     constructor(
         public cvId: number,
         public requestId: number,
-        public name: string,
+        public candidate: string,
         public createdDate: Date,
         public filePath: string,
         public comment: string,
-        public status: string
+        public status: string,
+        public fileName: string,
+        public fileType: string
     ) {
     }
 }

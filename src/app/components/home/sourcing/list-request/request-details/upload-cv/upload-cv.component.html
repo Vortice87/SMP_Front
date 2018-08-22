@@ -12,36 +12,41 @@
 
     <div class="form-group row">
       <div class="col-md-2">
-        Nombre:
+        Candidato:
       </div>
       <div class="col-md-9">
-        <input type="text" class="form-control" name="cvname" [(ngModel)]="cv.name" #name="ngModel" required [ngStyle]="{ border: (!name.valid && name.dirty)  ?  '1px solid red': '' }"
+        <input type="text" class="form-control" name="cvname" [(ngModel)]="cv.candidate" #name="ngModel" required [ngStyle]="{ border: (!name.valid && name.dirty)  ?  '1px solid red': '' }"
         />
       </div>
     </div>
     <div class="form-group row">
       <div class="col-md-2">
-        comentario
+        Comentario:
       </div>
       <div class="col-md-9">
-        <textarea class="form-control" name="comment" [(ngModel)]="cv.comentario" #comment="ngModel" required maxlength="50"
-          [ngStyle]="{ border: !comment.valid && comment.dirty  ?  '1px solid red': '' }"></textarea> </div>
+        <textarea class="form-control" name="comment" [(ngModel)]="cv.comment" #comment="ngModel" maxlength="50" ></textarea> </div>
     </div>
-
-    <div class="form-group row bottom">
+    <div class="form-group row">
       <div class="col-md-2">
         Curriculum:
       </div>
       <div class="col-md-9">
-          <input type="file" class="form-control" name="file" [(ngModel)]="miarchivo" #file="ngModel" required/>
-       </div>
+        <input type="file" class="form-control" name="photo" id="upload-photo" name="file" #file="ngModel" (change)="onFileChange($event)" ngModel required />
+        <label for="upload-photo"><i class="fa fa-cloud-upload"></i></label>
+        <span class="filename">{{filename}}</span>
+      </div>
+    </div>
+    <div class="form-group row" *ngIf="msgErrSupport">
+      <div class="col-md-offset-2 col-md-4 animated fadeIn">
+        <span class="err">Formato no soportado</span>
+      </div>
     </div>
 
     <div class="form-group row">
       <div class="col-md-2">
-        <button class="btn btn-primary" type="submit" (click)="uploadFile()" [disabled]="!newcv.valid">Subir</button>
+        <button class="btn btn-primary" type="submit" (click)="addCv()" [disabled]="!newcv.valid">Subir</button>
       </div>
     </div>
-
   </form>
+
 </div>

@@ -1,4 +1,4 @@
-import { UserAccountDTO } from '../../models/userAccountDTO'
+import { UserAccountDTO } from '../../models/userAccountDTO';
 
 export class SessionUtils {
 

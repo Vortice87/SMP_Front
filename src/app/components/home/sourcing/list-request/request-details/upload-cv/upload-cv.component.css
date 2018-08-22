@@ -31,6 +31,26 @@ textarea{
     resize: none;
 }
 
-.bottom{
-    padding-bottom: 40px;
+.err{
+    color: red;
+}
+
+label {
+    cursor: pointer;
+ }
+ 
+ i{
+     font-size: 50px;
+     color:#3C6598;
+ }
+ 
+ #upload-photo {
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+ }
+
+.filename{
+    color:black;
+    padding-left: 15px;
 }

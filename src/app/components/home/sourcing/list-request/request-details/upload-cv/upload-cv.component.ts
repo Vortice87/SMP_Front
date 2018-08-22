@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { Cv } from '../../../../../../models/cv';
+import { FormControl } from '@angular/forms';
+import { DateUtils } from '../../../../../../utils/date-utils';
 
 @Component({
   selector: 'app-upload-cv',
@@ -9,28 +11,47 @@ import { Cv } from '../../../../../../models/cv';
 })
 export class UploadCvComponent implements OnInit {
 
+  @ViewChild('file')
+  private myInput: FormControl;
   private cv: Cv;
   private requestId: number;
-  private dataFile: string;
-
+  private fileData: string;
+  private msgErrSupport: boolean;
+  public filename: string;
 
   ngOnInit() {
-    this.cv = new Cv(null, this.requestId, '', new Date(), null, '', '', '', '');
+    this.cv = new Cv(null, this.requestId, '', DateUtils.toStringDateBack(new Date), null, '', 'Nuevo', '', '', '');
+    this.msgErrSupport = false;
+    this.filename = 'Ningun fichero seleccionado';
   }
 
   constructor(public bsModalRef: BsModalRef
   ) { }
 
-  onFileChange(event) {
+  private onFileChange(event) {
     const reader = new FileReader();
     const file = event.target.files[0];
-    reader.readAsDataURL(file);
-    reader.onload = () => {
-      this.dataFile = reader.result.split(',')[1];
-      console.log(file.name.split('.')[0]);
-      console.log(file.type);
-      console.log(this.dataFile);
-    };
+    if (event.target.files && event.target.files.length > 0 &&
+      (file.type === 'application/pdf' || file.type === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+        || file.type === 'application/msword')) {
+      this.msgErrSupport = false;
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        this.cv.fileData = reader.result.split(',')[1];
+        this.cv.fileName = file.name.split('.')[0];
+        this.filename = file.name;
+        this.cv.fileType = file.type;
+      };
+    } else {
+      this.msgErrSupport = true;
+      this.filename = 'Ningun fichero seleccionado';
+      this.myInput.reset();
+    }
+  }
+
+  private addCv() {
+    console.log(this.cv);
+    this.bsModalRef.hide();
   }
 
 }

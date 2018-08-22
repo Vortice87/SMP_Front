@@ -90,18 +90,15 @@
           <div class="container ">
             <legend>CURRICULUMS</legend>
             <div class="form-group row no-margin-bottom">
-              <div class="col-md-3 align-center">
-                <label for="area">CANDIDATO</label>
+              <div class="col-md-4 align-center">
+                <label>CANDIDATO</label>
               </div>
-              <div class="col-md-2 align-center">
-                <label for="detalle">ALTA</label>
+              <div class="col-md-4 align-center">
+                <label>FECHA ALTA</label>
               </div>
-              <div class="col-md-3 align-center">
-                <label for="expyearsreq">COMENTARIO</label>
+              <div class="col-md-4 align-center">
+                <label>ESTADO</label>
               </div>
-              <div class="col-md-2 align-right">
-                  <label for="expyearsreq">ESTADO</label>
-                </div>
             </div>
             <div class="cuadro">
               <div class="container">
@@ -120,9 +117,9 @@
                       <input class="form-control form-control-list" name="tec" type="text" readonly [value]="cv.status" />
                     </div>
                     <div class="col-md-1">
-                        <a (click)="deleteRequeriment(i)">
-                            <i class="fa fa-eye pointer"></i>
-                        </a>
+                      <a (click)="deleteRequeriment(i)">
+                        <i class="fa fa-eye pointer"></i>
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -130,7 +127,7 @@
             </div>
 
             <div class="form-group animated fadeIn">
-                <button class="btn btn-primary" type="submit" (click)="uploadCv()" >Añadir CV</button>
+              <button class="btn btn-primary" type="submit" (click)="uploadCv()">Añadir CV</button>
             </div>
 
           </div>

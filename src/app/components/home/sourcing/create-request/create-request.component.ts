@@ -91,7 +91,14 @@ export class CreateRequestComponent implements OnInit {
         if (this.insertRequest) {
           swal({
             type: 'success',
-            title: 'Request has been created successfully',
+            title: 'Solicitud añadida correctamente',
+            showConfirmButton: false,
+            timer: 1500
+          });
+        } else {
+          swal({
+            type: 'error',
+            title: 'Se produjo un error al crear la solicitud',
             showConfirmButton: false,
             timer: 1500
           });

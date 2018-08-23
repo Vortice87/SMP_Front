@@ -3,6 +3,9 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
 import { Cv } from '../../../../../../models/cv';
 import { FormControl } from '@angular/forms';
 import { DateUtils } from '../../../../../../utils/date-utils';
+import { CvService } from '../../../../../../services/cv/cv.service';
+import swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-upload-cv',
@@ -20,12 +23,14 @@ export class UploadCvComponent implements OnInit {
   public filename: string;
 
   ngOnInit() {
-    this.cv = new Cv(null, this.requestId, '', DateUtils.toStringDateBack(new Date), null, '', 'Nuevo', '', '', '');
+    this.cv = new Cv(null, this.requestId, '', new Date(), null, '', 'Nuevo', '', '', '');
     this.msgErrSupport = false;
     this.filename = 'Ningun fichero seleccionado';
   }
 
-  constructor(public bsModalRef: BsModalRef
+  constructor(
+    private bsModalRef: BsModalRef,
+    private cvService: CvService
   ) { }
 
   private onFileChange(event) {
@@ -52,6 +57,23 @@ export class UploadCvComponent implements OnInit {
   private addCv() {
     console.log(this.cv);
     this.bsModalRef.hide();
+    this.cvService.addCandidate(this.cv).subscribe((res: boolean) => {
+      if (res) {
+        swal({
+          type: 'success',
+          title: 'Candidato añadido correctamente',
+          showConfirmButton: false,
+          timer: 1500
+        });
+      } else {
+        swal({
+          type: 'error',
+          title: 'Se produjo un error al añadir el candidato',
+          showConfirmButton: false,
+          timer: 1500
+        });
+      }
+    });
   }
 
 }

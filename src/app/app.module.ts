@@ -34,6 +34,7 @@ import { RequestDetailsComponent } from './components/home/sourcing/list-request
 // Application plugins
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { ModalModule } from 'ngx-bootstrap';
+import { CvService } from './services/cv/cv.service';
 
 
 @NgModule({
@@ -69,7 +70,8 @@ import { ModalModule } from 'ngx-bootstrap';
     DatePipe,
     ConfigurationService,
     ComunicationService,
-    BsModalRef
+    BsModalRef,
+    CvService
   ],
   bootstrap: [AppComponent],
   entryComponents: [

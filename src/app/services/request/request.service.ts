@@ -17,33 +17,28 @@ const options = {
 export class RequestService {
 
   private urlRequest = 'http://localhost:8060/requests';
-  private usersURL = 'http://localhost:8060/users';
+  private urlUser = 'http://localhost:8060/users';
 
   constructor(private http: HttpClient) { }
 
   createRequest(request: RequestDTO): Observable<boolean> {
-
     const body: any = JSON.stringify(request);
-
     return this.http.post<boolean>(this.urlRequest + '/create', JSON.parse(body), options).catch(this.handError);
-
   }
 
   getAllRequest(): Observable<RequestDTO[]> {
-
     return this.http.get<RequestDTO[]>(this.urlRequest + '/all').catch(this.handError);
-
   }
 
   getRequestById(requestId: number) {
     return this.http.get<RequestDTO>(this.urlRequest + '/requestById/' + requestId)
-            .flatMap((request: any) => {
-              return this.http.get<UserAccountDTO>(this.usersURL + '/user/' + request.petitionerId)
-              .map((res: any) => {
-                request.petitionerUser = res;
-                return request;
-              });
-            });
+      .flatMap((request: any) => {
+        return this.http.get<UserAccountDTO>(this.urlUser + '/user/' + request.petitionerId)
+          .map((res: any) => {
+            request.petitionerUser = res;
+            return request;
+          });
+      });
   }
 
   handError(error: any) {

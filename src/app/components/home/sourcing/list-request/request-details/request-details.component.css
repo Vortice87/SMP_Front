@@ -115,7 +115,6 @@ legend {
     height: 25px!important;
     font-size: 14px!important;
     text-align: center;
-
 }
 
 .pointer{
@@ -138,4 +137,8 @@ i{
 
 .back{
     width: 4%!important;
+}
+
+.padding-left {
+    padding-left: 65px;
 }

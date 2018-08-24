@@ -25,6 +25,10 @@ export class CvService {
     return this.http.post<boolean>(this.urlRequest + '/addcv', JSON.parse(body), options).catch(this.handError);
   }
 
+  downloadCv(cvId: number) {
+    return this.http.get(this.urlRequest + '/findCvById/' + cvId).catch(this.handError);
+  }
+
   handError(error: any) {
     console.log('Error: ' + error);
     return Observable.throw(error);

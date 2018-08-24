@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, Output, EventEmitter } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { Cv } from '../../../../../../models/cv';
 import { FormControl } from '@angular/forms';
@@ -14,6 +14,7 @@ import swal from 'sweetalert2';
 })
 export class UploadCvComponent implements OnInit {
 
+  @Output() public refreshRequest: EventEmitter<any> = new EventEmitter<any>();
   @ViewChild('file')
   private myInput: FormControl;
   private cv: Cv;
@@ -43,7 +44,7 @@ export class UploadCvComponent implements OnInit {
       reader.readAsDataURL(file);
       reader.onload = () => {
         this.cv.fileData = reader.result.split(',')[1];
-        this.cv.fileName = file.name.split('.')[0];
+        this.cv.fileName = file.name;
         this.filename = file.name;
         this.cv.fileType = file.type;
       };
@@ -73,6 +74,8 @@ export class UploadCvComponent implements OnInit {
           timer: 1500
         });
       }
+      this.refreshRequest.emit(true);
+
     });
   }
 

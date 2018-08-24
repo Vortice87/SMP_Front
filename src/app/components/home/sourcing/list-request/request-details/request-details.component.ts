@@ -7,6 +7,7 @@ import { Cv } from '../../../../../models/cv';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { UploadCvComponent } from './upload-cv/upload-cv.component';
+import { CvService } from '../../../../../services/cv/cv.service';
 
 
 @Component({
@@ -19,13 +20,13 @@ export class RequestDetailsComponent implements OnInit {
   public requestId: number;
   public bsModalRef: BsModalRef;
   public request: RequestDTO;
-  private cvs: Array<Cv> = [];
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private requestService: RequestService,
-    private modalService: BsModalService
+    private modalService: BsModalService,
+    private cvService: CvService
   ) { }
 
   ngOnInit() {
@@ -35,8 +36,6 @@ export class RequestDetailsComponent implements OnInit {
           this.loadRequestDetails(this.requestId);
       }
    });
-  //  const cv1 = new Cv(1, 1 , 'Miguel Sabillon', new Date(), new File(null, null, null), 'comentario', 'Nuevo');
-  //  this.cvs.push(cv1);
   }
 
   public uploadCv(): void {
@@ -44,7 +43,11 @@ export class RequestDetailsComponent implements OnInit {
       requestId: this.requestId
     };
     this.bsModalRef = this.modalService.show(UploadCvComponent, { class: 'modal-md', initialState });
-    // this.bsModalRef.content
+    this.bsModalRef.content.refreshRequest.subscribe((value) => {
+    if (value) {
+      this.loadRequestDetails(this.requestId);
+    }
+  });
   }
 
   private loadRequestDetails(id: number) {
@@ -52,6 +55,12 @@ export class RequestDetailsComponent implements OnInit {
        this.request = res;
        console.log(this.request);
      });
+  }
+
+  private downloadCv(cv: Cv) {
+    this.cvService.downloadCv(cv.cvId).subscribe(res => {
+
+    });
   }
 
 }

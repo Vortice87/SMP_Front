@@ -105,7 +105,7 @@
                 <div *ngFor="let cv of request.cvs; let i = index">
                   <div class="form-group row padding-bottom-reqs animated fadeIn">
                     <div class="col-md-4">
-                      <input class="form-control form-control-list" name="candidate" type="text" readonly [value]="cv.candidate" />
+                      <input class="form-control form-control-list clickable" name="candidate" type="text" readonly [value]="cv.candidate" />
                     </div>
                     <div class="col-md-4">
                       <input class="form-control form-control-list" name="createdDate" type="text" readonly [value]="cv.createdDate" />

@@ -142,3 +142,11 @@ i{
 .padding-left {
     padding-left: 65px;
 }
+
+.clickable{
+    cursor: pointer;
+}
+.clickable:hover{
+    background-color: #2A6290;
+    color:white;
+}

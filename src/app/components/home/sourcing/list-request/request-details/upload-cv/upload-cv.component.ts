@@ -24,7 +24,7 @@ export class UploadCvComponent implements OnInit {
   public filename: string;
 
   ngOnInit() {
-    this.cv = new Cv(null, this.requestId, '', new Date(), null, '', 'Nuevo', '', '', '');
+    this.cv = new Cv(null, this.requestId, '', new Date(), null, [], 'Nuevo', '', '', '');
     this.msgErrSupport = false;
     this.filename = 'Ningun fichero seleccionado';
   }

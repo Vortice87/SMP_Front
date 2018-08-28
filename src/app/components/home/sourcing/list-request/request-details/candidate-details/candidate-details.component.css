@@ -9,6 +9,12 @@
 .modal-body{
     padding-left: 35px;
     padding-top: 40px;
+    padding-right: 35px;
+}
+
+.header{
+    border-top:4px solid #F7C03E;
+    padding-top: 15px;   
 }
 
 h3{
@@ -18,13 +24,8 @@ h3{
     margin-top: 0;
 }
 
-.header{
-    border-top:4px solid #F7C03E;
-    padding-top: 15px;   
-}
-
-p{
-    color:white;
+span{
+    color:black;
 }
 
 .pull-right{
@@ -44,18 +45,8 @@ label {
     cursor: pointer;
  }
  
- i{
-     font-size: 50px;
-     color:#3C6598;
+
+ .text-align-right{
+     text-align: right;
  }
  
- #upload-photo {
-    opacity: 0;
-    position: absolute;
-    z-index: -1;
- }
-
-.filename{
-    color:black;
-    padding-left: 15px;
-}

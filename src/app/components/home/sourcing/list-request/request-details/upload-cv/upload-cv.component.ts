@@ -24,7 +24,7 @@ export class UploadCvComponent implements OnInit {
   public filename: string;
 
   ngOnInit() {
-    this.cv = new Cv(null, this.requestId, '', new Date(), null, '', 'Nuevo', '', '', '');
+    this.cv = new Cv(null, this.requestId, '', new Date(), null, [], 'Nuevo', '', '', '');
     this.msgErrSupport = false;
     this.filename = 'Ningun fichero seleccionado';
   }
@@ -69,7 +69,7 @@ export class UploadCvComponent implements OnInit {
       } else {
         swal({
           type: 'error',
-          title: 'Se produjo un error al añadir el candidato',
+          title: 'Se produjo un error al añadir el candidato. El candidato ya existe.',
           showConfirmButton: false,
           timer: 1500
         });

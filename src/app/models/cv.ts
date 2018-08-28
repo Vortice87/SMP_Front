@@ -6,7 +6,7 @@ export class Cv {
         public candidate: string,
         public createdDate: Date,
         public filePath: string,
-        public comment: string,
+        public comment: Array<any>,
         public status: string,
         public fileName: string,
         public fileType: string,

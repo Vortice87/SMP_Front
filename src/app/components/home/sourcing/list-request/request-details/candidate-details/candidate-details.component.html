@@ -1,0 +1,57 @@
+<div class="modal-header header">
+  <div class="row">
+    <h3>Datos del candidato
+      <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </h3>
+  </div>
+</div>
+<div class="modal-body">
+  <form name="formCv" #cv="ngForm" novalidate>
+
+    <div class="form-group row">
+      <div class="col-md-2">
+        Candidato:
+      </div>
+      <div class="col-md-6">
+        {{currentCv.candidate}}
+      </div>
+      <div class="col-md-2 text-align-right">
+        Fecha de Alta:
+      </div>
+      <div class="col-md-2 text-align-right">
+        {{currentCv.createdDate}}
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-md-2">
+        Estado:
+      </div>
+      <div class="col-md-6">
+        {{currentCv.status}}
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-md-12">
+        <span>Comentarios:</span>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-md-12">
+        <span>Agregar comentario:</span>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-md-6">
+        <button class="btn btn-primary" type="submit" (click)="addCv()" [disabled]="!cv.valid">Descartar</button>
+      </div>
+      <div class="col-md-6 text-align-right">
+          <button class="btn btn-primary" type="submit" (click)="addCv()" [disabled]="!cv.valid">Revisado</button>
+        </div>
+    </div>
+
+  </form>
+
+</div>

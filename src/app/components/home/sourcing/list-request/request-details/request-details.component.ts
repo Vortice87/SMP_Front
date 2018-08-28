@@ -8,6 +8,9 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { UploadCvComponent } from './upload-cv/upload-cv.component';
 import { CvService } from '../../../../../services/cv/cv.service';
+import { ComunicationService } from '../../../../../services/shared/comunication.service';
+import { UserAccountDTO } from '../../../../../models/userAccountDTO';
+import { CandidateDetailsComponent } from './candidate-details/candidate-details.component';
 
 
 @Component({
@@ -20,13 +23,15 @@ export class RequestDetailsComponent implements OnInit {
   public requestId: number;
   public bsModalRef: BsModalRef;
   public request: RequestDTO;
+  public user: UserAccountDTO;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private requestService: RequestService,
     private modalService: BsModalService,
-    private cvService: CvService
+    private cvService: CvService,
+    private comunicationService: ComunicationService
   ) { }
 
   ngOnInit() {
@@ -36,9 +41,12 @@ export class RequestDetailsComponent implements OnInit {
           this.loadRequestDetails(this.requestId);
       }
    });
+   this.comunicationService.getUser().subscribe(res => {
+    this.user = res;
+  });
   }
 
-  public uploadCv(): void {
+  private uploadCv(): void {
     const initialState = {
       requestId: this.requestId
     };
@@ -50,17 +58,27 @@ export class RequestDetailsComponent implements OnInit {
   });
   }
 
+  private seeCandidate(currentCv: Cv): void {
+    const initialState = {
+      cv: currentCv
+    };
+    this.bsModalRef = this.modalService.show(CandidateDetailsComponent, { class: 'modal-lg', initialState });
+    this.bsModalRef.content.refreshRequest.subscribe((value) => {
+      if (value) {
+        this.loadRequestDetails(this.requestId);
+      }
+    });
+
+  }
+
   private loadRequestDetails(id: number) {
      this.requestService.getRequestById(id).subscribe(res => {
        this.request = res;
-       console.log(this.request);
      });
   }
 
   private downloadCv(cv: Cv) {
-    this.cvService.downloadCv(cv.cvId).subscribe(res => {
-
-    });
+    window.open('http://localhost:8060/requests/findCvById/' + cv.cvId, '_blank');
   }
 
 }

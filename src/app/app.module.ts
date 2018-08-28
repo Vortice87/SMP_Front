@@ -35,6 +35,7 @@ import { RequestDetailsComponent } from './components/home/sourcing/list-request
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { ModalModule } from 'ngx-bootstrap';
 import { CvService } from './services/cv/cv.service';
+import { CandidateDetailsComponent } from './components/home/sourcing/list-request/request-details/candidate-details/candidate-details.component';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { CvService } from './services/cv/cv.service';
     ListRequestComponent,
     RequestComponent,
     RequestDetailsComponent,
-    UploadCvComponent
+    UploadCvComponent,
+    CandidateDetailsComponent
     ],
   imports: [
     BrowserModule,
@@ -75,7 +77,8 @@ import { CvService } from './services/cv/cv.service';
   ],
   bootstrap: [AppComponent],
   entryComponents: [
-    UploadCvComponent
+    UploadCvComponent,
+    CandidateDetailsComponent
   ]
 })
 export class AppModule { }

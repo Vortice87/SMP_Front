@@ -10,6 +10,7 @@ import { UploadCvComponent } from './upload-cv/upload-cv.component';
 import { CvService } from '../../../../../services/cv/cv.service';
 import { ComunicationService } from '../../../../../services/shared/comunication.service';
 import { UserAccountDTO } from '../../../../../models/userAccountDTO';
+import { CandidateDetailsComponent } from './candidate-details/candidate-details.component';
 
 
 @Component({
@@ -45,7 +46,7 @@ export class RequestDetailsComponent implements OnInit {
   });
   }
 
-  public uploadCv(): void {
+  private uploadCv(): void {
     const initialState = {
       requestId: this.requestId
     };
@@ -57,11 +58,22 @@ export class RequestDetailsComponent implements OnInit {
   });
   }
 
+  private seeCandidate(currentCv: Cv): void {
+    const initialState = {
+      cv: currentCv
+    };
+    this.bsModalRef = this.modalService.show(CandidateDetailsComponent, { class: 'modal-lg', initialState });
+    this.bsModalRef.content.refreshRequest.subscribe((value) => {
+      if (value) {
+        this.loadRequestDetails(this.requestId);
+      }
+    });
+
+  }
+
   private loadRequestDetails(id: number) {
      this.requestService.getRequestById(id).subscribe(res => {
        this.request = res;
-       console.log('Datos de la request');
-       console.log(this.request);
      });
   }
 

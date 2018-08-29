@@ -32,26 +32,37 @@
         {{currentCv.status}}
       </div>
     </div>
+
+    <pdf-viewer [src]="pdfSrc" [render-text]="true" style="display: block;"></pdf-viewer>
+
+
     <div class="form-group row">
       <div class="col-md-12">
-        <span>Comentarios:</span>
+          <fieldset class="form-group" >
+                  <legend>COMENTARIOS</legend>   
+        </fieldset>
       </div>
     </div>
+
     <div class="form-group row">
-      <div class="col-md-12">
-        <span>Agregar comentario:</span>
+        <div class="col-md-12">
+            <fieldset class="form-group" >
+                    <legend>Agregar comentario:</legend>   
+                    <textarea></textarea>
+          </fieldset>
+        </div>
       </div>
-    </div>
 
     <div class="form-group row">
       <div class="col-md-6">
         <button class="btn btn-primary" type="submit" (click)="addCv()" [disabled]="!cv.valid">Descartar</button>
       </div>
       <div class="col-md-6 text-align-right">
-          <button class="btn btn-primary" type="submit" (click)="addCv()" [disabled]="!cv.valid">Revisado</button>
-        </div>
+        <button class="btn btn-primary" type="submit" (click)="addCv()" [disabled]="!cv.valid">Revisado</button>
+      </div>
     </div>
 
   </form>
+
 
 </div>

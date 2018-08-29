@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Cv } from '../../../../../../models/cv';
 import { BsModalRef } from 'ngx-bootstrap';
 import swal from 'sweetalert2';
+import { RequestService } from '../../../../../../services/request/request.service';
 
 @Component({
   selector: 'app-candidate-details',
@@ -9,6 +10,8 @@ import swal from 'sweetalert2';
   styleUrls: ['./candidate-details.component.css']
 })
 export class CandidateDetailsComponent implements OnInit {
+
+  pdfSrc: string = 'http://localhost:8060/requests/findCvById/1';
 
   @Output()
   public refreshRequest: EventEmitter<any> = new EventEmitter<any>();

@@ -41,6 +41,10 @@ export class RequestService {
       });
   }
 
+  // findCvById(cvId: number) {
+  //   return this.http.get<RequestDTO>(this.urlRequest + '/findCvById/' + cvId).
+  // }
+
   handError(error: any) {
     console.log('error: ' + error);
     return Observable.throw(error);

@@ -25,7 +25,6 @@ import { UploadCvComponent } from './components/home/sourcing/list-request/reque
 // import external modules
 import { RequestService } from './services/request/request.service';
 import { ListRequestComponent } from './components/home/sourcing/list-request/list-request.component';
-
 import { RequestComponent } from './components/home/sourcing/list-request/request/request.component';
 import { ConfigurationService } from './services/configuration/configuration.service';
 import { ComunicationService } from './services/shared/comunication.service';
@@ -34,6 +33,7 @@ import { RequestDetailsComponent } from './components/home/sourcing/list-request
 // Application plugins
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { ModalModule } from 'ngx-bootstrap';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { CvService } from './services/cv/cv.service';
 import { CandidateDetailsComponent } from './components/home/sourcing/list-request/request-details/candidate-details/candidate-details.component';
 
@@ -61,6 +61,7 @@ import { CandidateDetailsComponent } from './components/home/sourcing/list-reque
     ReactiveFormsModule,
     HttpClientModule,
     ModalModule.forRoot(),
+    PdfViewerModule
   ],
   providers: [
     HttpClient,

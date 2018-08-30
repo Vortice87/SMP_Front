@@ -32,8 +32,10 @@ span{
     margin-right:20px!important;
 }
 
-textarea{
-    height:100px;
+textarea {
+    height: 100px;
+    width: 100%;
+    border-radius: 10px;
     resize: none;
 }
 

@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { of } from 'rxjs/Observable/of';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-import { Cv } from '../../models/cv';
+import { Candidate } from '../../models/candidate';
 
 const options = {
   headers: new HttpHeaders(
@@ -13,20 +13,20 @@ const options = {
 };
 
 @Injectable()
-export class CvService {
+export class CandidateService {
 
   private urlRequest = 'http://localhost:8060/requests';
 
   constructor(private http: HttpClient) { }
 
-  addCandidate(cv: Cv): Observable<boolean> {
-    const body: any = JSON.stringify(cv);
+  addCandidate(candidate: Candidate): Observable<boolean> {
+    const body: any = JSON.stringify(candidate);
 
-    return this.http.post<boolean>(this.urlRequest + '/addcv', JSON.parse(body), options).catch(this.handError);
+    return this.http.post<boolean>(this.urlRequest + '/addCandidate', JSON.parse(body), options).catch(this.handError);
   }
 
-  downloadCv(cvId: number) {
-    return this.http.get(this.urlRequest + '/findCvById/' + cvId).catch(this.handError);
+  downloadCandidate(candidateId: number) {
+    return this.http.get(this.urlRequest + '/findCandidateById/' + candidateId).catch(this.handError);
   }
 
   handError(error: any) {

@@ -41,8 +41,8 @@ export class RequestService {
       });
   }
 
-  // findCvById(cvId: number) {
-  //   return this.http.get<RequestDTO>(this.urlRequest + '/findCvById/' + cvId).
+  // findCandidateById(CandidateId: number) {
+  //   return this.http.get<RequestDTO>(this.urlRequest + '/findCandidateById/' + CandidateId).
   // }
 
   handError(error: any) {

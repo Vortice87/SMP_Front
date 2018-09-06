@@ -1,37 +1,37 @@
 import { Component, OnInit, ElementRef, ViewChild, Output, EventEmitter } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
-import { Cv } from '../../../../../../models/cv';
+import { Candidate } from '../../../../../../models/Candidate';
 import { FormControl } from '@angular/forms';
 import { DateUtils } from '../../../../../../utils/date-utils';
-import { CvService } from '../../../../../../services/cv/cv.service';
+import { CandidateService } from '../../../../../../services/candidate/candidate.service';
 import swal from 'sweetalert2';
 
 
 @Component({
-  selector: 'app-upload-cv',
-  templateUrl: './upload-cv.component.html',
-  styleUrls: ['./upload-cv.component.css']
+  selector: 'app-upload-candidate',
+  templateUrl: './upload-candidate.component.html',
+  styleUrls: ['./upload-candidate.component.css']
 })
-export class UploadCvComponent implements OnInit {
+export class UploadCandidateComponent implements OnInit {
 
   @Output() public refreshRequest: EventEmitter<any> = new EventEmitter<any>();
   @ViewChild('file')
   private myInput: FormControl;
-  private cv: Cv;
+  private candidate: Candidate;
   private requestId: number;
   private fileData: string;
   private msgErrSupport: boolean;
   public filename: string;
 
   ngOnInit() {
-    this.cv = new Cv(null, this.requestId, '', new Date(), null, [], 'Nuevo', '', '', '');
+    this.candidate = new Candidate(null, this.requestId, '', new Date(), null, [], 'Nuevo', '', '', '');
     this.msgErrSupport = false;
     this.filename = 'Ningun fichero seleccionado';
   }
 
   constructor(
     private bsModalRef: BsModalRef,
-    private cvService: CvService
+    private candidateService: CandidateService
   ) { }
 
   private onFileChange(event) {
@@ -43,10 +43,10 @@ export class UploadCvComponent implements OnInit {
       this.msgErrSupport = false;
       reader.readAsDataURL(file);
       reader.onload = () => {
-        this.cv.fileData = reader.result.split(',')[1];
-        this.cv.fileName = file.name;
+        this.candidate.fileData = reader.result.split(',')[1];
+        this.candidate.fileName = file.name;
         this.filename = file.name;
-        this.cv.fileType = file.type;
+        this.candidate.fileType = file.type;
       };
     } else {
       this.msgErrSupport = true;
@@ -56,9 +56,9 @@ export class UploadCvComponent implements OnInit {
   }
 
   private addCv() {
-    console.log(this.cv);
+    console.log(this.candidate);
     this.bsModalRef.hide();
-    this.cvService.addCandidate(this.cv).subscribe((res: boolean) => {
+    this.candidateService.addCandidate(this.candidate).subscribe((res: boolean) => {
       if (res) {
         swal({
           type: 'success',

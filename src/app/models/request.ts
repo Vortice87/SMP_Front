@@ -1,5 +1,5 @@
 import { ReqTechnical } from './reqTechnical';
-import { Cv } from './cv';
+import { Candidate } from './Candidate';
 import { UserAccountDTO } from './userAccountDTO';
 
 export class RequestDTO {
@@ -13,6 +13,6 @@ export class RequestDTO {
         public startDate: Date,
         public descTask: string,
         public reqTechs: Array<ReqTechnical>,
-        public cvs: Array<Cv>
+        public candidates: Array<Candidate>
     ) { }
 }

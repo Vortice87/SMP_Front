@@ -1,9 +1,9 @@
-export class Cv {
+export class Candidate {
 
     constructor(
-        public cvId: number,
+        public candidateId: number,
         public requestId: number,
-        public candidate: string,
+        public name: string,
         public createdDate: Date,
         public filePath: string,
         public comment: Array<any>,

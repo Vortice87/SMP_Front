@@ -20,7 +20,7 @@ import { HomeComponent } from './components/home/home.component';
 import { NewAccountComponent } from './components/home/administration/new-account/new-account.component';
 import { AdminGuard } from './guards/admin.guard';
 import { CreateRequestComponent } from './components/home/sourcing/create-request/create-request.component';
-import { UploadCvComponent } from './components/home/sourcing/list-request/request-details/upload-cv/upload-cv.component';
+import { UploadCandidateComponent } from './components/home/sourcing/list-request/request-details/upload-candidate/upload-candidate.component';
 
 // import external modules
 import { RequestService } from './services/request/request.service';
@@ -34,7 +34,7 @@ import { RequestDetailsComponent } from './components/home/sourcing/list-request
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { ModalModule } from 'ngx-bootstrap';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
-import { CvService } from './services/cv/cv.service';
+import { CandidateService } from './services/candidate/candidate.service';
 import { CandidateDetailsComponent } from './components/home/sourcing/list-request/request-details/candidate-details/candidate-details.component';
 
 
@@ -51,7 +51,7 @@ import { CandidateDetailsComponent } from './components/home/sourcing/list-reque
     ListRequestComponent,
     RequestComponent,
     RequestDetailsComponent,
-    UploadCvComponent,
+    UploadCandidateComponent,
     CandidateDetailsComponent
     ],
   imports: [
@@ -74,11 +74,11 @@ import { CandidateDetailsComponent } from './components/home/sourcing/list-reque
     ConfigurationService,
     ComunicationService,
     BsModalRef,
-    CvService
+    CandidateService
   ],
   bootstrap: [AppComponent],
   entryComponents: [
-    UploadCvComponent,
+    UploadCandidateComponent,
     CandidateDetailsComponent
   ]
 })

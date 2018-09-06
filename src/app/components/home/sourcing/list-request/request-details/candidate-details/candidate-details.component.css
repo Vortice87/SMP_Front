@@ -47,8 +47,19 @@ label {
     cursor: pointer;
  }
  
-
  .text-align-right{
      text-align: right;
  }
+
+ .btn-discard:hover{
+        color: #fff;
+        background-color: #902828;
+        border-color: #742020;
+ }
+
+ .btn-discard {
+    color: #fff;
+    background-color: #fb1a1a;
+    border-color: #b54545;;
+}
  

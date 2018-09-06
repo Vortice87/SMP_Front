@@ -99,26 +99,21 @@
             </div>
             <div class="cuadro">
               <div class="container">
-                <div *ngFor="let cv of request.cvs; let i = index">
+                <div *ngFor="let candidate of request.candidates; let i = index">
                   <div class="form-group row padding-bottom-reqs animated fadeIn">
                     <div class="col-md-4">
-                      <input class="form-control form-control-list clickable" name="candidate" type="text" readonly [value]="cv.candidate" (click)="seeCandidate(cv)"/>
+                      <input class="form-control form-control-list clickable" name="candidate" type="text" readonly [value]="candidate.name" (click)="seeCandidate(candidate)"/>
                     </div>
-                    <div class="col-md-7">
-                      <input class="form-control  form-control-list" name="status" type="text" readonly [value]="cv.status" />
-                    </div>
-                    <div class="col-md-1">
-                      <a (click)="downloadCv(cv)">
-                        <i class="fa fa-eye pointer"></i>
-                      </a>
+                    <div class="col-md-8">
+                      <input class="form-control  form-control-list" name="status" type="text" readonly [value]="candidate.status" />
                     </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div class="form-group animated fadeIn">
-              <button class="btn btn-primary" type="submit" (click)="uploadCv()">Añadir CV</button>
+            <div class="form-group animated fadeIn" *ngIf="user.profile == 'admin' || user.profile == 'sourcing'">
+              <button class="btn btn-primary" type="submit" (click)="uploadCandidate()">Añadir candidato</button>
             </div>
 
           </div>

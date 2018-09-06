@@ -1,8 +1,10 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { Cv } from '../../../../../../models/cv';
+import { Candidate } from '../../../../../../models/candidate';
 import { BsModalRef } from 'ngx-bootstrap';
 import swal from 'sweetalert2';
 import { RequestService } from '../../../../../../services/request/request.service';
+import { UserAccountDTO } from '../../../../../../models/userAccountDTO';
+import { ComunicationService } from '../../../../../../services/shared/comunication.service';
 
 @Component({
   selector: 'app-candidate-details',
@@ -11,24 +13,29 @@ import { RequestService } from '../../../../../../services/request/request.servi
 })
 export class CandidateDetailsComponent implements OnInit {
 
-  pdfSrc: string = 'http://localhost:8060/requests/findCvById/1';
-
   @Output()
   public refreshRequest: EventEmitter<any> = new EventEmitter<any>();
-  public cv: Cv;
-  public currentCv: Cv;
+  public candidate: Candidate;
+  public currentCandidate: Candidate;
+  public pdfSrc: string;
+  public user: UserAccountDTO;
+
   constructor(
-    private bsModalRef: BsModalRef
+    private bsModalRef: BsModalRef,
+    private comunicationService: ComunicationService
   ) { }
 
   ngOnInit() {
-    this.currentCv = this.cv;
-    console.log(this.currentCv);
+    this.currentCandidate = this.candidate;
+    this.pdfSrc = 'http://localhost:8060/requests/findCvById/' + this.currentCandidate.candidateId;
+    this.comunicationService.getUser().subscribe(res => {
+      this.user = res;
+    });
   }
 
   private modifyStatus() {
     this.bsModalRef.hide();
-    // this.cvService.addCandidate(this.cv).subscribe((res: boolean) => {
+    // this.CandidateService.addCandidate(this.Candidate).subscribe((res: boolean) => {
     //   if (res) {
     //     swal({
     //       type: 'success',
@@ -47,6 +54,10 @@ export class CandidateDetailsComponent implements OnInit {
     //   this.refreshRequest.emit(true);
 
     // });
+  }
+
+  private discardCandidate() {
+
   }
 
 }

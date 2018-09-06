@@ -8,14 +8,14 @@
   </div>
 </div>
 <div class="modal-body">
-  <form name="formNewRequest" #newcv="ngForm" novalidate>
+  <form name="formNewRequest" #newCandidate="ngForm" novalidate>
 
     <div class="form-group row">
       <div class="col-md-2">
         Candidato:
       </div>
       <div class="col-md-6">
-        <input type="text" class="form-control" name="cvname" [(ngModel)]="cv.candidate" #name="ngModel" required [ngStyle]="{ border: (!name.valid && name.dirty)  ?  '1px solid red': '' }"
+        <input type="text" class="form-control" name="Candidatename" [(ngModel)]="candidate.name" #name="ngModel" required [ngStyle]="{ border: (!name.valid && name.dirty)  ?  '1px solid red': '' }"
         />
       </div>
     </div>
@@ -37,7 +37,7 @@
 
     <div class="form-group row">
       <div class="col-md-2">
-        <button class="btn btn-primary" type="submit" (click)="addCv()" [disabled]="!newcv.valid">Subir</button>
+        <button class="btn btn-primary" type="submit" (click)="addCv()" [disabled]="!newCandidate.valid">Subir</button>
       </div>
     </div>
   </form>

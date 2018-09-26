@@ -11,6 +11,7 @@ export class RequestDTO {
         public profile: string,
         public nResources: string,
         public startDate: Date,
+        public status: string,
         public descTask: string,
         public reqTechs: Array<ReqTechnical>,
         public candidates: Array<Candidate>

@@ -33,23 +33,23 @@ export class CreateRequestComponent implements OnInit {
   public passwordAux: string;
   public insertRequest: boolean;
   public usernameExists: boolean;
-  public nResources: string[] = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
+  public nResources: Array<string>;
   public nResource: string;
-  public developEnv: string[] = ['Entorno desarrollo 1', 'Entorno desarrollo 2', 'Entorno desarrollo 3', 'Entorno desarrollo 4'];
-  public programLang: string[] = ['Lenguaje programacion 1', 'Lenguaje programacion 2', 'Lenguaje programacion 3'];
-  public infraBd: string[] = ['Infraestructura 1', 'Infraestructura 2', 'Infraestructura 3'];
-  public reqdes: string[] = ['Requerido', 'Deseable'];
-  public expyears: string[] = ['', '', '', ''];
+  public developEnv: Array<string>;
+  public programLang: Array<string>;
+  public infraBd: Array<string>;
+  public reqdes: Array<string>;
+  public expyears: Array<string>;
   public widget: number;
   public areas: Array<Area> = [];
   public selectedArea: Area;
   public defaultArea: Area;
-  public detalle: string = '';
-  public experience: string = '';
-  public requeriment: string = '';
-  public details: Array<Detalles> = [];
-  public reqTechnicals: Array<ReqTechnical> = new Array<ReqTechnical>();
-  isValid: boolean;
+  public detalle: string;
+  public experience: string;
+  public requeriment: string;
+  public details: Array<Detalles>;
+  public reqTechnicals: Array<ReqTechnical>;
+  public isValid: boolean;
 
   constructor(
     private requestService: RequestService,
@@ -68,20 +68,28 @@ export class CreateRequestComponent implements OnInit {
     this.today = new Date();
     this.comunicationService.getUser().subscribe(res => {
       this.user = res;
+      console.log(this.user);
     });
     this.getAllAreas();
-    this.request = new RequestDTO(null, this.user.id, this.creationDate, '', '', this.startDate, '', this.reqTechnicals, []);
+    this.initializedNewRequest();
   }
 
-  public next(): void {
-    this.widget = this.widget + 1;
+  private initializedNewRequest(): void {
+    this.request = new RequestDTO(null, this.user.id, this.creationDate, '', '', this.startDate, 'Nueva', '', this.reqTechnicals, []);
+    this.nResources = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
+
+    this.developEnv = ['Entorno desarrollo 1', 'Entorno desarrollo 2', 'Entorno desarrollo 3', 'Entorno desarrollo 4'];
+    this.programLang = ['Lenguaje programacion 1', 'Lenguaje programacion 2', 'Lenguaje programacion 3'];
+    this.infraBd = ['Infraestructura 1', 'Infraestructura 2', 'Infraestructura 3'];
+    this.reqdes = ['Requerido', 'Deseable'];
+    this.expyears = ['', '', '', ''];
+    this.areas = [];
+    this.detalle = '';
+    this.experience = '';
+    this.requeriment = '';
+    this.details = [];
+    this.reqTechnicals = new Array<ReqTechnical>();
   }
-
-
-  public previous(): void {
-    this.widget = this.widget - 1;
-  }
-
 
   public createRequest(form: NgForm): void {
 

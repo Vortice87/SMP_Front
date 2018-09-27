@@ -23,7 +23,6 @@ export class RequestDetailsComponent implements OnInit {
   public requestId: number;
   public bsModalRef: BsModalRef;
   public request: RequestDTO;
-  public user: UserAccountDTO;
 
   constructor(
     private route: ActivatedRoute,
@@ -41,9 +40,7 @@ export class RequestDetailsComponent implements OnInit {
           this.loadRequestDetails(this.requestId);
       }
    });
-   this.comunicationService.getUser().subscribe(res => {
-    this.user = res;
-  });
+
   }
 
   private uploadCandidate(): void {
@@ -76,9 +73,5 @@ export class RequestDetailsComponent implements OnInit {
        this.request = res;
      });
   }
-
-  // private downloadCandidate(Candidate: Candidate) {
-  //   window.open('http://localhost:8060/requests/findCandidateById/' + Candidate.CandidateId, '_blank');
-  // }
 
 }

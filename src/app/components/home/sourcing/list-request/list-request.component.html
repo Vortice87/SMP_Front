@@ -1,7 +1,7 @@
 <div class="col-md-offset-1 col-md-10">
   <div class="row animated fadeIn">
-    <div *ngFor="let r of requests">
-        <app-request [requestId] = "r.id"></app-request>
+    <div *ngFor="let request of requests">
+        <app-request [request] = "request"></app-request>
     </div>
   </div>
 </div>

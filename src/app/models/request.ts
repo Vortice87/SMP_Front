@@ -6,7 +6,7 @@ export class RequestDTO {
 
     constructor(
         public id: number,
-        public petitionerId: number,
+        public petitioner: UserAccountDTO,
         public creationDate: Date,
         public profile: string,
         public nResources: string,

@@ -75,7 +75,7 @@ export class CreateRequestComponent implements OnInit {
   }
 
   private initializedNewRequest(): void {
-    this.request = new RequestDTO(null, this.user.id, this.creationDate, '', '', this.startDate, 'Nueva', '', this.reqTechnicals, []);
+    this.request = new RequestDTO(null, this.user, this.creationDate, '', '', this.startDate, 'Nueva', '', this.reqTechnicals, []);
     this.nResources = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
 
     this.developEnv = ['Entorno desarrollo 1', 'Entorno desarrollo 2', 'Entorno desarrollo 3', 'Entorno desarrollo 4'];
@@ -117,7 +117,7 @@ export class CreateRequestComponent implements OnInit {
         this.detalle = '';
         this.experience = '';
         this.requeriment = '';
-        this.request = new RequestDTO(null, this.user.id, this.creationDate, '', '', this.startDate, '', [], []);
+        this.request = new RequestDTO(null, this.user, this.creationDate, '', '', this.startDate, '', '', [], []);
       }
     );
   }

@@ -31,14 +31,7 @@ export class RequestService {
   }
 
   getRequestById(requestId: number) {
-    return this.http.get<RequestDTO>(this.urlRequest + '/requestById/' + requestId)
-      .flatMap((request: any) => {
-        return this.http.get<UserAccountDTO>(this.urlUser + '/user/' + request.petitionerId)
-          .map((res: any) => {
-            request.petitionerUser = res;
-            return request;
-          });
-      });
+    return this.http.get<RequestDTO>(this.urlRequest + '/requestById/' + requestId).catch(this.handError);
   }
 
   // findCandidateById(CandidateId: number) {

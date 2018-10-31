@@ -1,3 +1,5 @@
+import { DocumentData } from './document-data';
+
 export class Candidate {
 
     constructor(
@@ -5,12 +7,9 @@ export class Candidate {
         public requestId: number,
         public name: string,
         public createdDate: Date,
-        public filePath: string,
         public comment: Array<any>,
         public status: string,
-        public fileName: string,
-        public fileType: string,
-        public fileData: string
+        public documentBase64: string
     ) {
     }
 }

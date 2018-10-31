@@ -24,7 +24,7 @@
         Curriculum:
       </div>
       <div class="col-md-9">
-        <input type="file" class="form-control" name="photo" id="upload-photo" name="file" #file="ngModel" (change)="onFileChange($event)" ngModel required />
+        <input type="file" class="form-control" name="file" #file="ngModel" (change)="onFileChange($event)" ngModel required />
         <label for="upload-photo"><i class="fa fa-cloud-upload"></i></label>
         <span class="filename">{{filename}}</span>
       </div>

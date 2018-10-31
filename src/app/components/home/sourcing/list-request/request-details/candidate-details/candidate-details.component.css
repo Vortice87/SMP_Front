@@ -63,3 +63,9 @@ label {
     border-color: #b54545;;
 }
  
+.candidate-data{
+    padding-bottom: 35px;
+    border-bottom: 1px dashed black;
+    padding-left: 50px;
+    padding-right: 50px;
+}

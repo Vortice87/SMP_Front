@@ -10,6 +10,7 @@
 <div class="modal-body">
   <form name="formCandidate" #candidate="ngForm" novalidate>
 
+    <div class="row candidate-data">
     <div class="form-group row">
       <div class="col-md-2">
         Candidato:
@@ -32,8 +33,8 @@
         {{currentCandidate.status}}
       </div>
     </div>
-
-    <pdf-viewer [src]="pdfSrc" [render-text]="true" style="display: block;"></pdf-viewer>
+  </div>
+    <pdf-viewer [src]="pdfSrc" [render-text]="true" [zoom]="1.2" [original-size]="true" style="display: block;"></pdf-viewer>
 
 
     <div class="form-group row">
@@ -63,6 +64,4 @@
     </div>
 
   </form>
-
-
 </div>

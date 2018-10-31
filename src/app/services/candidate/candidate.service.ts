@@ -21,12 +21,11 @@ export class CandidateService {
 
   addCandidate(candidate: Candidate): Observable<boolean> {
     const body: any = JSON.stringify(candidate);
-
     return this.http.post<boolean>(this.urlRequest + '/addCandidate', JSON.parse(body), options).catch(this.handError);
   }
 
-  downloadCandidate(candidateId: number) {
-    return this.http.get(this.urlRequest + '/findCandidateById/' + candidateId).catch(this.handError);
+  getDocumentByCandidateId(candidateId: number) {
+    return this.http.get(this.urlRequest + '/findCvById/' + candidateId).catch(this.handError);
   }
 
   handError(error: any) {

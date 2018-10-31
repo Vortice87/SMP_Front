@@ -63,6 +63,7 @@ export class RequestDetailsComponent implements OnInit {
     this.bsModalRef.content.refreshRequest.subscribe((value) => {
       if (value) {
         this.loadRequestDetails(this.requestId);
+        console.log('Estoy de vuelta');
       }
     });
 

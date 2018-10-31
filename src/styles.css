@@ -27,3 +27,8 @@ html, body {
     border-color: red!important;
 }
 
+@media (min-width: 1100px){
+    .modal-lg {
+        width: 1100px!important;
+    }
+}

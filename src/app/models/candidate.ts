@@ -1,4 +1,5 @@
 import { DocumentData } from './document-data';
+import { Comment } from './comment';
 
 export class Candidate {
 
@@ -7,7 +8,7 @@ export class Candidate {
         public requestId: number,
         public name: string,
         public createdDate: Date,
-        public comment: Array<any>,
+        public comments: Array<Comment>,
         public status: string,
         public documentBase64: string
     ) {

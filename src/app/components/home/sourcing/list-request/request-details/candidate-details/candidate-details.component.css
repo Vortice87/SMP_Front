@@ -35,7 +35,7 @@ span{
 textarea {
     height: 100px;
     width: 100%;
-    border-radius: 10px;
+    border-radius: 5px;
     resize: none;
 }
 
@@ -63,9 +63,20 @@ label {
     border-color: #b54545;;
 }
  
-.candidate-data{
+.candidate-data {
     padding-bottom: 35px;
-    border-bottom: 1px dashed black;
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-left: 110px;
+    padding-right: 110px;
+}
+
+.margin-bottom {
+    margin-bottom: 30px;
+}
+
+.add-comment {
+    margin-bottom: 30px;
+}
+
+.delete-comment {
+    cursor: pointer;
 }

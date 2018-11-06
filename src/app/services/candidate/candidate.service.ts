@@ -5,6 +5,7 @@ import { of } from 'rxjs/Observable/of';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { Candidate } from '../../models/candidate';
+import { Comment } from '../../models/comment';
 
 const options = {
   headers: new HttpHeaders(
@@ -15,7 +16,7 @@ const options = {
 @Injectable()
 export class CandidateService {
 
-  private urlRequest = 'http://localhost:8060/requests';
+  private urlRequest = 'http://localhost:8060/candidates';
 
   constructor(private http: HttpClient) { }
 
@@ -24,8 +25,21 @@ export class CandidateService {
     return this.http.post<boolean>(this.urlRequest + '/addCandidate', JSON.parse(body), options).catch(this.handError);
   }
 
+  addComment(comment: Comment): Observable<boolean> {
+    const body: any = JSON.stringify(comment);
+    return this.http.post<boolean>(this.urlRequest + '/addComment', JSON.parse(body), options).catch(this.handError);
+  }
+
+  deleteComment(commentId: number): Observable<boolean> {
+    return this.http.delete<boolean>(this.urlRequest + '/deleteComment/' +  commentId).catch(this.handError);
+  }
+
   getDocumentByCandidateId(candidateId: number) {
     return this.http.get(this.urlRequest + '/findCvById/' + candidateId).catch(this.handError);
+  }
+
+  getCandidateById(candidateId: number) {
+    return this.http.get<Candidate>(this.urlRequest + '/getCandidateById/' + candidateId);
   }
 
   handError(error: any) {

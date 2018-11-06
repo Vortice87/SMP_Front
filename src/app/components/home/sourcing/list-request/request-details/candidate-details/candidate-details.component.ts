@@ -8,12 +8,14 @@ import { ComunicationService } from '../../../../../../services/shared/comunicat
 import { IOUtils } from '../../../../../../utils/io-utils';
 import { CandidateService } from '../../../../../../services/candidate/candidate.service';
 import { DocumentData } from '../../../../../../models/document-data';
+import { Comment } from '../../../../../../models/comment';
 
 @Component({
   selector: 'app-candidate-details',
   templateUrl: './candidate-details.component.html',
   styleUrls: ['./candidate-details.component.css']
 })
+
 export class CandidateDetailsComponent implements OnInit {
 
   @Output()
@@ -22,6 +24,8 @@ export class CandidateDetailsComponent implements OnInit {
   public currentCandidate: Candidate;
   public pdfSrc: string;
   public user: UserAccountDTO;
+  public newComment: Comment;
+  public comments: Array<Comment>;
 
   constructor(
     private bsModalRef: BsModalRef,
@@ -31,10 +35,16 @@ export class CandidateDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.currentCandidate = this.candidate;
+    this.initializedComment();
+    this.comments = [];
     this.getDocumentByCandidateId(this.currentCandidate.candidateId);
     this.comunicationService.getUser().subscribe(res => {
       this.user = res;
     });
+  }
+
+  initializedComment(): any {
+    this.newComment = new Comment(null , '', new Date, this.currentCandidate.candidateId);
   }
 
   private getDocumentByCandidateId(candidateId: number) {
@@ -67,6 +77,29 @@ export class CandidateDetailsComponent implements OnInit {
 
   private discardCandidate() {
 
+  }
+
+  private addComment(): void {
+    this.candidateService.addComment(this.newComment).subscribe(res => {
+      if (res) {
+        this.refreshCandidate();
+      }
+    });
+  }
+
+  private deleteComment(comment: Comment): void {
+    this.candidateService.deleteComment(comment.commentId).subscribe(res => {
+      if (res) {
+        console.log(res);
+        this.refreshCandidate();
+      }
+    });
+  }
+
+  refreshCandidate(): any {
+    this.candidateService.getCandidateById(this.currentCandidate.candidateId).subscribe(candidate => {
+      this.currentCandidate = candidate;
+    });
   }
 
 }

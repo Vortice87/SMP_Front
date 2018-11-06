@@ -5,12 +5,17 @@ import swal from 'sweetalert2';
 import { RequestService } from '../../../../../../services/request/request.service';
 import { UserAccountDTO } from '../../../../../../models/userAccountDTO';
 import { ComunicationService } from '../../../../../../services/shared/comunication.service';
+import { IOUtils } from '../../../../../../utils/io-utils';
+import { CandidateService } from '../../../../../../services/candidate/candidate.service';
+import { DocumentData } from '../../../../../../models/document-data';
+import { Comment } from '../../../../../../models/comment';
 
 @Component({
   selector: 'app-candidate-details',
   templateUrl: './candidate-details.component.html',
   styleUrls: ['./candidate-details.component.css']
 })
+
 export class CandidateDetailsComponent implements OnInit {
 
   @Output()
@@ -19,20 +24,34 @@ export class CandidateDetailsComponent implements OnInit {
   public currentCandidate: Candidate;
   public pdfSrc: string;
   public user: UserAccountDTO;
+  public newComment: Comment;
+  public comments: Array<Comment>;
 
   constructor(
     private bsModalRef: BsModalRef,
-    private comunicationService: ComunicationService
+    private comunicationService: ComunicationService,
+    private candidateService: CandidateService
   ) { }
 
   ngOnInit() {
     this.currentCandidate = this.candidate;
-    this.pdfSrc = 'http://localhost:8060/requests/findCvById/' + this.currentCandidate.candidateId;
+    this.initializedComment();
+    this.comments = [];
+    this.getDocumentByCandidateId(this.currentCandidate.candidateId);
     this.comunicationService.getUser().subscribe(res => {
       this.user = res;
     });
   }
 
+  initializedComment(): any {
+    this.newComment = new Comment(null , '', new Date, this.currentCandidate.candidateId);
+  }
+
+  private getDocumentByCandidateId(candidateId: number) {
+    this.candidateService.getDocumentByCandidateId(candidateId).subscribe((document: DocumentData) => {
+      this.pdfSrc = IOUtils.getDocumentDownloadLink(document.documentBase64);
+    });
+  }
   private modifyStatus() {
     this.bsModalRef.hide();
     // this.CandidateService.addCandidate(this.Candidate).subscribe((res: boolean) => {
@@ -58,6 +77,29 @@ export class CandidateDetailsComponent implements OnInit {
 
   private discardCandidate() {
 
+  }
+
+  private addComment(): void {
+    this.candidateService.addComment(this.newComment).subscribe(res => {
+      if (res) {
+        this.refreshCandidate();
+      }
+    });
+  }
+
+  private deleteComment(comment: Comment): void {
+    this.candidateService.deleteComment(comment.commentId).subscribe(res => {
+      if (res) {
+        console.log(res);
+        this.refreshCandidate();
+      }
+    });
+  }
+
+  refreshCandidate(): any {
+    this.candidateService.getCandidateById(this.currentCandidate.candidateId).subscribe(candidate => {
+      this.currentCandidate = candidate;
+    });
   }
 
 }

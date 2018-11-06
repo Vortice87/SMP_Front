@@ -34,10 +34,6 @@ export class RequestService {
     return this.http.get<RequestDTO>(this.urlRequest + '/requestById/' + requestId).catch(this.handError);
   }
 
-  // findCandidateById(CandidateId: number) {
-  //   return this.http.get<RequestDTO>(this.urlRequest + '/findCandidateById/' + CandidateId).
-  // }
-
   handError(error: any) {
     console.log('error: ' + error);
     return Observable.throw(error);

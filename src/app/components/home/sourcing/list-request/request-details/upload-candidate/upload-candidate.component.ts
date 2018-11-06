@@ -5,6 +5,7 @@ import { FormControl } from '@angular/forms';
 import { DateUtils } from '../../../../../../utils/date-utils';
 import { CandidateService } from '../../../../../../services/candidate/candidate.service';
 import swal from 'sweetalert2';
+import { DocumentData } from '../../../../../../models/document-data';
 
 
 @Component({
@@ -24,7 +25,7 @@ export class UploadCandidateComponent implements OnInit {
   public filename: string;
 
   ngOnInit() {
-    this.candidate = new Candidate(null, this.requestId, '', new Date(), null, [], 'Nuevo', '', '', '');
+    this.candidate = new Candidate(null, this.requestId, '', new Date(), [], 'Nuevo', '');
     this.msgErrSupport = false;
     this.filename = 'Ningun fichero seleccionado';
   }
@@ -43,10 +44,12 @@ export class UploadCandidateComponent implements OnInit {
       this.msgErrSupport = false;
       reader.readAsDataURL(file);
       reader.onload = () => {
-        this.candidate.fileData = reader.result.split(',')[1];
-        this.candidate.fileName = file.name;
+     //   this.candidate.pdfDocument.documentBase64 = reader.result.split(',')[1];
+     this.candidate.documentBase64 = reader.result.split(',')[1];
+
+      //  this.candidate.pdfDocument.documentName = file.name;
         this.filename = file.name;
-        this.candidate.fileType = file.type;
+     //   this.candidate.pdfDocument.documentExtension = file.type;
       };
     } else {
       this.msgErrSupport = true;
@@ -56,7 +59,6 @@ export class UploadCandidateComponent implements OnInit {
   }
 
   private addCv() {
-    console.log(this.candidate);
     this.bsModalRef.hide();
     this.candidateService.addCandidate(this.candidate).subscribe((res: boolean) => {
       if (res) {
@@ -75,7 +77,6 @@ export class UploadCandidateComponent implements OnInit {
         });
       }
       this.refreshRequest.emit(true);
-
     });
   }
 

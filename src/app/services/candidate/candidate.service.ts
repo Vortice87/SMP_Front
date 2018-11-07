@@ -25,6 +25,10 @@ export class CandidateService {
     return this.http.post<boolean>(this.urlRequest + '/addCandidate', JSON.parse(body), options).catch(this.handError);
   }
 
+  updateCandidate(candidate: Candidate): Observable<boolean> {
+    return this.http.post<boolean>(this.urlRequest + '/updateCandidate', candidate, options).catch(this.handError);
+  }
+
   addComment(comment: Comment): Observable<boolean> {
     const body: any = JSON.stringify(comment);
     return this.http.post<boolean>(this.urlRequest + '/addComment', JSON.parse(body), options).catch(this.handError);

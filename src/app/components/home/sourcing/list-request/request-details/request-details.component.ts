@@ -24,6 +24,14 @@ export class RequestDetailsComponent implements OnInit {
   public bsModalRef: BsModalRef;
   public request: RequestDTO;
 
+  config = {
+    animated: true,
+    keyboard: true,
+    backdrop: true,
+    ignoreBackdropClick: true,
+    class: 'my-modal'
+  };
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -47,7 +55,7 @@ export class RequestDetailsComponent implements OnInit {
     const initialState = {
       requestId: this.requestId
     };
-    this.bsModalRef = this.modalService.show(UploadCandidateComponent, { class: 'modal-md', initialState });
+    this.bsModalRef = this.modalService.show(UploadCandidateComponent, { class: 'modal-md', initialState, ignoreBackdropClick: false});
     this.bsModalRef.content.refreshRequest.subscribe((value) => {
     if (value) {
       this.loadRequestDetails(this.requestId);
@@ -59,10 +67,11 @@ export class RequestDetailsComponent implements OnInit {
     const initialState = {
       candidate: currentCandidate
     };
-    this.bsModalRef = this.modalService.show(CandidateDetailsComponent, { class: 'modal-lg', initialState });
+    this.bsModalRef = this.modalService.show(CandidateDetailsComponent, { class: 'modal-lg', initialState, ignoreBackdropClick: true });
     this.bsModalRef.content.refreshRequest.subscribe((value) => {
       if (value) {
         this.loadRequestDetails(this.requestId);
+        console.log(this.requestId);
         console.log('Estoy de vuelta');
       }
     });

@@ -43,16 +43,17 @@ export class CandidateDetailsComponent implements OnInit {
     });
   }
 
-  initializedComment(): any {
+  public initializedComment(): any {
     this.newComment = new Comment(null , '', new Date, this.currentCandidate.candidateId);
   }
 
-  private getDocumentByCandidateId(candidateId: number) {
+  public getDocumentByCandidateId(candidateId: number) {
     this.candidateService.getDocumentByCandidateId(candidateId).subscribe((document: DocumentData) => {
       this.pdfSrc = IOUtils.getDocumentDownloadLink(document.documentBase64);
     });
   }
-  private modifyStatus() {
+
+  public modifyStatus() {
     this.bsModalRef.hide();
     // this.CandidateService.addCandidate(this.Candidate).subscribe((res: boolean) => {
     //   if (res) {
@@ -75,31 +76,43 @@ export class CandidateDetailsComponent implements OnInit {
     // });
   }
 
-  private discardCandidate() {
-
+  public discardCandidate() {
+    this.currentCandidate.status = 'Descartado';
+    console.log(this.currentCandidate);
+    this.candidateService.updateCandidate(this.currentCandidate).subscribe(res => {
+      if (res) {
+        this.refreshRequest.emit(true);
+        this.bsModalRef.hide();
+      }
+    });
   }
 
-  private addComment(): void {
+  public addComment(): void {
     this.candidateService.addComment(this.newComment).subscribe(res => {
       if (res) {
         this.refreshCandidate();
+        this.newComment.description = '';
       }
     });
   }
 
-  private deleteComment(comment: Comment): void {
+  public deleteComment(comment: Comment): void {
     this.candidateService.deleteComment(comment.commentId).subscribe(res => {
       if (res) {
-        console.log(res);
         this.refreshCandidate();
       }
     });
   }
 
-  refreshCandidate(): any {
+  public refreshCandidate(): any {
     this.candidateService.getCandidateById(this.currentCandidate.candidateId).subscribe(candidate => {
       this.currentCandidate = candidate;
     });
+  }
+
+  public closeModal() {
+    this.refreshRequest.emit(true);
+    this.bsModalRef.hide();
   }
 
 }

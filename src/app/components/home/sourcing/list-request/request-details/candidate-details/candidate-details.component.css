@@ -26,6 +26,8 @@ h3{
 
 span{
     color:black;
+    float: right;
+    font-weight: bold;
 }
 
 .pull-right{
@@ -37,6 +39,7 @@ textarea {
     width: 100%;
     border-radius: 5px;
     resize: none;
+    padding: 5px;
 }
 
 .err{

@@ -1,7 +1,7 @@
 <div class="modal-header header">
   <div class="row">
     <h3>Datos del candidato
-      <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+      <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal()">
         <span aria-hidden="true">&times;</span>
       </button>
     </h3>
@@ -45,7 +45,14 @@
             <legend>COMENTARIOS</legend>
             <ng-container *ngFor="let comment of currentCandidate.comments">
               <ul>
-                <li class="delete-comment" (click)="deleteComment(comment)" >{{comment.description}}</li>
+                <div class="row">
+                  <div class="col-md-9">
+                      <li class="delete-comment" (click)="deleteComment(comment)" >{{comment.description}}</li>
+                  </div>
+                  <div class="col-md-3">
+                      <span>{{comment.creationDate}}</span>
+                  </div>
+                </div>
               </ul>
             </ng-container>
           </fieldset>
@@ -55,7 +62,7 @@
       <div class="form-group row">
         <div class="col-md-12">
           <h2>Agregar comentario:</h2>
-          <textarea name="comment" [(ngModel)]="newComment.description" rows="30" cols="120"></textarea>
+          <textarea name="comment" [(ngModel)]="newComment.description" rows="30" cols="120" maxlength="255"></textarea>
         </div>
       </div>
 

@@ -146,7 +146,13 @@ i{
 .clickable{
     cursor: pointer;
 }
+
 .clickable:hover{
     background-color: #2A6290;
     color:white;
+}
+
+.discard {
+    background-color: #ff5050;
+    color: white;
 }

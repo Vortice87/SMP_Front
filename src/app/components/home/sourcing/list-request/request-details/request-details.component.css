@@ -154,5 +154,8 @@ i{
 
 .discard {
     background-color: #ff5050;
-    color: white;
+}
+
+.new {
+    background-color: lightgreen;
 }

@@ -53,8 +53,8 @@ export class CandidateDetailsComponent implements OnInit {
     });
   }
 
-  public modifyStatus() {
-    this.bsModalRef.hide();
+  // public modifyStatus() {
+  //   this.bsModalRef.hide();
     // this.CandidateService.addCandidate(this.Candidate).subscribe((res: boolean) => {
     //   if (res) {
     //     swal({
@@ -74,11 +74,10 @@ export class CandidateDetailsComponent implements OnInit {
     //   this.refreshRequest.emit(true);
 
     // });
-  }
+  // }
 
-  public discardCandidate() {
-    this.currentCandidate.status = 'Descartado';
-    console.log(this.currentCandidate);
+  public modifyStatus(newStatus: string) {
+    this.currentCandidate.status = newStatus;
     this.candidateService.updateCandidate(this.currentCandidate).subscribe(res => {
       if (res) {
         this.refreshRequest.emit(true);

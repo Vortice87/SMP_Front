@@ -9,7 +9,7 @@ export class RequestDTO {
         public petitioner: UserAccountDTO,
         public creationDate: Date,
         public profile: string,
-        public nResources: string,
+        public resources: string,
         public startDate: Date,
         public status: string,
         public descTask: string,

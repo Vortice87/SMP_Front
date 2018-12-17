@@ -8,6 +8,7 @@ export class Candidate {
         public requestId: number,
         public name: string,
         public createdDate: Date,
+        public interviewDate: Date,
         public comments: Array<Comment>,
         public status: string,
         public documentBase64: string

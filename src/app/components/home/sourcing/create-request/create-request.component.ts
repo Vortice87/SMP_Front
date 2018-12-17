@@ -40,7 +40,6 @@ export class CreateRequestComponent implements OnInit {
   public infraBd: Array<string>;
   public reqdes: Array<string>;
   public expyears: Array<string>;
-  public widget: number;
   public areas: Array<Area> = [];
   public selectedArea: Area;
   public defaultArea: Area;
@@ -62,7 +61,6 @@ export class CreateRequestComponent implements OnInit {
 
   ngOnInit() {
 
-    this.widget = 1;
     this.creationDate = new Date();
     this.startDate = new Date();
     this.today = new Date();
@@ -77,7 +75,6 @@ export class CreateRequestComponent implements OnInit {
   private initializedNewRequest(): void {
     this.request = new RequestDTO(null, this.user, this.creationDate, '', '', this.startDate, 'Nueva', '', this.reqTechnicals, []);
     this.nResources = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
-
     this.developEnv = ['Entorno desarrollo 1', 'Entorno desarrollo 2', 'Entorno desarrollo 3', 'Entorno desarrollo 4'];
     this.programLang = ['Lenguaje programacion 1', 'Lenguaje programacion 2', 'Lenguaje programacion 3'];
     this.infraBd = ['Infraestructura 1', 'Infraestructura 2', 'Infraestructura 3'];
@@ -93,6 +90,8 @@ export class CreateRequestComponent implements OnInit {
 
   public createRequest(form: NgForm): void {
 
+    this.request.reqTechs = this.reqTechnicals;
+    console.log(this.request);
     this.requestService.createRequest(this.request).subscribe(
       (response: boolean) => {
         this.insertRequest = response;
@@ -111,7 +110,6 @@ export class CreateRequestComponent implements OnInit {
             timer: 1500
           });
         }
-        this.widget = 1;
         this.reqTechnicals = [];
         this.selectedArea = new Area();
         this.detalle = '';

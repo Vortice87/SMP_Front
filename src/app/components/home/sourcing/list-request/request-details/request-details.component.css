@@ -159,3 +159,15 @@ i{
 .new {
     background-color: lightgreen;
 }
+
+.reviewed {
+    background-color: #7ba9d0;
+}
+
+.interview {
+    background-color: yellow;
+}
+
+.suitable {
+    background-color: orchid
+}

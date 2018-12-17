@@ -25,7 +25,7 @@ export class UploadCandidateComponent implements OnInit {
   public filename: string;
 
   ngOnInit() {
-    this.candidate = new Candidate(null, this.requestId, '', new Date(), [], 'Nuevo', '');
+    this.candidate = new Candidate(null, this.requestId, '', new Date(), null, [], 'Nuevo', '');
     this.msgErrSupport = false;
     this.filename = 'Ningun fichero seleccionado';
   }
@@ -44,12 +44,8 @@ export class UploadCandidateComponent implements OnInit {
       this.msgErrSupport = false;
       reader.readAsDataURL(file);
       reader.onload = () => {
-     //   this.candidate.pdfDocument.documentBase64 = reader.result.split(',')[1];
-     this.candidate.documentBase64 = reader.result.split(',')[1];
-
-      //  this.candidate.pdfDocument.documentName = file.name;
-        this.filename = file.name;
-     //   this.candidate.pdfDocument.documentExtension = file.type;
+      this.candidate.documentBase64 = reader.result.split(',')[1];
+      this.filename = file.name;
       };
     } else {
       this.msgErrSupport = true;

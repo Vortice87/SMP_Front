@@ -34,7 +34,7 @@
             <div class="form-group row">
               <label for="nres" class="col-md-3 col-form-label">RECURSOS</label>
               <div class="col-md-3">
-                <select class="form-control" name="nres" [(ngModel)]="request.nResources" #numrec="ngModel" required [ngStyle]="{ border: !numrec.valid && numrec.dirty ?  '1px solid red': '' }">
+                <select class="form-control" name="nres" [(ngModel)]="request.resources" #numrec="ngModel" required [ngStyle]="{ border: !numrec.valid && numrec.dirty ?  '1px solid red': '' }">
                   <option value="" selected>- Seleccionar -</option>
                   <option *ngFor="let nr of nResources" [value]="nr">{{nr}}</option>
                 </select>

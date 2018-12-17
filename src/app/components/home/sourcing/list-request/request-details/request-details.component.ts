@@ -65,7 +65,7 @@ export class RequestDetailsComponent implements OnInit {
 
   private seeCandidate(currentCandidate: Candidate): void {
     const initialState = {
-      candidate: currentCandidate
+      candidateId: currentCandidate.candidateId
     };
     this.bsModalRef = this.modalService.show(CandidateDetailsComponent, { class: 'modal-lg', initialState, ignoreBackdropClick: true });
     this.bsModalRef.content.refreshRequest.subscribe((value) => {
@@ -81,6 +81,7 @@ export class RequestDetailsComponent implements OnInit {
   private loadRequestDetails(id: number) {
      this.requestService.getRequestById(id).subscribe(res => {
        this.request = res;
+       console.log(res);
      });
   }
 

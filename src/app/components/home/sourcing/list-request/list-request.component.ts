@@ -22,6 +22,7 @@ export class ListRequestComponent implements OnInit {
     this.requestService.getAllRequest().subscribe((res: Array<RequestDTO>) => {
       if (res !== null) {
         this.requests = res;
+        console.log(this.requests);
       }
     });
   }

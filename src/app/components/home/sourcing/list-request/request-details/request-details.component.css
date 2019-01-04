@@ -39,7 +39,6 @@ span{
     
 }
 
-
 .reqtech{
     font-size: 10px;
     color:black;
@@ -106,7 +105,7 @@ legend {
 
 .cuadro{
     border: 1px solid #ccc;
-    height: 270px;
+    max-height: 290px;
     overflow-y: scroll;
     margin-bottom: 30px;
 }

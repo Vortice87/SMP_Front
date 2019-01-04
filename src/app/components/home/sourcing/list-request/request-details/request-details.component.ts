@@ -11,6 +11,7 @@ import { CandidateService } from '../../../../../services/candidate/candidate.se
 import { ComunicationService } from '../../../../../services/shared/comunication.service';
 import { UserAccountDTO } from '../../../../../models/userAccountDTO';
 import { CandidateDetailsComponent } from './candidate-details/candidate-details.component';
+import swal from 'sweetalert2';
 
 
 @Component({
@@ -23,14 +24,15 @@ export class RequestDetailsComponent implements OnInit {
   public requestId: number;
   public bsModalRef: BsModalRef;
   public request: RequestDTO;
+  public coveredResources: number;
 
-  config = {
-    animated: true,
-    keyboard: true,
-    backdrop: true,
-    ignoreBackdropClick: true,
-    class: 'my-modal'
-  };
+  // config = {
+  //   animated: true,
+  //   keyboard: true,
+  //   backdrop: true,
+  //   ignoreBackdropClick: true,
+  //   class: 'my-modal'
+  // };
 
   constructor(
     private route: ActivatedRoute,
@@ -44,23 +46,22 @@ export class RequestDetailsComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       if (params['id'] !== null) {
-          this.requestId = +params['id'];
-          this.loadRequestDetails(this.requestId);
+        this.requestId = +params['id'];
+        this.loadRequestDetails(this.requestId);
       }
-   });
-
+    });
   }
 
   private uploadCandidate(): void {
     const initialState = {
       requestId: this.requestId
     };
-    this.bsModalRef = this.modalService.show(UploadCandidateComponent, { class: 'modal-md', initialState, ignoreBackdropClick: false});
+    this.bsModalRef = this.modalService.show(UploadCandidateComponent, { class: 'modal-md', initialState, ignoreBackdropClick: false });
     this.bsModalRef.content.refreshRequest.subscribe((value) => {
-    if (value) {
-      this.loadRequestDetails(this.requestId);
-    }
-  });
+      if (value) {
+        this.loadRequestDetails(this.requestId);
+      }
+    });
   }
 
   private seeCandidate(currentCandidate: Candidate): void {
@@ -71,18 +72,68 @@ export class RequestDetailsComponent implements OnInit {
     this.bsModalRef.content.refreshRequest.subscribe((value) => {
       if (value) {
         this.loadRequestDetails(this.requestId);
-        console.log(this.requestId);
-        console.log('Estoy de vuelta');
       }
     });
 
   }
 
   private loadRequestDetails(id: number) {
-     this.requestService.getRequestById(id).subscribe(res => {
-       this.request = res;
-       console.log(res);
-     });
+    this.coveredResources = 0;
+    this.requestService.getRequestById(id).subscribe(res => {
+      this.request = res;
+      if (this.request.candidates !== null) {
+        this.request.candidates.forEach(candidate => {
+          if (candidate.status === 'Apto') {
+            this.coveredResources++;
+          }
+        });
+        if (this.coveredResources === Number.parseInt(this.request.resources)) {
+          if (this.request.status === 'En proceso') {
+            this.closeRequest(this.request.id);
+          }
+        }
+      }
+    });
   }
+
+  public closeRequest(requestId: number): void {
+    if (this.coveredResources !== Number.parseInt(this.request.resources)) {
+
+      swal({
+        title: 'No se han cubierto el total de recursos,¿Esta seguro de cerrar la solicitud?',
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si',
+        cancelButtonText: 'No'
+      }).then((result) => {
+        if (result.value) {
+          this.requestService.closeRequest(requestId).subscribe(res => {
+            if (res) {
+              console.log('Solicitud cerrada.');
+              this.router.navigate(['/home/requests']);
+            }
+          });
+        }
+      });
+    } else {
+      this.requestService.closeRequest(requestId).subscribe(res => {
+        if (res) {
+          console.log('Solicitud cerrada.');
+          this.router.navigate(['/home/requests']);
+        }
+      });
+    }
+  }
+
+  public openRequest(requestId: number): void {
+    this.requestService.openRequest(requestId).subscribe(res => {
+      if (res) {
+        console.log('Solicitud reabierta.');
+        this.loadRequestDetails(this.requestId);
+      }
+    });
+}
 
 }

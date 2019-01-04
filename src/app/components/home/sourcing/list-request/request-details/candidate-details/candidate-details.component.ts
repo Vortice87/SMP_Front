@@ -11,6 +11,10 @@ import { DocumentData } from '../../../../../../models/document-data';
 import { Comment } from '../../../../../../models/comment';
 import { DateUtils } from '../../../../../../utils/date-utils';
 
+// Declaramos las variables para jQuery
+declare var jQuery: any;
+declare var $: any;
+
 @Component({
   selector: 'app-candidate-details',
   templateUrl: './candidate-details.component.html',
@@ -50,35 +54,6 @@ export class CandidateDetailsComponent implements OnInit {
     this.now = new Date();
     this.validDate = true;
   }
-
-  /*  public getDocumentByCandidateId(candidateId: number) {
-      this.candidateService.getDocumentByCandidateId(candidateId).subscribe((document: DocumentData) => {
-        this.pdfSrc = IOUtils.getDocumentDownloadLink(document.documentBase64);
-      });
-    }*/
-
-  // public modifyStatus() {
-  //   this.bsModalRef.hide();
-  // this.CandidateService.addCandidate(this.Candidate).subscribe((res: boolean) => {
-  //   if (res) {
-  //     swal({
-  //       type: 'success',
-  //       title: 'Candidato añadido correctamente',
-  //       showConfirmButton: false,
-  //       timer: 1500
-  //     });
-  //   } else {
-  //     swal({
-  //       type: 'error',
-  //       title: 'Se produjo un error al añadir el candidato. El candidato ya existe.',
-  //       showConfirmButton: false,
-  //       timer: 1500
-  //     });
-  //   }
-  //   this.refreshRequest.emit(true);
-
-  // });
-  // }
 
   public modifyStatus(newStatus: string) {
     this.currentCandidate.status = newStatus;
@@ -141,6 +116,13 @@ export class CandidateDetailsComponent implements OnInit {
       this.currentCandidate.interviewDate = event;
       this.validDate = true;
     }
+  }
+
+  public goToTop() {
+  //   $('html,body').animate({
+  //     scrollTop: $('#scrollToHere').offset().top
+  // }, 2000);
+  alert($('#scrollToHere').scrollTop());
   }
 
 }

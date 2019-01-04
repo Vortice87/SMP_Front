@@ -24,7 +24,7 @@ i{
     padding: 50px;
     margin-bottom: 0px;
     background-color: #3C6598;
-    padding-bottom: 100px;
+    padding-bottom: 122px;
     color: white;
     text-align: center;
     border-top-left-radius: 5px;
@@ -49,6 +49,10 @@ i{
 }
 
 .request-description {
+    padding-left: 20px!important;
+}
+
+.request-status {
     padding-left: 20px!important;
 }
 
@@ -82,7 +86,7 @@ i{
     padding-top: 15px;
     border-top-right-radius : 5px;  
     border-bottom-right-radius : 5px;  
-    height: 177px;
+    height: 200px;
 }
 
 .profile{

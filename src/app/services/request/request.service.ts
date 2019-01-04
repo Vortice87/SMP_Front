@@ -17,13 +17,20 @@ const options = {
 export class RequestService {
 
   private urlRequest = 'http://localhost:8060/requests';
-  private urlUser = 'http://localhost:8060/users';
 
   constructor(private http: HttpClient) { }
 
   createRequest(request: RequestDTO): Observable<boolean> {
     const body: any = JSON.stringify(request);
     return this.http.post<boolean>(this.urlRequest + '/create', JSON.parse(body), options).catch(this.handError);
+  }
+
+  closeRequest(requestId: number): Observable<boolean> {
+    return this.http.get<boolean>(this.urlRequest + '/closeRequest/' + requestId).catch(this.handError);
+  }
+
+  openRequest(requestId: number): Observable<boolean> {
+    return this.http.get<boolean>(this.urlRequest + '/openRequest/' + requestId).catch(this.handError);
   }
 
   getAllRequest(): Observable<RequestDTO[]> {

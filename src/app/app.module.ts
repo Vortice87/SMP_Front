@@ -21,21 +21,22 @@ import { NewAccountComponent } from './components/home/administration/new-accoun
 import { AdminGuard } from './guards/admin.guard';
 import { CreateRequestComponent } from './components/home/sourcing/create-request/create-request.component';
 import { UploadCandidateComponent } from './components/home/sourcing/list-request/request-details/upload-candidate/upload-candidate.component';
-
-// import external modules
 import { RequestService } from './services/request/request.service';
 import { ListRequestComponent } from './components/home/sourcing/list-request/list-request.component';
 import { RequestComponent } from './components/home/sourcing/list-request/request/request.component';
 import { ConfigurationService } from './services/configuration/configuration.service';
 import { ComunicationService } from './services/shared/comunication.service';
 import { RequestDetailsComponent } from './components/home/sourcing/list-request/request-details/request-details.component';
+import { CandidateService } from './services/candidate/candidate.service';
+import { CandidateDetailsComponent } from './components/home/sourcing/list-request/request-details/candidate-details/candidate-details.component';
 
 // Application plugins
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { ModalModule } from 'ngx-bootstrap';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
-import { CandidateService } from './services/candidate/candidate.service';
-import { CandidateDetailsComponent } from './components/home/sourcing/list-request/request-details/candidate-details/candidate-details.component';
+// import { GoTopButtonModule } from 'ng2-go-top-button';
+// import { GoTopButton } from 'ng2-go-top-button/src/go-top-button.component';
+
 
 
 @NgModule({

@@ -83,3 +83,11 @@ label {
 .delete-comment {
     cursor: pointer;
 }
+
+.fa-arrow-circle-up {
+    position: fixed;
+    bottom: 40px;
+    right: 80px;
+    color: red !important;
+    cursor: pointer;
+}

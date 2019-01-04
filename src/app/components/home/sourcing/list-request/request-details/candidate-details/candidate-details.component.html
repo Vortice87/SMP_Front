@@ -1,121 +1,116 @@
 <ng-container *ngIf="currentCandidate != null">
-
-
-  <div class="modal-header header">
-    <div class="row">
-      <h3>Candidato: {{currentCandidate.name}}
-        <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal()">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </h3>
+    <div class="modal-header header" id="scrollToHere">
+      <div class="row">
+        <h3>Candidato: {{currentCandidate.name}}
+          <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </h3>
+      </div>
     </div>
-  </div>
-  <div class="modal-body">
+    <div class="modal-body" >
 
-    <!-- <form name="interviewForm" #interviewForm="ngForm" novalidate> -->
+      <div class="row candidate-data">
+        <fieldset class="form-group">
+          <legend>CANDIDATURA</legend>
 
-    <div class="row candidate-data">
-      <fieldset class="form-group">
-        <legend>CANDIDATURA</legend>
-
-        <div class="form-group row">
-          <div class="col-md-2">
-            <strong>Fecha de Alta:</strong>
-          </div>
-          <div class="col-md-4">
-            {{currentCandidate.createdDate | date:'dd/MM/yyyy'}}
-          </div>
-          <div class="col-md-3">
-            <strong>Fecha de entrevista:</strong>
-          </div>
-          <div class="col-md-3" *ngIf="currentCandidate.interviewDate == null && currentCandidate.status != 'Revisado'">
-            ---
-          </div>
-          <div class="col-md-3" *ngIf="currentCandidate.interviewDate != null && currentCandidate.status != 'Revisado'">
-            {{currentCandidate.interviewDate | date:'dd/MM/yyyy'}}
-          </div>
-          <div class="col-md-3" *ngIf="currentCandidate.status === 'Revisado'">
-            <input type="date" class="form-control" name="inter" ngModelstyle="text-align:center;" [ngModel]="now | date:'yyyy-MM-dd'"
-            (ngModelChange)="assignInterviewDate($event)" required [min]="now | date:'yyyy-MM-dd'">
-          </div>
-        </div>
-
-        <div class="form-group row">
-          <div class="col-md-2">
-            <strong>Estado:</strong>
-          </div>
-          <div class="col-md-4">
-            {{currentCandidate.status}}
-          </div>
-        </div>
-
-      </fieldset>
-    </div>
-
-    <div class="row candidate-data">
-      <div class="form-group row">
-        <div class="col-md-12">
-          <fieldset class="form-group">
-            <legend>COMENTARIOS</legend>
-            <div class="row">
-              <div class="col-md-12" *ngIf="emptyComment">
-                No hay comentarios
-              </div>
+          <div class="form-group row">
+            <div class="col-md-2">
+              <strong>Fecha de Alta:</strong>
             </div>
-            <ng-container *ngFor="let comment of currentCandidate.comments">
-              <ul>
-                <div class="row">
-                  <div class="col-md-9">
-                    <li class="delete-comment" (click)="deleteComment(comment)">{{comment.description}}</li>
-                  </div>
-                  <div class="col-md-3">
-                    <span>{{comment.creationDate | date:'dd/MM/yyyy'}}</span>
-                  </div>
+            <div class="col-md-4">
+              {{currentCandidate.createdDate | date:'dd/MM/yyyy'}}
+            </div>
+            <div class="col-md-3">
+              <strong>Fecha de entrevista:</strong>
+            </div>
+            <div class="col-md-3" *ngIf="currentCandidate.interviewDate == null && currentCandidate.status != 'Revisado'">
+              ---
+            </div>
+            <div class="col-md-3" *ngIf="currentCandidate.interviewDate != null && currentCandidate.status != 'Revisado'">
+              {{currentCandidate.interviewDate | date:'dd/MM/yyyy'}}
+            </div>
+            <div class="col-md-3" *ngIf="currentCandidate.status === 'Revisado'">
+              <input type="date" class="form-control" name="inter" ngModelstyle="text-align:center;" [ngModel]="now | date:'yyyy-MM-dd'"
+                (ngModelChange)="assignInterviewDate($event)" required [min]="now | date:'yyyy-MM-dd'">
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-md-2">
+              <strong>Estado:</strong>
+            </div>
+            <div class="col-md-4">
+              {{currentCandidate.status}}
+            </div>
+          </div>
+
+        </fieldset>
+      </div>
+
+      <div class="row candidate-data">
+        <div class="form-group row">
+          <div class="col-md-12">
+            <fieldset class="form-group">
+              <legend>COMENTARIOS</legend>
+              <div class="row">
+                <div class="col-md-12" *ngIf="emptyComment">
+                  No hay comentarios
                 </div>
-              </ul>
-            </ng-container>
-          </fieldset>
+              </div>
+              <ng-container *ngFor="let comment of currentCandidate.comments">
+                <ul>
+                  <div class="row">
+                    <div class="col-md-9">
+                      <li class="delete-comment" (click)="deleteComment(comment)">{{comment.description}}</li>
+                    </div>
+                    <div class="col-md-3">
+                      <span>{{comment.creationDate | date:'dd/MM/yyyy'}}</span>
+                    </div>
+                  </div>
+                </ul>
+              </ng-container>
+            </fieldset>
+          </div>
         </div>
+
+        <div class="form-group row">
+          <div class="col-md-12">
+            <h2>Agregar comentario:</h2>
+            <textarea name="comment" [(ngModel)]="newComment.description" rows="30" cols="120" maxlength="255"></textarea>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-md-12 add-comment" *ngIf="user.profile == 'area' || user.profile == 'admin'">
+            <button class="btn" type="button" (click)="addComment()" [disabled]="newComment.description == '' ">Añadir comentario</button>
+          </div>
+          <div class="col-md-6" *ngIf="(user.profile == 'area' || user.profile == 'admin') && currentCandidate.status !== 'Descartado'">
+            <button class="btn btn-discard" type="submit" (click)="modifyStatus('Descartado')">Descartar</button>
+          </div>
+          <div class="col-md-6" *ngIf="(user.profile == 'area' || user.profile == 'admin') && currentCandidate.status === 'Descartado'">
+            <button class="btn btn-discard" type="submit" (click)="modifyStatus('Readmitido')">Readmitir</button>
+          </div>
+          <div class="col-md-6 text-align-right" *ngIf="(user.profile == 'area' || user.profile == 'admin') && (currentCandidate.status === 'Nuevo' || currentCandidate.status === 'Readmitido')">
+            <button class="btn btn-primary" type="submit" (click)="modifyStatus('Revisado')">Revisado</button>
+          </div>
+          <div class="col-md-6 text-align-right" *ngIf="(user.profile == 'area' || user.profile == 'admin') && (currentCandidate.status === 'Revisado')">
+            <button class="btn btn-primary" type="submit" (click)="modifyStatus('Pendiente de entrevista')" [disabled]="!validDate">Fijar fecha entrevista</button>
+          </div>
+          <div class="col-md-6 text-align-right" *ngIf="(user.profile == 'area' || user.profile == 'admin') && (currentCandidate.status === 'Pendiente de entrevista')">
+            <button class="btn btn-primary" type="submit" (click)="modifyStatus('Apto')">Apto</button>
+          </div>
+        </div>
+
       </div>
 
-      <div class="form-group row">
-        <div class="col-md-12">
-          <h2>Agregar comentario:</h2>
-          <textarea name="comment" [(ngModel)]="newComment.description" rows="30" cols="120" maxlength="255"></textarea>
-        </div>
+      <div class="row candidate-data" id="modalId">
+        <fieldset class="form-group">
+          <legend>CURRICULUM</legend>
+          <pdf-viewer name="pdf" [src]="pdfSrc" [render-text]="true" [zoom]="1.2" [original-size]="true" style="display: block;"></pdf-viewer>
+        </fieldset>
       </div>
-
-      <div class="form-group row">
-        <div class="col-md-12 add-comment" *ngIf="user.profile == 'area' || user.profile == 'admin'">
-          <button class="btn" type="button" (click)="addComment()" [disabled]="newComment.description == '' ">Añadir comentario</button>
-        </div>
-        <div class="col-md-6" *ngIf="(user.profile == 'area' || user.profile == 'admin') && currentCandidate.status !== 'Descartado'">
-          <button class="btn btn-discard" type="submit" (click)="modifyStatus('Descartado')">Descartar</button>
-        </div>
-        <div class="col-md-6" *ngIf="(user.profile == 'area' || user.profile == 'admin') && currentCandidate.status === 'Descartado'">
-          <button class="btn btn-discard" type="submit" (click)="modifyStatus('Readmitido')">Readmitir</button>
-        </div>
-        <div class="col-md-6 text-align-right" *ngIf="(user.profile == 'area' || user.profile == 'admin') && (currentCandidate.status === 'Nuevo' || currentCandidate.status === 'Readmitido')">
-          <button class="btn btn-primary" type="submit" (click)="modifyStatus('Revisado')">Revisado</button>
-        </div>
-        <div class="col-md-6 text-align-right" *ngIf="(user.profile == 'area' || user.profile == 'admin') && (currentCandidate.status === 'Revisado')">
-          <button class="btn btn-primary" type="submit" (click)="modifyStatus('Pendiente de entrevista')" [disabled]="!validDate">Fijar fecha entrevista</button>
-        </div>
-        <div class="col-md-6 text-align-right" *ngIf="(user.profile == 'area' || user.profile == 'admin') && (currentCandidate.status === 'Pendiente de entrevista')">
-          <button class="btn btn-primary" type="submit" (click)="modifyStatus('Apto')">Apto</button>
-        </div>
-      </div>
-
     </div>
-    <!-- </form >  -->
-
-    <div class="row candidate-data">
-      <fieldset class="form-group">
-        <legend>CURRICULUM</legend>
-        <pdf-viewer name="pdf" [src]="pdfSrc" [render-text]="true" [zoom]="1.2" [original-size]="true" style="display: block;"></pdf-viewer>
-      </fieldset>
-
-    </div>
-  </div>
+    <i class="fa fa-arrow-circle-up fa-3x" aria-hidden="true" (click)="goToTop()"></i>
 
 </ng-container>

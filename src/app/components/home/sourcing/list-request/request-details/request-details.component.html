@@ -16,6 +16,18 @@
                 {{request.petitioner.name}} {{request.petitioner.lastName}}
               </div>
             </div>
+            <div class="form-group row">
+              <label for="nres" class="col-md-3 col-form-label">RECURSOS</label>
+              <div class="col-md-3">
+                {{coveredResources}}/{{request.resources}}
+              </div>
+             </div>
+             <div class="form-group row">
+              <label for="nres" class="col-md-3 col-form-label">ESTADO</label>
+              <div class="col-md-3">
+                {{request.status}}
+              </div>
+             </div>
 
             <div class="form-group row">
               <label for="title" class="col-md-3 col-form-label">PERFIL</label>
@@ -32,12 +44,8 @@
             </div>
 
             <div class="form-group row">
-              <label for="nres" class="col-md-3 col-form-label">RECURSOS</label>
-              <div class="col-md-3">
-                {{request.resources}}
-              </div>
               <label for="expstartdate" class="col-md-3 col-form-label">FECHA DE INCORPORACION</label>
-              <div class="col-md-3 align-right">
+              <div class="col-md-3">
                 {{request.startDate | date:'dd/MM/yyyy'}}
               </div>
             </div>
@@ -114,6 +122,14 @@
 
             <div class="form-group animated fadeIn" *ngIf="request.petitioner.profile == 'admin' || request.petitioner.profile == 'sourcing'">
               <button class="btn btn-primary" type="submit" (click)="uploadCandidate()">Añadir candidato</button>
+            </div>
+
+            <div class="form-group animated fadeIn" *ngIf="(request.petitioner.profile == 'admin' || request.petitioner.profile == 'area') && (request.status === 'Abierta' || request.status === 'En proceso')">
+              <button class="btn btn-primary" type="submit" (click)="closeRequest(request.id)">Cerrar solicitud</button>
+            </div>
+
+            <div class="form-group animated fadeIn" *ngIf="(request.petitioner.profile == 'admin' || request.petitioner.profile == 'area') && request.status === 'Cerrada'">
+              <button class="btn btn-primary" type="submit" (click)="openRequest(request.id)">Abrir solicitud</button>
             </div>
 
           </div>

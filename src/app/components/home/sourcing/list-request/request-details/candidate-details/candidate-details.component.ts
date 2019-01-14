@@ -119,10 +119,11 @@ export class CandidateDetailsComponent implements OnInit {
   }
 
   public goToTop() {
-  //   $('html,body').animate({
-  //     scrollTop: $('#scrollToHere').offset().top
-  // }, 2000);
-  alert($('#scrollToHere').scrollTop());
+
+      $('#modal-content').scrollTop(0);
+    console.log('going top');
+  //window.scrollTo(0, 0);
+
   }
 
 }

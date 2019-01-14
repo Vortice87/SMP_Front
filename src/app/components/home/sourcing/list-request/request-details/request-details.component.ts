@@ -97,7 +97,7 @@ export class RequestDetailsComponent implements OnInit {
   }
 
   public closeRequest(requestId: number): void {
-    if (this.coveredResources !== Number.parseInt(this.request.resources)) {
+    if (this.coveredResources < Number.parseInt(this.request.resources)) {
 
       swal({
         title: 'No se han cubierto el total de recursos,¿Esta seguro de cerrar la solicitud?',
@@ -112,18 +112,56 @@ export class RequestDetailsComponent implements OnInit {
           this.requestService.closeRequest(requestId).subscribe(res => {
             if (res) {
               console.log('Solicitud cerrada.');
-              this.router.navigate(['/home/requests']);
+            swal({
+              type: 'success',
+              title: 'Solicitud cerrada.',
+              showConfirmButton: false,
+              timer: 1500
+            });
+            this.loadRequestDetails(this.requestId);
             }
           });
         }
       });
-    } else {
-      this.requestService.closeRequest(requestId).subscribe(res => {
-        if (res) {
-          console.log('Solicitud cerrada.');
-          this.router.navigate(['/home/requests']);
+
+    } else if (this.coveredResources > Number.parseInt(this.request.resources)) {
+      swal({
+        title: 'Hay mas recursos de los necesarios ,¿Esta seguro de cerrar la solicitud?',
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si',
+        cancelButtonText: 'No'
+      }).then((result) => {
+        if (result.value) {
+          this.requestService.closeRequest(requestId).subscribe(res => {
+            if (res) {
+              console.log('Solicitud cerrada.');
+              swal({
+                type: 'success',
+                title: 'Solicitud cerrada.',
+                showConfirmButton: false,
+                timer: 1500
+              });
+             this.loadRequestDetails(this.requestId);
+            }
+          });
         }
       });
+    } else if (this.coveredResources === Number.parseInt(this.request.resources)) {
+        this.requestService.closeRequest(requestId).subscribe(res => {
+          if (res) {
+            swal({
+              type: 'success',
+              title: 'Solicitud cerrada.',
+              showConfirmButton: false,
+              timer: 1500
+            });
+            console.log('Solicitud cerrada.');
+           this.loadRequestDetails(this.requestId);
+          }
+        });
     }
   }
 
@@ -134,6 +172,20 @@ export class RequestDetailsComponent implements OnInit {
         this.loadRequestDetails(this.requestId);
       }
     });
+}
+
+public deleteRequest(requestId: number): void {
+  this.requestService.deleteRequest(requestId).subscribe(res => {
+    if (res) {
+      swal({
+        type: 'success',
+        title: 'Solicitud elimina correctamente.',
+        showConfirmButton: false,
+        timer: 1500
+      });
+      this.router.navigate(['/home/requests']);
+    }
+  });
 }
 
 }

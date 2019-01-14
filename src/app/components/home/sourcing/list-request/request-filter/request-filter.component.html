@@ -1,0 +1,58 @@
+<div class="col-md-12 filter-component box">
+    <div class="row animated fadeIn">
+
+      <div class="col-md-8 filter-style ">
+        <div class="row form-group"> 
+          <div class="col-md-2">
+            <label for="perfil">Perfil:</label>
+          </div>
+          <div class="col-md-2">
+            <input type="text" class="form-control" name="perfil" placeholder="Perfil" [(ngModel)]="titulo" #filtroPerfil="ngModel" />
+          </div>
+        
+          <div class="col-md-2">
+            <label for="solicitante">Solicitante:</label>
+          </div>
+          <div class="col-md-2">
+            <input type="text" class="form-control" name="solicitante" placeholder="Solicitante" [(ngModel)]="solicitante" #filtroSolicitante="ngModel" />
+          </div>
+          <div class="col-md-2">
+            <label for="tecnologia">Tecnologia:</label>
+          </div>
+          <div class="col-md-2">
+            <input type="text" class="form-control" name="tecnologia" placeholder="Tecnología" [(ngModel)]="tecnologia" #filtroTecnologia="ngModel" />
+          </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-md-2">
+              <label for="descripcion">Descripción:</label>
+            </div>
+            <div class="col-md-2">
+              <input type="text" class="form-control" name="descripcion" placeholder="Descripción" [(ngModel)]="descripcion" #filtroDescripcion="ngModel" />
+            </div>
+          
+            <div class="col-md-2">
+              <label for="fechaAlta">Fecha Alta:</label>
+            </div>
+            <div class="col-md-2">
+              <!-- <input type="text" class="form-control" name="fechaAlta" placeholder="Fecha de alta" [(ngModel)]="fechaAlta" #filtroFechaAlta="ngModel" /> -->
+              <!-- <input class="form-control" #drp="bsDaterangepicker" bsDaterangepicker [(ngModel)]="bsRangeValue"> -->
+
+            </div>
+            <div class="col-md-2">
+              <label for="estado">Estado:</label>
+            </div>
+            <div class="col-md-2">
+              <select class="form-control" name="requestStatus" [(ngModel)]="estado" #requestStatus="ngModel">
+                  <option value="" selected>- Seleccionar -</option>
+                  <option *ngFor="let e of estados" [value]="e">{{e}}</option>
+              </select>
+
+            </div>
+          </div>
+      </div>
+      <div class="col-md-4">
+            <button class="search-request"> <span class="glyphicon glyphicon-search"></span> </button>
+      </div>
+    </div>
+  </div>

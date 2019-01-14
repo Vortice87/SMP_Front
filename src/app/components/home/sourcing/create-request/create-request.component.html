@@ -1,4 +1,4 @@
-<div class="col-md-offset-1 col-md-10">
+<div class="col-md-offset-1 col-md-10 margin-top">
   <div class="row animated fadeIn list header">
 
     <div class="col-md-12 row">
@@ -42,7 +42,7 @@
               <label for="expstartdate" class="col-md-3 col-form-label">FECHA DE INCORPORACION</label>
               <div class="col-md-3">
                 <input type="date" class="form-control" name="hoy" style="text-align:center;" [ngModel]="request.startDate | date:'yyyy-MM-dd'"
-                  (ngModelChange)="assignStartDate($event)" min="{{request.creationDate | date:'yyyy-MM-dd'}}" required>
+                  (ngModelChange)="assignStartDate($event)" [min]="request.creationDate | date:'yyyy-MM-dd'" required>
               </div>
             </div>
           </div>
@@ -139,7 +139,7 @@
         </fieldset>
 
         <div class="form-group animated fadeIn">
-          <button class="btn btn-primary" type="submit" (click)="createRequest()" [disabled]="reqTechnicals.length == 0">Crear</button>
+          <button class="btn btn-primary" type="submit" (click)="createRequest()" [disabled]="reqTechnicals.length == 0 || !validDate">Crear</button>
         </div>
       </form>
     </div>

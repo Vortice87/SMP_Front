@@ -25,6 +25,10 @@ export class RequestService {
     return this.http.post<boolean>(this.urlRequest + '/create', JSON.parse(body), options).catch(this.handError);
   }
 
+  deleteRequest(requestId: number): Observable<boolean> {
+    return this.http.get<boolean>(this.urlRequest + '/deleteRequest/' + requestId).catch(this.handError);
+  }
+
   closeRequest(requestId: number): Observable<boolean> {
     return this.http.get<boolean>(this.urlRequest + '/closeRequest/' + requestId).catch(this.handError);
   }

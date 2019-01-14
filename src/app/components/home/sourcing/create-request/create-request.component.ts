@@ -15,6 +15,7 @@ import { Area } from '../../../../models/area';
 import { ConfigurationService } from '../../../../services/configuration/configuration.service';
 import { Detalles } from '../../../../models/detalles';
 import { ComunicationService } from '../../../../services/shared/comunication.service';
+import { DateUtils } from '../../../../utils/date-utils';
 
 
 @Component({
@@ -49,6 +50,7 @@ export class CreateRequestComponent implements OnInit {
   public details: Array<Detalles>;
   public reqTechnicals: Array<ReqTechnical>;
   public isValid: boolean;
+  public validDate: boolean;
 
   constructor(
     private requestService: RequestService,
@@ -86,6 +88,7 @@ export class CreateRequestComponent implements OnInit {
     this.requeriment = '';
     this.details = [];
     this.reqTechnicals = new Array<ReqTechnical>();
+    this.validDate = true;
   }
 
   public createRequest(form: NgForm): void {
@@ -148,7 +151,13 @@ export class CreateRequestComponent implements OnInit {
     return match;
   }
   private assignStartDate(event): void {
-    this.request.startDate = event;
+
+    if (DateUtils.formatDate(event) < DateUtils.formatDate(new Date())) {
+      this.validDate = false;
+    } else if (DateUtils.formatDate(event) >= DateUtils.formatDate(new Date())) {
+      this.request.startDate = event;
+      this.validDate = true;
+    }
   }
 
   private sumarDias(fecha, dias): Date {

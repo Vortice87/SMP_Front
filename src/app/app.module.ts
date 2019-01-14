@@ -29,6 +29,7 @@ import { ComunicationService } from './services/shared/comunication.service';
 import { RequestDetailsComponent } from './components/home/sourcing/list-request/request-details/request-details.component';
 import { CandidateService } from './services/candidate/candidate.service';
 import { CandidateDetailsComponent } from './components/home/sourcing/list-request/request-details/candidate-details/candidate-details.component';
+import { RequestFilterComponent } from './components/home/sourcing/list-request/request-filter/request-filter.component';
 
 // Application plugins
 import { BsModalRef } from 'ngx-bootstrap/modal';
@@ -53,7 +54,8 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     RequestComponent,
     RequestDetailsComponent,
     UploadCandidateComponent,
-    CandidateDetailsComponent
+    CandidateDetailsComponent,
+    RequestFilterComponent
     ],
   imports: [
     BrowserModule,

@@ -1,8 +1,8 @@
-<app-request-filter ></app-request-filter>
+<app-request-filter (findRequests)="findRequests($event)"></app-request-filter>
 <div class="col-md-offset-1 col-md-10">
   <div class="row animated fadeIn">
     <div *ngFor="let request of requests" class="listRequest">
-        <app-request [request] = "request"></app-request>
+        <app-request [request] = "request"  class="animated fadeIn"></app-request>
     </div>
   </div>
 </div>

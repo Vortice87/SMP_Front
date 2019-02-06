@@ -35,8 +35,8 @@ import { RequestFilterComponent } from './components/home/sourcing/list-request/
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { ModalModule } from 'ngx-bootstrap';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
-// import { GoTopButtonModule } from 'ng2-go-top-button';
-// import { GoTopButton } from 'ng2-go-top-button/src/go-top-button.component';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+
 
 
 
@@ -64,7 +64,8 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     ReactiveFormsModule,
     HttpClientModule,
     ModalModule.forRoot(),
-    PdfViewerModule
+    PdfViewerModule,
+    BsDatepickerModule.forRoot()
   ],
   providers: [
     HttpClient,

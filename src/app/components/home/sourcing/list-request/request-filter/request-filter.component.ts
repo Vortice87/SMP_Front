@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , Output, EventEmitter} from '@angular/core';
+import { RequestFilter } from '../../../../../models/request-filter';
 
 @Component({
   selector: 'app-request-filter',
@@ -7,23 +8,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RequestFilterComponent implements OnInit {
 
+  public currentFilter: RequestFilter;
   public titulo: string;
   public solicitante: string;
   public tecnologia: string;
-  public descripcxion: string;
+  public descripcion: string;
   public fechaAlta: string;
   public estado: string = '';
   public estados: Array<string> = ['Nueva', 'En proceso', 'Cerrada', 'Abierta'];
+  public bsRangeValue: Date[];
+  @Output() findRequests: EventEmitter<RequestFilter> = new EventEmitter();
 
-  bsValue = new Date();
-  bsRangeValue: Date[];
-  maxDate = new Date();
   constructor() {
-    this.maxDate.setDate(this.maxDate.getDate() + 7);
-    this.bsRangeValue = [this.bsValue, this.maxDate];
+    this.currentFilter = new RequestFilter('', 1, '', '',  new Date(), new Date(), '');
   }
 
   ngOnInit() {
+  }
+
+  public onFilter() {
+    if (this.bsRangeValue !== undefined && this.bsRangeValue.length !== 0) {
+      this.currentFilter.fechaDesde = this.bsRangeValue[0];
+      this.currentFilter.fechaHasta = this.bsRangeValue[1];
+    }
+    this.findRequests.emit(this.currentFilter);
+    this.currentFilter = new RequestFilter('', 1, '', '',  new Date(), new Date(), '');
   }
 
 }

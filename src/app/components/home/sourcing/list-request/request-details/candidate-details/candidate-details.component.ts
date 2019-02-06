@@ -119,11 +119,7 @@ export class CandidateDetailsComponent implements OnInit {
   }
 
   public goToTop() {
-
-      $('#modal-content').scrollTop(0);
-    console.log('going top');
-  //window.scrollTo(0, 0);
-
+    console.log('goToTop');
   }
 
 }

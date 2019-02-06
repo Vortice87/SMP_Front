@@ -32,3 +32,19 @@ html, body {
         width: 1100px!important;
     }
 }
+
+.bs-datepicker-container{
+    position: fixed!important;
+    /* z-index: 1000;  */
+    padding: 0px!important; 
+    background-color: white;
+        position: fixed!important;
+        display: block!important;
+        top: 200px!important;
+        left: 50%!important;
+    
+} 
+
+.theme-green .bs-datepicker-head {
+    background-color: #3D6698!important;
+}

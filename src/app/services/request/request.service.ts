@@ -6,6 +6,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { RequestDTO } from '../../models/request';
 import { UserAccountDTO } from '../../models/userAccountDTO';
+import { RequestFilter } from '../../models/request-filter';
 
 const options = {
   headers: new HttpHeaders(
@@ -39,6 +40,11 @@ export class RequestService {
 
   getAllRequest(): Observable<RequestDTO[]> {
     return this.http.get<RequestDTO[]>(this.urlRequest + '/all').catch(this.handError);
+  }
+
+  findByRequestFilter(filter: RequestFilter): Observable<RequestDTO[]> {
+    const body: any = JSON.stringify(filter);
+    return this.http.post<RequestDTO[]>(this.urlRequest + '/findRequests', JSON.parse(body), options).catch(this.handError);
   }
 
   getRequestById(requestId: number) {

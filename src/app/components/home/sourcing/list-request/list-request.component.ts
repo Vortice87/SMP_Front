@@ -12,6 +12,7 @@ export class ListRequestComponent implements OnInit {
 
   public requests: Array<RequestDTO>;
   public filter: RequestFilter;
+
   constructor(private requestService: RequestService) { }
 
   ngOnInit() {
@@ -31,7 +32,6 @@ export class ListRequestComponent implements OnInit {
     this.requests = [];
     console.log(event);
     this.filter = event;
-    this.filter.solicitante = 1;
     this.requestService.findByRequestFilter(this.filter).subscribe((res: Array<RequestDTO>) => {
       this.requests = res;
       console.log(res);

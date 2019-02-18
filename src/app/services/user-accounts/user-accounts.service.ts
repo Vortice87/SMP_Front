@@ -7,6 +7,7 @@ import { UserAccountDTO } from '../../models/userAccountDTO';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import { Requester } from '../../models/requester';
 
 const options = { headers: new HttpHeaders({ 'Content-Type': 'Application/json' }) };
 
@@ -19,6 +20,10 @@ export class UserAccountDTOService {
 
   getAllUsers(): Observable<UserAccountDTO[]> {
     return this.http.get<UserAccountDTO[]>(this.usersURL + '/all');
+  }
+
+  getAllRequesters(): Observable<Requester[]> {
+    return this.http.get<Requester[]>(this.usersURL + '/allRequesters');
   }
 
   getUserById(userId: number): Observable<UserAccountDTO> {

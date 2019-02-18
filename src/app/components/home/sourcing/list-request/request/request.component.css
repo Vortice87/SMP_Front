@@ -6,6 +6,8 @@ h3{
 .list{
     background-color:white;
     box-shadow: 0 1px 4px 0 rgba(0,0,0,.14);
+    border-left: 30px solid #3C6598;
+
 }
 
 .arrow{
@@ -20,15 +22,8 @@ i{
 }
 
 .id{
-    font-size: 20px;
-    padding: 50px;
-    margin-bottom: 0px;
-    background-color: #3C6598;
-    padding-bottom: 122px;
-    color: white;
-    text-align: center;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
+    padding-left: 20px!important;    
+
 }
 
 /* color de plexus : #F7C03E */
@@ -42,7 +37,7 @@ i{
 }
 
 .request-title {
-    font-size: 20px;
+    font-size: 16px;
     font-weight: bold;
     color: #3C6598;
     padding-left: 20px!important;    
@@ -70,9 +65,10 @@ i{
 
 .request-date{
     text-align: right;
-    padding-top: 5px;
+    padding-top: 10px;
     margin-bottom: 8px;
     padding-right: 20px!important;
+    margin-bottom: 0px!important;
 }
 
 .requester{
@@ -82,11 +78,11 @@ i{
 
 .request-inf{
     border-top:4px solid #F7C03E;
-    padding-bottom: 15px;  
-    padding-top: 15px;
+    /* padding-bottom: 15px;  
+    padding-top: 15px; */
     border-top-right-radius : 5px;  
     border-bottom-right-radius : 5px;  
-    height: 200px;
+    /* height: 200px; */
 }
 
 .profile{

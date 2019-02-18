@@ -118,7 +118,7 @@ export class CreateRequestComponent implements OnInit {
         this.detalle = '';
         this.experience = '';
         this.requeriment = '';
-        this.request = new RequestDTO(null, this.user, this.creationDate, '', '', this.startDate, '', '', [], []);
+        this.request = new RequestDTO(null, this.user, this.creationDate, '', '', this.startDate, 'Nueva', '', this.reqTechnicals, []);
       }
     );
   }

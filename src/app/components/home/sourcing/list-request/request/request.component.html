@@ -1,13 +1,11 @@
 <div class="col-md-12 margin">
   <div class="row" *ngIf="request != null">
-    <div class="col-md-2 list">
-      <p class="id">{{request.id}}</p>
-    </div>
-    <div class="col-md-9 request-inf list">
+
+    <div class="col-md-12 request-inf list">
       <div class="row">
         <div class="col-md-11">
           <p class="request-date">
-            {{request.creationDate | date:'dd/MM/yyyy'}}
+             {{request.creationDate | date:'dd/MM/yyyy'}}
           </p>
           <p class="request-title">
             {{request.profile}}
@@ -18,8 +16,8 @@
           <p class="request-description">
             {{request.descTask}}
           </p>
-          <p class="request-status">
-            {{request.status}}
+          <p class="id">
+              {{request.status}}
           </p>
         </div>
         <div class="col-md-1 arrow">

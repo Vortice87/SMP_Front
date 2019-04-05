@@ -36,7 +36,8 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
 import { ModalModule } from 'ngx-bootstrap';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
-
+// import { NgxPaginationModule } from 'ngx-pagination';
+import { NgxPaginateModule } from 'ngx-paginate';
 
 
 
@@ -65,7 +66,9 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     HttpClientModule,
     ModalModule.forRoot(),
     PdfViewerModule,
-    BsDatepickerModule.forRoot()
+    BsDatepickerModule.forRoot(),
+    NgxPaginateModule
+  //  NgxPaginationModule
   ],
   providers: [
     HttpClient,

@@ -8,7 +8,9 @@ export class RequestFilter {
         public descripcion: string,
         public fechaDesde: Date,
         public fechaHasta: Date,
-        public estado: string
+        public estado: string,
+        public index?: number,
+        public limit?: number
     ) {
     }
 

@@ -10,6 +10,7 @@ import { CandidateService } from '../../../../../../services/candidate/candidate
 import { DocumentData } from '../../../../../../models/document-data';
 import { Comment } from '../../../../../../models/comment';
 import { DateUtils } from '../../../../../../utils/date-utils';
+import { RequestDTO } from '../../../../../../models/request';
 
 // Declaramos las variables para jQuery
 declare var jQuery: any;
@@ -26,7 +27,9 @@ export class CandidateDetailsComponent implements OnInit {
   @Output()
   public refreshRequest: EventEmitter<any> = new EventEmitter<any>();
   public candidateId: number;
+  public requestId: number;
   public currentCandidate: Candidate;
+  public request: RequestDTO;
   public pdfSrc: string;
   public user: UserAccountDTO;
   public newComment: Comment;
@@ -38,7 +41,8 @@ export class CandidateDetailsComponent implements OnInit {
   constructor(
     private bsModalRef: BsModalRef,
     private comunicationService: ComunicationService,
-    private candidateService: CandidateService
+    private candidateService: CandidateService,
+    private requestService: RequestService,
   ) { }
 
   ngOnInit() {
@@ -46,6 +50,7 @@ export class CandidateDetailsComponent implements OnInit {
     this.initializeData();
     this.comunicationService.getUser().subscribe(res => {
       this.user = res;
+      this.loadRequest(this.requestId);
     });
   }
 
@@ -58,7 +63,6 @@ export class CandidateDetailsComponent implements OnInit {
   public modifyStatus(newStatus: string) {
     this.currentCandidate.status = newStatus;
 
-    console.log(this.currentCandidate.interviewDate);
     if (this.currentCandidate.status === 'Revisado' && this.currentCandidate.interviewDate == null) {
       this.currentCandidate.interviewDate = new Date();
     }
@@ -76,6 +80,7 @@ export class CandidateDetailsComponent implements OnInit {
 
   public addComment(): void {
     this.newComment.candidateId = this.currentCandidate.candidateId;
+    this.newComment.description = this.user.name + ' ' + this.user.lastName + ': ' + this.newComment.description;
     this.candidateService.addComment(this.newComment).subscribe(res => {
       if (res) {
         this.loadCandidate(this.currentCandidate.candidateId);
@@ -85,11 +90,13 @@ export class CandidateDetailsComponent implements OnInit {
   }
 
   public deleteComment(comment: Comment): void {
-    this.candidateService.deleteComment(comment.commentId).subscribe(res => {
-      if (res) {
-        this.loadCandidate(this.currentCandidate.candidateId);
-      }
-    });
+    if (comment.description.includes(this.user.lastName)) {
+      this.candidateService.deleteComment(comment.commentId).subscribe(res => {
+        if (res) {
+          this.loadCandidate(this.currentCandidate.candidateId);
+        }
+      });
+    }
   }
 
   public loadCandidate(candidateId: number): any {
@@ -101,6 +108,12 @@ export class CandidateDetailsComponent implements OnInit {
       } else {
         this.emptyComment = false;
       }
+    });
+  }
+
+  public loadRequest(requestId: number): any {
+    this.requestService.requestByIdWithOutRelationships(requestId).subscribe(res => {
+      this.request = res;
     });
   }
 
@@ -118,8 +131,8 @@ export class CandidateDetailsComponent implements OnInit {
     }
   }
 
-  public goToTop() {
-    console.log('goToTop');
-  }
+  // public goToTop() {
+  //   console.log('goToTop');
+  // }
 
 }

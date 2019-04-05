@@ -123,19 +123,19 @@
               </div>
             </div>
 
-            <div class="form-group animated fadeIn" *ngIf="(request.petitioner.profile == 'admin' || request.petitioner.profile == 'sourcing') && request.status !== 'Cerrada'">
+            <div class="form-group animated fadeIn" *ngIf="(user.profile === 'admin' || user.profile === 'sourcing') && request.status !== 'Cerrada'">
               <button class="btn btn-primary" type="submit" (click)="uploadCandidate()">Añadir candidato</button>
             </div>
 
-            <div class="form-group animated fadeIn" *ngIf="(request.petitioner.profile == 'admin' || request.petitioner.profile == 'area') && (request.status === 'Abierta' || request.status === 'En proceso')">
+            <div class="form-group animated fadeIn" *ngIf="(request.petitioner.id === user.id || user.profile === 'admin') && (request.status === 'Abierta' || request.status === 'En proceso')">
               <button class="btn btn-primary" type="submit" (click)="closeRequest(request.id)">Cerrar solicitud</button>
             </div>
 
-            <div class="form-group animated fadeIn" *ngIf="(request.petitioner.profile == 'admin' || request.petitioner.profile == 'area') && request.status === 'Cerrada'">
+            <div class="form-group animated fadeIn" *ngIf="(request.petitioner.id === user.id || user.profile === 'admin') && request.status === 'Cerrada'">
               <button class="btn btn-primary" type="submit" (click)="openRequest(request.id)">Abrir solicitud</button>
             </div>
 
-            <div class="form-group animated fadeIn" *ngIf="request.petitioner.profile == 'admin'">
+            <div class="form-group animated fadeIn" *ngIf="(request.petitioner.id === user.id || user.profile === 'admin')">
               <button class="btn btn-primary" type="submit" (click)="deleteRequest(request.id)">Eliminar solicitud</button>
             </div>
 
@@ -145,4 +145,6 @@
       </form>
     </div>
   </div>
+  <i class="fa fa-arrow-circle-up fa-3x" aria-hidden="true" (click)="goToTop()"></i>
 </div>
+

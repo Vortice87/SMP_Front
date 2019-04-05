@@ -174,3 +174,12 @@ i{
 .margin-top{
     margin-top: 50px;
 }
+
+
+.fa-arrow-circle-up {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    color: #3D6698 !important;
+    cursor: pointer;
+}

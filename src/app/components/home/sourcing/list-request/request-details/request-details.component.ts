@@ -25,6 +25,7 @@ export class RequestDetailsComponent implements OnInit {
   public bsModalRef: BsModalRef;
   public request: RequestDTO;
   public coveredResources: number;
+  private user: UserAccountDTO;
 
   // config = {
   //   animated: true,
@@ -66,7 +67,8 @@ export class RequestDetailsComponent implements OnInit {
 
   private seeCandidate(currentCandidate: Candidate): void {
     const initialState = {
-      candidateId: currentCandidate.candidateId
+      candidateId: currentCandidate.candidateId,
+      requestId: this.requestId
     };
     this.bsModalRef = this.modalService.show(CandidateDetailsComponent, { class: 'modal-lg', initialState, ignoreBackdropClick: true });
     this.bsModalRef.content.refreshRequest.subscribe((value) => {
@@ -78,9 +80,11 @@ export class RequestDetailsComponent implements OnInit {
   }
 
   private loadRequestDetails(id: number) {
+
     this.coveredResources = 0;
     this.requestService.getRequestById(id).subscribe(res => {
       this.request = res;
+
       if (this.request.candidates !== null) {
         this.request.candidates.forEach(candidate => {
           if (candidate.status === 'Apto') {
@@ -93,6 +97,11 @@ export class RequestDetailsComponent implements OnInit {
           }
         }
       }
+
+      this.comunicationService.getUser().subscribe(response => {
+        this.user = response;
+      });
+
     });
   }
 
@@ -179,13 +188,17 @@ public deleteRequest(requestId: number): void {
     if (res) {
       swal({
         type: 'success',
-        title: 'Solicitud elimina correctamente.',
+        title: 'Solicitud eliminada correctamente.',
         showConfirmButton: false,
         timer: 1500
       });
       this.router.navigate(['/home/requests']);
     }
   });
+}
+
+public goToTop() {
+  window.scrollTo(0, 0);
 }
 
 }

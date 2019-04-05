@@ -38,8 +38,9 @@ export class RequestService {
     return this.http.get<boolean>(this.urlRequest + '/openRequest/' + requestId).catch(this.handError);
   }
 
-  getAllRequest(): Observable<RequestDTO[]> {
-    return this.http.get<RequestDTO[]>(this.urlRequest + '/all').catch(this.handError);
+  getCountByRequestsFilter(requestFilter: RequestFilter): Observable<number> {
+    const body: any = JSON.stringify(requestFilter);
+    return this.http.post<number>(this.urlRequest + '/countByRequestsFilter', JSON.parse(body), options).catch(this.handError);
   }
 
   findByRequestFilter(filter: RequestFilter): Observable<RequestDTO[]> {
@@ -49,6 +50,10 @@ export class RequestService {
 
   getRequestById(requestId: number) {
     return this.http.get<RequestDTO>(this.urlRequest + '/requestById/' + requestId).catch(this.handError);
+  }
+
+  requestByIdWithOutRelationships(requestId: number) {
+    return this.http.get<RequestDTO>(this.urlRequest + '/requestByIdWithOutRelationships/' + requestId).catch(this.handError);
   }
 
   handError(error: any) {

@@ -50,9 +50,13 @@ label {
     cursor: pointer;
  }
  
- .text-align-right{
-     text-align: right;
+ .text-align-left{
+     text-align: left;
  }
+
+ .text-align-right{
+    text-align: right;
+}
 
  .btn-discard:hover{
         color: #fff;

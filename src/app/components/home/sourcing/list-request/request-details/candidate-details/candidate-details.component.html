@@ -84,9 +84,11 @@
           </div>
 
           <div class="form-group row">
-            <div class="col-md-12 add-comment" *ngIf="user.profile == 'area' || user.profile == 'admin'">
-              <button class="btn" type="button" (click)="addComment()" [disabled]="newComment.description == '' ">Añadir comentario</button>
-            </div>
+            <ng-container *ngIf="user != undefined && request != undefined">
+                <div class="col-md-12 add-comment" *ngIf="user.id === request.petitioner.id || user.profile === 'admin' || user.profile === 'sourcing'">
+                    <button class="btn" type="button" (click)="addComment()" [disabled]="newComment.description == '' ">Añadir comentario</button>
+                </div>
+            </ng-container>
             <div class="col-md-6" *ngIf="(user.profile == 'area' || user.profile == 'admin') && currentCandidate.status !== 'Descartado'">
               <button class="btn btn-discard" type="submit" (click)="modifyStatus('Descartado')">Descartar</button>
             </div>
@@ -96,7 +98,7 @@
             <div class="col-md-6 text-align-right" *ngIf="(user.profile == 'area' || user.profile == 'admin') && (currentCandidate.status === 'Nuevo' || currentCandidate.status === 'Readmitido')">
               <button class="btn btn-primary" type="submit" (click)="modifyStatus('Revisado')">Revisado</button>
             </div>
-            <div class="col-md-6 text-align-right" *ngIf="(user.profile == 'area' || user.profile == 'admin') && (currentCandidate.status === 'Revisado')">
+            <div class="col-md-6 text-align-left" *ngIf="(user.profile == 'sourcing' || user.profile == 'admin') && (currentCandidate.status === 'Revisado')">
               <button class="btn btn-primary" type="submit" (click)="modifyStatus('Pendiente de entrevista')" [disabled]="!validDate">Fijar fecha entrevista</button>
             </div>
             <div class="col-md-6 text-align-right" *ngIf="(user.profile == 'area' || user.profile == 'admin') && (currentCandidate.status === 'Pendiente de entrevista')">
@@ -112,8 +114,7 @@
             <pdf-viewer name="pdf" [src]="pdfSrc" [render-text]="true" [zoom]="1.2" [original-size]="true" style="display: block;"></pdf-viewer>
           </fieldset>
         </div>
-        <i class="fa fa-arrow-circle-up fa-3x" aria-hidden="true" (click)="goToTop()"></i>
-        <a href="" target="_top">Ir</a>
+        <!-- <i class="fa fa-arrow-circle-up fa-3x" aria-hidden="true" (click)="goToTop()"></i> -->
       </div>
     </div>
 

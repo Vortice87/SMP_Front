@@ -48,3 +48,7 @@ html, body {
 .theme-green .bs-datepicker-head {
     background-color: #3D6698!important;
 }
+
+ngx-paginate > div.page-size-selection > select {
+    display: none !important;
+}

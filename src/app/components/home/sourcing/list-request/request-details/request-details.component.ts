@@ -76,7 +76,6 @@ export class RequestDetailsComponent implements OnInit {
         this.loadRequestDetails(this.requestId);
       }
     });
-
   }
 
   private loadRequestDetails(id: number) {

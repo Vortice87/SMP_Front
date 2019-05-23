@@ -13,14 +13,24 @@ import { AdminGuard } from './guards/admin.guard';
 import { CreateRequestComponent } from './components/home/sourcing/create-request/create-request.component';
 import { ListRequestComponent } from './components/home/sourcing/list-request/list-request.component';
 import { RequestDetailsComponent } from './components/home/sourcing/list-request/request-details/request-details.component';
+import { AreasComponent } from './components/home/administration/areas/areas.component';
+import { NewAreaComponent } from './components/home/administration/areas/new-area/new-area.component';
+import { DetailsComponent } from './components/home/administration/areas/details/details.component';
+import { NewdetailComponent } from './components/home/administration/areas/details/newdetail/newdetail.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   {
     path: 'home', component: HomeComponent, canActivate: [AuthGuard], children:
       [
-        { path: 'admin', component: AdministrationComponent, canActivate: [AdminGuard] },
+        { path: 'accounts', component: AdministrationComponent, canActivate: [AdminGuard] },
         { path: 'newaccount', component: NewAccountComponent, canActivate: [AdminGuard] },
+        { path: 'areas', component: AreasComponent, canActivate: [AdminGuard] },
+        { path: 'newarea', component: NewAreaComponent, canActivate: [AdminGuard] },
+        { path: 'newarea/:id', component: NewAreaComponent, canActivate: [AdminGuard] },
+        { path: 'details/:id', component: DetailsComponent, canActivate: [AdminGuard] },
+        { path: 'newdetail', component: NewdetailComponent, canActivate: [AdminGuard] },
+        { path: 'newdetail/:id', component: NewdetailComponent, canActivate: [AdminGuard] },
         { path: 'newrequest', component: CreateRequestComponent },
         { path: 'requests', component: ListRequestComponent },
         { path: 'request-details/:id', component: RequestDetailsComponent }

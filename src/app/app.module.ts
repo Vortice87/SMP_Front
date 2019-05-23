@@ -38,7 +38,10 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 // import { NgxPaginationModule } from 'ngx-pagination';
 import { NgxPaginateModule } from 'ngx-paginate';
-
+import { AreasComponent } from './components/home/administration/areas/areas.component';
+import { NewAreaComponent } from './components/home/administration/areas/new-area/new-area.component';
+import { DetailsComponent } from './components/home/administration/areas/details/details.component';
+import { NewdetailComponent } from './components/home/administration/areas/details/newdetail/newdetail.component';
 
 
 @NgModule({
@@ -56,7 +59,11 @@ import { NgxPaginateModule } from 'ngx-paginate';
     RequestDetailsComponent,
     UploadCandidateComponent,
     CandidateDetailsComponent,
-    RequestFilterComponent
+    RequestFilterComponent,
+    AreasComponent,
+    NewAreaComponent,
+    DetailsComponent,
+    NewdetailComponent
     ],
   imports: [
     BrowserModule,

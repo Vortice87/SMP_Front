@@ -3,24 +3,47 @@
     <div class="menu-list">
         <ul id="menu-content" class="menu-content collapse out">
 
-            <li *ngIf="isAdmin" data-toggle="collapse" data-target="#service" class="collapsed">
+            <li *ngIf="isAdmin" data-toggle="collapse" data-target="#cuentas" class="collapsed">
                 <a>
-                    <span>Administración de cuentas</span>
+                    <span>Cuentas</span>
                     <span class="arrow"></span>
                 </a>
             </li>
-            <ul class="sub-menu collapse" id="service">
-                <li class="sublist" routerLink="admin">Cuentas</li>
+            <ul class="sub-menu collapse" id="cuentas">
+                <li class="sublist" routerLink="accounts">Cuentas</li>
                 <li class="sublist" routerLink="newaccount">Crear cuentas</li>
             </ul>
 
-            <li data-toggle="collapse" data-target="#service2" class="collapsed">
+            <li *ngIf="isAdmin" data-toggle="collapse" data-target="#reqTecnicos" class="collapsed">
+                    <a>
+                        <span>Requerimientos Técnicos</span>
+                        <span class="arrow"></span>
+                    </a>
+                </li>
+                <ul class="sub-menu collapse" id="reqTecnicos">
+                    <li class="sublist" routerLink="areas" >Areas</li>
+                    <li class="sublist" routerLink="newarea" >Crear area</li>
+                    <li class="sublist" routerLink="newdetail">Crear detalle</li>
+                </ul>
+
+                
+            <li *ngIf="isAdmin" data-toggle="collapse" data-target="#configuracion" class="collapsed">
+                    <a>
+                        <span>Configuración</span>
+                        <span class="arrow"></span>
+                    </a>
+                </li>
+                <ul class="sub-menu collapse" id="configuracion">
+                    <li class="sublist" >Notificaciones</li>
+                </ul>
+
+            <li data-toggle="collapse" data-target="#solicitudes" class="collapsed">
                 <a>
                     <span>Solicitudes</span>
                     <span class="arrow"></span>
                 </a>
             </li>
-            <ul class="sub-menu collapse" id="service2">
+            <ul class="sub-menu collapse" id="solicitudes">
                 <li class="sublist"  routerLink="requests">Ver solicitudes</li>
                 <li class="sublist" routerLink="newrequest">Crear solicitud</li>
             </ul>

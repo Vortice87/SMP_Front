@@ -1,0 +1,34 @@
+<div class="col-md-offset-1 col-md-4 margin-top">
+    <div class="row animated fadeIn list">
+  
+      <div class="col-md-12">
+        <div class="row header">
+          <h3 id="titulo">{{actionArea}}</h3>
+        </div>
+        <form name="formNewDetail" #newdetail="ngForm" (ngSubmit)="createDetail(newdetail)" novalidate>
+  
+          <div class="form-group">
+            <label for="nombredetalle">Detalle</label>
+            <input type="text" class="form-control" name="nombredetalle" *ngIf="action != 'Modificar'" [(ngModel)]="detail.nombreDetalle" (ngModelChange)="modelChanged()"
+              #usn="ngModel" required [ngStyle]="{ border: (!usn.valid && usn.dirty) || detailExists  ?  '1px solid red': '' }"
+              (focusout)="detalleExists()" />
+              <input type="text" class="form-control" name="nombredetalle2" *ngIf="action == 'Modificar'" [(ngModel)]="detail.nombreDetalle" (ngModelChange)="modelDetailChanged()"
+              #usn2="ngModel" required [ngStyle]="{ border: (!usn2.valid && usn2.dirty) || detailExists  ?  '1px solid red': '' }"/>
+
+            <div class="required animated fadeInDown" *ngIf="detailExists">
+              <span>El detalle existe</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="area">Area</label>
+            <select class="form-control" name="area" [(ngModel)]="currentArea" (ngModelChange)="modelChanged()" #area="ngModel" required [disabled]="selectedArea" [ngStyle]="{ border: !area.valid && area.dirty  ?  '1px solid red': '' }">
+              <option *ngFor="let area of areas" [ngValue]="area">{{area.nombreArea}}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <button class="btn btn-primary" [disabled]="formValid">{{action}}</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

@@ -5,6 +5,7 @@ import { of } from 'rxjs/Observable/of';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { Area } from '../../models/area';
+import { Detalles } from '../../models/detalles';
 
 const options = {
   headers: new HttpHeaders(
@@ -15,15 +16,51 @@ const options = {
 @Injectable()
 export class ConfigurationService {
 
-  private urlRequest = 'http://localhost:8060/configuration';
+  private urlConfig = 'http://localhost:8060/configuration';
 
 
   constructor(private http: HttpClient) { }
 
   getAllAreas(): Observable<Area[]> {
+    return this.http.get<Area[]>(this.urlConfig + '/all').catch(this.handError);
+  }
 
-    return this.http.get<Area>(this.urlRequest + '/all').catch(this.handError);
+  getAllAreasWithNoRelationship(): Observable<Area[]> {
+    return this.http.get<Area[]>(this.urlConfig + '/allwithNoRelationship').catch(this.handError);
+  }
 
+  getAreaById(areaId: number): Observable<Area> {
+    return this.http.get<Area>(this.urlConfig + '/findAreaById/' + areaId).catch(this.handError);
+  }
+
+  getDetalleById(detalleId: number): Observable<Detalles> {
+    return this.http.get<Detalles>(this.urlConfig + '/findDetalleById/' + detalleId).catch(this.handError);
+  }
+
+  createArea(area: Area): Observable<boolean> {
+    const body: any = JSON.stringify(area);
+    return this.http.post<boolean>(this.urlConfig + '/create', JSON.parse(body), options).catch(this.handError);
+  }
+
+  createDetail(detail: Detalles): Observable<boolean> {
+    const body: any = JSON.stringify(detail);
+    return this.http.post<boolean>(this.urlConfig + '/createDetail', JSON.parse(body), options).catch(this.handError);
+  }
+
+  deleteArea(id: number): Observable<boolean> {
+    return this.http.get<boolean>(this.urlConfig + '/delete/' + id).catch(this.handError);
+  }
+
+  deleteDetail(id: number): Observable<boolean> {
+    return this.http.get<boolean>(this.urlConfig + '/deleteDetail/' + id).catch(this.handError);
+  }
+
+  areaExists(areaName: String): Observable<boolean> {
+    return this.http.get<boolean>(this.urlConfig + '/exists/' + areaName).catch(this.handError);
+  }
+
+  detalleExists(detalleName: String): Observable<boolean> {
+    return this.http.get<boolean>(this.urlConfig + '/detailExists/' + detalleName).catch(this.handError);
   }
 
   handError(error: any) {

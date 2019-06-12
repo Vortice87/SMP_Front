@@ -1,0 +1,799 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>sourcing-manager-front documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">sourcing-manager-front documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>NewAccountComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/components/home/administration/new-account/new-account.component.ts</code>
+</p>
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-new-account</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./new-account.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./new-account.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#insertUser">insertUser</a>
+                            </li>
+                            <li>
+                                <a href="#passwordAux">passwordAux</a>
+                            </li>
+                            <li>
+                                <a href="#profiles">profiles</a>
+                            </li>
+                            <li>
+                                <a href="#user">user</a>
+                            </li>
+                            <li>
+                                <a href="#usernameExists">usernameExists</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#createAccount">createAccount</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#userExists">userExists</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(UserAccountDTOservice: <a href="../injectables/UserAccountDTOService.html">UserAccountDTOService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/components/home/administration/new-account/new-account.component.ts:19</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>UserAccountDTOservice</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/UserAccountDTOService.html" target="_self" >UserAccountDTOService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="createAccount"></a>
+                    <span class="name">
+                        <b>
+                            createAccount
+                        </b>
+                        <a href="#createAccount"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>createAccount(form: <a href="https://angular.io/api/forms/NgForm" target="_blank">NgForm</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="42"
+                            class="link-to-prism">src/app/components/home/administration/new-account/new-account.component.ts:42</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>form</td>
+                                    <td>
+                                                <code><a href="https://angular.io/api/forms/NgForm" target="_blank" >NgForm</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <b>
+                            ngOnInit
+                        </b>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="25"
+                            class="link-to-prism">src/app/components/home/administration/new-account/new-account.component.ts:25</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="userExists"></a>
+                    <span class="name">
+                        <b>
+                            userExists
+                        </b>
+                        <a href="#userExists"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>userExists()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="29"
+                            class="link-to-prism">src/app/components/home/administration/new-account/new-account.component.ts:29</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="insertUser"></a>
+                        <span class="name">
+                            <b>
+                            insertUser</b>
+                            <a href="#insertUser"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/components/home/administration/new-account/new-account.component.ts:17</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="passwordAux"></a>
+                        <span class="name">
+                            <b>
+                            passwordAux</b>
+                            <a href="#passwordAux"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/components/home/administration/new-account/new-account.component.ts:16</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="profiles"></a>
+                        <span class="name">
+                            <b>
+                            profiles</b>
+                            <a href="#profiles"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>string[]</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[&#x27;admin&#x27;, &#x27;sourcing&#x27;, &#x27;area&#x27;]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/components/home/administration/new-account/new-account.component.ts:19</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="user"></a>
+                        <span class="name">
+                            <b>
+                            user</b>
+                            <a href="#user"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../classes/UserAccountDTO.html" target="_self" >UserAccountDTO</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/components/home/administration/new-account/new-account.component.ts:15</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="usernameExists"></a>
+                        <span class="name">
+                            <b>
+                            usernameExists</b>
+                            <a href="#usernameExists"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/components/home/administration/new-account/new-account.component.ts:18</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { UserAccountDTO } from &#x27;../../../../models/userAccountDTO&#x27;;
+import { UserAccountDTOService } from &#x27;../../../../services/user-accounts/user-accounts.service&#x27;;
+
+import swal from &#x27;sweetalert2&#x27;;
+import { NgForm } from &#x27;@angular/forms/src/directives/ng_form&#x27;;
+
+@Component({
+  selector: &#x27;app-new-account&#x27;,
+  templateUrl: &#x27;./new-account.component.html&#x27;,
+  styleUrls: [&#x27;./new-account.component.css&#x27;]
+})
+export class NewAccountComponent implements OnInit {
+
+  user: UserAccountDTO;
+  passwordAux: string;
+  insertUser: boolean;
+  usernameExists: boolean;
+  profiles: string[] &#x3D; [&#x27;admin&#x27;, &#x27;sourcing&#x27;, &#x27;area&#x27;];
+
+  constructor(private UserAccountDTOservice: UserAccountDTOService) {
+
+  }
+
+  ngOnInit() {
+    this.user &#x3D; new UserAccountDTO(null, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, []);
+  }
+
+  userExists(): boolean {
+    this.usernameExists &#x3D; false;
+    if (this.user.username !&#x3D;&#x3D; &#x27;&#x27;) {
+
+      this.UserAccountDTOservice.userExists(this.user.username).subscribe(
+        (response: boolean) &#x3D;&gt; {
+          this.usernameExists &#x3D; response;
+        }
+      );
+    }
+    return true;
+  }
+
+  createAccount(form: NgForm): void {
+    this.UserAccountDTOservice.createUser(this.user).subscribe(
+      (response: boolean) &#x3D;&gt; {
+        this.insertUser &#x3D; response;
+        if (this.insertUser) {
+          swal({
+            type: &#x27;success&#x27;,
+            title: &#x27;Usuario creado satisfactoriamente&#x27;,
+            showConfirmButton: false,
+            timer: 1500
+          });
+        }
+        form.reset();
+        form.controls.profile.setValue(&#x27;&#x27;);
+      }
+    );
+  }
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;col-md-offset-1 col-md-4 margin-top&quot;&gt;
+  &lt;div class&#x3D;&quot;row animated fadeIn list&quot;&gt;
+
+    &lt;div class&#x3D;&quot;col-md-12&quot;&gt;
+      &lt;div class&#x3D;&quot;row header&quot;&gt;
+        &lt;h3 id&#x3D;&quot;titulo&quot;&gt;Nueva cuenta&lt;/h3&gt;
+      &lt;/div&gt;
+      &lt;form name&#x3D;&quot;formNewAccount&quot; #newaccount&#x3D;&quot;ngForm&quot; (ngSubmit)&#x3D;&quot;createAccount(newaccount)&quot; novalidate&gt;
+
+        &lt;div class&#x3D;&quot;form-group&quot;&gt;
+          &lt;label for&#x3D;&quot;name&quot;&gt;Nombre&lt;/label&gt;
+          &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; name&#x3D;&quot;name&quot; [(ngModel)]&#x3D;&quot;user.name&quot; #name&#x3D;&quot;ngModel&quot; required [ngStyle]&#x3D;&quot;{ border: !name.valid &amp;&amp; name.dirty  ?  &#x27;1px solid red&#x27;: &#x27;&#x27; }&quot;
+          /&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;form-group&quot;&gt;
+            &lt;label for&#x3D;&quot;lastname&quot;&gt;Apellidos&lt;/label&gt;
+            &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; name&#x3D;&quot;lastname&quot; [(ngModel)]&#x3D;&quot;user.lastName&quot; #lastname&#x3D;&quot;ngModel&quot; required [ngStyle]&#x3D;&quot;{ border: !lastname.valid &amp;&amp; lastname.dirty  ?  &#x27;1px solid red&#x27;: &#x27;&#x27; }&quot;
+            /&gt;
+          &lt;/div&gt;
+        &lt;div class&#x3D;&quot;form-group&quot;&gt;
+          &lt;label for&#x3D;&quot;username&quot;&gt;Username&lt;/label&gt;
+          &lt;input type&#x3D;&quot;email&quot; pattern&#x3D;&quot;^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$&quot; class&#x3D;&quot;form-control&quot; name&#x3D;&quot;username&quot; [(ngModel)]&#x3D;&quot;user.username&quot;
+            #usn&#x3D;&quot;ngModel&quot; required [ngStyle]&#x3D;&quot;{ border: (!usn.valid &amp;&amp; usn.dirty) || usernameExists  ?  &#x27;1px solid red&#x27;: &#x27;&#x27; }&quot;
+            (focusout)&#x3D;&quot;userExists()&quot; /&gt;
+          &lt;div class&#x3D;&quot;required animated fadeInDown&quot; *ngIf&#x3D;&quot;usernameExists&quot;&gt;
+            &lt;span&gt;Username existe&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;form-group&quot;&gt;
+          &lt;label for&#x3D;&quot;password&quot;&gt;Password&lt;/label&gt;
+          &lt;input type&#x3D;&quot;password&quot; class&#x3D;&quot;form-control&quot; name&#x3D;&quot;password&quot; [(ngModel)]&#x3D;&quot;user.password&quot; #pass&#x3D;&quot;ngModel&quot; required [ngStyle]&#x3D;&quot;{ border: !pass.valid &amp;&amp; pass.dirty  ?  &#x27;1px solid red&#x27;: &#x27;&#x27; }&quot;
+          /&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;form-group&quot;&gt;
+          &lt;label for&#x3D;&quot;password2&quot;&gt;Repetir password&lt;/label&gt;
+          &lt;input type&#x3D;&quot;password&quot; class&#x3D;&quot;form-control&quot; name&#x3D;&quot;password2&quot; [(ngModel)]&#x3D;&quot;passwordAux&quot; #passrepeat&#x3D;&quot;ngModel&quot; required [ngStyle]&#x3D;&quot;{ border: !passrepeat.valid &amp;&amp; passrepeat.dirty  ?  &#x27;1px solid red&#x27;: &#x27;&#x27; }&quot;
+          /&gt;
+          &lt;div class&#x3D;&quot;required animated fadeInDown&quot; *ngIf&#x3D;&quot;(pass.value !&#x3D; passrepeat.value) &amp;&amp; passrepeat.touched&quot;&gt;
+            &lt;span&gt;Password debe de ser el mismo&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;form-group&quot;&gt;
+          &lt;label for&#x3D;&quot;profile&quot;&gt;Profile&lt;/label&gt;
+          &lt;select class&#x3D;&quot;form-control&quot; name&#x3D;&quot;profile&quot; [(ngModel)]&#x3D;&quot;user.profile&quot; #prof&#x3D;&quot;ngModel&quot; required [ngStyle]&#x3D;&quot;{ border: !prof.valid &amp;&amp; prof.dirty  ?  &#x27;1px solid red&#x27;: &#x27;&#x27; }&quot;&gt;
+            &lt;option value&#x3D;&quot;&quot; selected&gt;-- Seleccionar perfil --&lt;/option&gt;
+            &lt;option *ngFor&#x3D;&quot;let profile of profiles&quot; [value]&#x3D;&quot;profile&quot;&gt;{{profile}}&lt;/option&gt;
+          &lt;/select&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;form-group&quot;&gt;
+          &lt;button class&#x3D;&quot;btn btn-primary&quot; [disabled]&#x3D;&quot;!newaccount.valid&quot;&gt;Crear&lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/form&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./new-account.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">h3{
+    font-variant: small-caps;
+    text-align: center;
+    color: white;
+}
+
+.list{
+    border-radius: 5px;
+    background-color:white;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,.14);
+    padding-bottom: 40px;
+}
+
+.header{
+    background-color:#3C6598;
+    border-top:4px solid #F7C03E;
+    margin-bottom: 50px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    
+}
+
+p{
+    color:grey;
+}
+.textAlign{
+    text-align: center;
+}
+
+span{
+    color:red;
+}
+
+.required{
+    margin: 10px;
+}
+ 
+.margin-top{
+    margin-top: 50px;
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="col-md-offset-1 col-md-4 margin-top">  <div class="row animated fadeIn list">    <div class="col-md-12">      <div class="row header">        <h3 id="titulo">Nueva cuenta</h3>      </div>      <form name="formNewAccount" #newaccount="ngForm" (ngSubmit)="createAccount(newaccount)" novalidate>        <div class="form-group">          <label for="name">Nombre</label>          <input type="text" class="form-control" name="name" [(ngModel)]="user.name" #name="ngModel" required [ngStyle]="{ border: !name.valid && name.dirty  ?  \'1px solid red\': \'\' }"          />        </div>        <div class="form-group">            <label for="lastname">Apellidos</label>            <input type="text" class="form-control" name="lastname" [(ngModel)]="user.lastName" #lastname="ngModel" required [ngStyle]="{ border: !lastname.valid && lastname.dirty  ?  \'1px solid red\': \'\' }"            />          </div>        <div class="form-group">          <label for="username">Username</label>          <input type="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" class="form-control" name="username" [(ngModel)]="user.username"            #usn="ngModel" required [ngStyle]="{ border: (!usn.valid && usn.dirty) || usernameExists  ?  \'1px solid red\': \'\' }"            (focusout)="userExists()" />          <div class="required animated fadeInDown" *ngIf="usernameExists">            <span>Username existe</span>          </div>        </div>        <div class="form-group">          <label for="password">Password</label>          <input type="password" class="form-control" name="password" [(ngModel)]="user.password" #pass="ngModel" required [ngStyle]="{ border: !pass.valid && pass.dirty  ?  \'1px solid red\': \'\' }"          />        </div>        <div class="form-group">          <label for="password2">Repetir password</label>          <input type="password" class="form-control" name="password2" [(ngModel)]="passwordAux" #passrepeat="ngModel" required [ngStyle]="{ border: !passrepeat.valid && passrepeat.dirty  ?  \'1px solid red\': \'\' }"          />          <div class="required animated fadeInDown" *ngIf="(pass.value != passrepeat.value) && passrepeat.touched">            <span>Password debe de ser el mismo</span>          </div>        </div>        <div class="form-group">          <label for="profile">Profile</label>          <select class="form-control" name="profile" [(ngModel)]="user.profile" #prof="ngModel" required [ngStyle]="{ border: !prof.valid && prof.dirty  ?  \'1px solid red\': \'\' }">            <option value="" selected>-- Seleccionar perfil --</option>            <option *ngFor="let profile of profiles" [value]="profile">{{profile}}</option>          </select>        </div>        <div class="form-group">          <button class="btn btn-primary" [disabled]="!newaccount.valid">Crear</button>        </div>      </form>    </div>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AdministrationComponent', 'selector': 'app-administration'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AreasComponent', 'selector': 'app-areas'},{'name': 'CandidateDetailsComponent', 'selector': 'app-candidate-details'},{'name': 'ConfigurationComponent', 'selector': 'app-configuration'},{'name': 'CreateRequestComponent', 'selector': 'app-create-request'},{'name': 'DetailsComponent', 'selector': 'app-details'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'ListRequestComponent', 'selector': 'app-list-request'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NewAccountComponent', 'selector': 'app-new-account'},{'name': 'NewAreaComponent', 'selector': 'app-new-area'},{'name': 'NewdetailComponent', 'selector': 'app-newdetail'},{'name': 'RequestComponent', 'selector': 'app-request'},{'name': 'RequestDetailsComponent', 'selector': 'app-request-details'},{'name': 'RequestFilterComponent', 'selector': 'app-request-filter'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'UploadCandidateComponent', 'selector': 'app-upload-candidate'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'NewAccountComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'NewAccountComponent.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

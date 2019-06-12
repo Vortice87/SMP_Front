@@ -1,0 +1,608 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>sourcing-manager-front documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">sourcing-manager-front documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>ConfigurationComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/components/home/administration/configuration/configuration.component.ts</code>
+</p>
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-configuration</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./configuration.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./configuration.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#config">config</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#getConfiguration">getConfiguration</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#saveConfig">saveConfig</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(configurationService: <a href="../injectables/ConfigurationService.html">ConfigurationService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/components/home/administration/configuration/configuration.component.ts:13</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>configurationService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ConfigurationService.html" target="_self" >ConfigurationService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getConfiguration"></a>
+                    <span class="name">
+                        <b>
+                            getConfiguration
+                        </b>
+                        <a href="#getConfiguration"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getConfiguration()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="22"
+                            class="link-to-prism">src/app/components/home/administration/configuration/configuration.component.ts:22</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <b>
+                            ngOnInit
+                        </b>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="17"
+                            class="link-to-prism">src/app/components/home/administration/configuration/configuration.component.ts:17</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="saveConfig"></a>
+                    <span class="name">
+                        <b>
+                            saveConfig
+                        </b>
+                        <a href="#saveConfig"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>saveConfig()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="30"
+                            class="link-to-prism">src/app/components/home/administration/configuration/configuration.component.ts:30</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="config"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            config</b>
+                            <a href="#config"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../classes/Configuration.html" target="_self" >Configuration</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/components/home/administration/configuration/configuration.component.ts:13</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { Configuration } from &#x27;../../../../models/configuration&#x27;;
+import { ConfigurationService } from &#x27;../../../../services/configuration/configuration.service&#x27;;
+import swal from &#x27;sweetalert2&#x27;;
+
+@Component({
+  selector: &#x27;app-configuration&#x27;,
+  templateUrl: &#x27;./configuration.component.html&#x27;,
+  styleUrls: [&#x27;./configuration.component.css&#x27;]
+})
+export class ConfigurationComponent implements OnInit {
+
+  public config: Configuration;
+
+  constructor(private configurationService: ConfigurationService) { }
+
+  ngOnInit() {
+    this.getConfiguration();
+  }
+
+
+  getConfiguration(): void {
+    this.configurationService.getConfiguration(1).subscribe(res &#x3D;&gt; {
+      if (res !&#x3D; null || res !&#x3D;&#x3D; undefined) {
+        this.config &#x3D; res;
+      }
+    });
+  }
+
+  saveConfig(): void {
+    this.configurationService.saveConfiguration(this.config).subscribe(res &#x3D;&gt; {
+      if (res) {
+        swal({
+          type: &#x27;success&#x27;,
+          title: &#x27;Configuración guardada con éxito&#x27;,
+          showConfirmButton: false,
+          timer: 1500
+        });
+      } else {
+        swal({
+          type: &#x27;error&#x27;,
+          title: &#x27;No se ha podido guardar la configuración&#x27;,
+          showConfirmButton: false,
+          timer: 1500
+        });
+      }
+    });
+  }
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;col-md-offset-1 col-md-10 margin-top&quot;&gt;
+  &lt;div class&#x3D;&quot;row animated fadeIn list header&quot;&gt;
+    &lt;ng-container *ngIf&#x3D;&quot;config !&#x3D; undefined&quot;&gt;
+    &lt;div class&#x3D;&quot;col-md-12 row&quot;&gt;
+      &lt;fieldset class&#x3D;&quot;form-group&quot;&gt;
+        &lt;div class&#x3D;&quot;container&quot;&gt;
+          &lt;legend&gt;CONFIGURACIÓN&lt;/legend&gt;
+          &lt;div class&#x3D;&quot;container&quot;&gt;
+              &lt;div class&#x3D;&quot;col-md-6&quot;&gt;
+              &lt;legend&gt;Notificaciones&lt;/legend&gt;
+              &lt;div class&#x3D;&quot;items&quot;&gt;
+                  &lt;input type&#x3D;&quot;checkbox&quot; name&#x3D;&quot;notificationRequest&quot; [(ngModel)]&#x3D;&quot;config.notificationRequest&quot; #notificationRequest&#x3D;&quot;ngModel&quot; /&gt;
+                  &lt;span&gt; Notificar al dar de alta una solicitud&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;items&quot;&gt;
+                  &lt;input type&#x3D;&quot;checkbox&quot; name&#x3D;&quot;notificationCandidate&quot; [(ngModel)]&#x3D;&quot;config.notificationCandidate&quot; #notificationRequest&#x3D;&quot;ngModel&quot; /&gt;
+                  &lt;span&gt; Notificar al dar de alta un candidato&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;items&quot;&gt;
+                  &lt;input type&#x3D;&quot;checkbox&quot; name&#x3D;&quot;notificationInterview&quot; [(ngModel)]&#x3D;&quot;config.notificationInterview&quot; #notificationRequest&#x3D;&quot;ngModel&quot; /&gt;
+                  &lt;span&gt; Notificar al concertar una entrevista con un candidato&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;items&quot;&gt;
+                    &lt;button class&#x3D;&quot;btn btn-primary&quot; type&#x3D;&quot;submit&quot; (click)&#x3D;&quot;saveConfig()&quot;&gt;Guardar&lt;/button&gt;
+                  &lt;/div&gt;
+              &lt;/div&gt;
+
+          &lt;/div&gt;
+
+
+        &lt;/div&gt;
+      &lt;/fieldset&gt;
+
+    &lt;/div&gt;
+  &lt;/ng-container&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./configuration.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.list{
+    border-radius: 5px;
+    background-color:white;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,.14);
+}
+
+.header{
+    border-top:4px solid #F7C03E;
+    padding-top: 15px;   
+}
+
+span{
+    margin-left: 10px;    
+}
+
+.container{
+    width: 100%;
+}
+
+
+legend {
+    margin-bottom: 30px;
+}
+
+.items{
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+.margin-top{
+    margin-top: 50px;
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="col-md-offset-1 col-md-10 margin-top">  <div class="row animated fadeIn list header">    <ng-container *ngIf="config != undefined">    <div class="col-md-12 row">      <fieldset class="form-group">        <div class="container">          <legend>CONFIGURACIÓN</legend>          <div class="container">              <div class="col-md-6">              <legend>Notificaciones</legend>              <div class="items">                  <input type="checkbox" name="notificationRequest" [(ngModel)]="config.notificationRequest" #notificationRequest="ngModel" />                  <span> Notificar al dar de alta una solicitud</span>                </div>                <div class="items">                  <input type="checkbox" name="notificationCandidate" [(ngModel)]="config.notificationCandidate" #notificationRequest="ngModel" />                  <span> Notificar al dar de alta un candidato</span>                </div>                <div class="items">                  <input type="checkbox" name="notificationInterview" [(ngModel)]="config.notificationInterview" #notificationRequest="ngModel" />                  <span> Notificar al concertar una entrevista con un candidato</span>                </div>                <div class="items">                    <button class="btn btn-primary" type="submit" (click)="saveConfig()">Guardar</button>                  </div>              </div>          </div>        </div>      </fieldset>    </div>  </ng-container>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AdministrationComponent', 'selector': 'app-administration'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AreasComponent', 'selector': 'app-areas'},{'name': 'CandidateDetailsComponent', 'selector': 'app-candidate-details'},{'name': 'ConfigurationComponent', 'selector': 'app-configuration'},{'name': 'CreateRequestComponent', 'selector': 'app-create-request'},{'name': 'DetailsComponent', 'selector': 'app-details'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'ListRequestComponent', 'selector': 'app-list-request'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NewAccountComponent', 'selector': 'app-new-account'},{'name': 'NewAreaComponent', 'selector': 'app-new-area'},{'name': 'NewdetailComponent', 'selector': 'app-newdetail'},{'name': 'RequestComponent', 'selector': 'app-request'},{'name': 'RequestDetailsComponent', 'selector': 'app-request-details'},{'name': 'RequestFilterComponent', 'selector': 'app-request-filter'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'UploadCandidateComponent', 'selector': 'app-upload-candidate'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'ConfigurationComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'ConfigurationComponent.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

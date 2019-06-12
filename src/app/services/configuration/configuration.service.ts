@@ -6,6 +6,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { Area } from '../../models/area';
 import { Detalles } from '../../models/detalles';
+import { Configuration } from '../../models/configuration';
 
 const options = {
   headers: new HttpHeaders(
@@ -61,6 +62,15 @@ export class ConfigurationService {
 
   detalleExists(detalleName: String): Observable<boolean> {
     return this.http.get<boolean>(this.urlConfig + '/detailExists/' + detalleName).catch(this.handError);
+  }
+
+  getConfiguration(configId: number): Observable<Configuration> {
+    return this.http.get<Configuration>(this.urlConfig + '/getConfiguration/' + configId).catch(this.handError);
+  }
+
+  saveConfiguration(config: Configuration): Observable<boolean> {
+    const body: any = JSON.stringify(config);
+    return this.http.post<boolean>(this.urlConfig + '/saveConfiguration', JSON.parse(body), options).catch(this.handError);
   }
 
   handError(error: any) {

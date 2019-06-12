@@ -1,0 +1,37 @@
+<div class="col-md-offset-1 col-md-10 margin-top">
+  <div class="row animated fadeIn list header">
+    <ng-container *ngIf="config != undefined">
+    <div class="col-md-12 row">
+      <fieldset class="form-group">
+        <div class="container">
+          <legend>CONFIGURACIÓN</legend>
+          <div class="container">
+              <div class="col-md-6">
+              <legend>Notificaciones</legend>
+              <div class="items">
+                  <input type="checkbox" name="notificationRequest" [(ngModel)]="config.notificationRequest" #notificationRequest="ngModel" />
+                  <span> Notificar al dar de alta una solicitud</span>
+                </div>
+                <div class="items">
+                  <input type="checkbox" name="notificationCandidate" [(ngModel)]="config.notificationCandidate" #notificationRequest="ngModel" />
+                  <span> Notificar al dar de alta un candidato</span>
+                </div>
+                <div class="items">
+                  <input type="checkbox" name="notificationInterview" [(ngModel)]="config.notificationInterview" #notificationRequest="ngModel" />
+                  <span> Notificar al concertar una entrevista con un candidato</span>
+                </div>
+                <div class="items">
+                    <button class="btn btn-primary" type="submit" (click)="saveConfig()">Guardar</button>
+                  </div>
+              </div>
+
+          </div>
+
+
+        </div>
+      </fieldset>
+
+    </div>
+  </ng-container>
+  </div>
+</div>

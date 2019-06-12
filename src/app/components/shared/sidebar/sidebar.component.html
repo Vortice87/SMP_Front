@@ -10,8 +10,8 @@
                 </a>
             </li>
             <ul class="sub-menu collapse" id="cuentas">
-                <li class="sublist" routerLink="accounts">Cuentas</li>
-                <li class="sublist" routerLink="newaccount">Crear cuentas</li>
+                <li class="sublist" routerLink="accounts">Ver cuentas</li>
+                <li class="sublist" routerLink="newaccount">Alta cuenta</li>
             </ul>
 
             <li *ngIf="isAdmin" data-toggle="collapse" data-target="#reqTecnicos" class="collapsed">
@@ -21,9 +21,9 @@
                     </a>
                 </li>
                 <ul class="sub-menu collapse" id="reqTecnicos">
-                    <li class="sublist" routerLink="areas" >Areas</li>
-                    <li class="sublist" routerLink="newarea" >Crear area</li>
-                    <li class="sublist" routerLink="newdetail">Crear detalle</li>
+                    <li class="sublist" routerLink="areas" >Ver áreas</li>
+                    <li class="sublist" routerLink="newarea" >Alta Área</li>
+                    <li class="sublist" routerLink="newdetail">Alta Detalle</li>
                 </ul>
 
                 
@@ -34,7 +34,7 @@
                     </a>
                 </li>
                 <ul class="sub-menu collapse" id="configuracion">
-                    <li class="sublist" >Notificaciones</li>
+                    <li class="sublist" routerLink="configuration">Configuración</li>
                 </ul>
 
             <li data-toggle="collapse" data-target="#solicitudes" class="collapsed">
@@ -45,7 +45,7 @@
             </li>
             <ul class="sub-menu collapse" id="solicitudes">
                 <li class="sublist"  routerLink="requests">Ver solicitudes</li>
-                <li class="sublist" routerLink="newrequest">Crear solicitud</li>
+                <li class="sublist" routerLink="newrequest">Alta solicitud</li>
             </ul>
         </ul>
     </div>

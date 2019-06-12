@@ -98,7 +98,7 @@
             <div class="col-md-6 text-align-right" *ngIf="(user.profile == 'area' || user.profile == 'admin') && (currentCandidate.status === 'Nuevo' || currentCandidate.status === 'Readmitido')">
               <button class="btn btn-primary" type="submit" (click)="modifyStatus('Revisado')">Revisado</button>
             </div>
-            <div class="col-md-6 text-align-left" *ngIf="(user.profile == 'sourcing' || user.profile == 'admin') && (currentCandidate.status === 'Revisado')">
+            <div class="col-md-6 text-align-right" *ngIf="(user.profile == 'sourcing' || user.profile == 'admin') && (currentCandidate.status === 'Revisado')">
               <button class="btn btn-primary" type="submit" (click)="modifyStatus('Pendiente de entrevista')" [disabled]="!validDate">Fijar fecha entrevista</button>
             </div>
             <div class="col-md-6 text-align-right" *ngIf="(user.profile == 'area' || user.profile == 'admin') && (currentCandidate.status === 'Pendiente de entrevista')">
@@ -114,7 +114,7 @@
             <pdf-viewer name="pdf" [src]="pdfSrc" [render-text]="true" [zoom]="1.2" [original-size]="true" style="display: block;"></pdf-viewer>
           </fieldset>
         </div>
-        <!-- <i class="fa fa-arrow-circle-up fa-3x" aria-hidden="true" (click)="goToTop()"></i> -->
+        <i class="fa fa-arrow-circle-up fa-3x" aria-hidden="true" (click)="goToTop()"></i>
       </div>
     </div>
 

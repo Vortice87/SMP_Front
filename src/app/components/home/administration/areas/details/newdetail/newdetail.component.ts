@@ -146,6 +146,6 @@ export class NewdetailComponent implements OnInit {
       } else {
         this.formValid = false;
       }
-    }	
+    }
 
 }

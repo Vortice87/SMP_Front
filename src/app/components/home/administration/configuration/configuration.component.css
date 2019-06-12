@@ -1,0 +1,32 @@
+.list{
+    border-radius: 5px;
+    background-color:white;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,.14);
+}
+
+.header{
+    border-top:4px solid #F7C03E;
+    padding-top: 15px;   
+}
+
+span{
+    margin-left: 10px;    
+}
+
+.container{
+    width: 100%;
+}
+
+
+legend {
+    margin-bottom: 30px;
+}
+
+.items{
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+.margin-top{
+    margin-top: 50px;
+}

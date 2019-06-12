@@ -20,7 +20,8 @@ import { HomeComponent } from './components/home/home.component';
 import { NewAccountComponent } from './components/home/administration/new-account/new-account.component';
 import { AdminGuard } from './guards/admin.guard';
 import { CreateRequestComponent } from './components/home/sourcing/create-request/create-request.component';
-import { UploadCandidateComponent } from './components/home/sourcing/list-request/request-details/upload-candidate/upload-candidate.component';
+import { UploadCandidateComponent } from 
+'./components/home/sourcing/list-request/request-details/upload-candidate/upload-candidate.component';
 import { RequestService } from './services/request/request.service';
 import { ListRequestComponent } from './components/home/sourcing/list-request/list-request.component';
 import { RequestComponent } from './components/home/sourcing/list-request/request/request.component';
@@ -28,7 +29,8 @@ import { ConfigurationService } from './services/configuration/configuration.ser
 import { ComunicationService } from './services/shared/comunication.service';
 import { RequestDetailsComponent } from './components/home/sourcing/list-request/request-details/request-details.component';
 import { CandidateService } from './services/candidate/candidate.service';
-import { CandidateDetailsComponent } from './components/home/sourcing/list-request/request-details/candidate-details/candidate-details.component';
+import { CandidateDetailsComponent } from
+'./components/home/sourcing/list-request/request-details/candidate-details/candidate-details.component';
 import { RequestFilterComponent } from './components/home/sourcing/list-request/request-filter/request-filter.component';
 
 // Application plugins
@@ -42,6 +44,7 @@ import { AreasComponent } from './components/home/administration/areas/areas.com
 import { NewAreaComponent } from './components/home/administration/areas/new-area/new-area.component';
 import { DetailsComponent } from './components/home/administration/areas/details/details.component';
 import { NewdetailComponent } from './components/home/administration/areas/details/newdetail/newdetail.component';
+import { ConfigurationComponent } from './components/home/administration/configuration/configuration.component';
 
 
 @NgModule({
@@ -63,7 +66,8 @@ import { NewdetailComponent } from './components/home/administration/areas/detai
     AreasComponent,
     NewAreaComponent,
     DetailsComponent,
-    NewdetailComponent
+    NewdetailComponent,
+    ConfigurationComponent
     ],
   imports: [
     BrowserModule,

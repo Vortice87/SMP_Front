@@ -17,6 +17,7 @@ import { AreasComponent } from './components/home/administration/areas/areas.com
 import { NewAreaComponent } from './components/home/administration/areas/new-area/new-area.component';
 import { DetailsComponent } from './components/home/administration/areas/details/details.component';
 import { NewdetailComponent } from './components/home/administration/areas/details/newdetail/newdetail.component';
+import { ConfigurationComponent } from './components/home/administration/configuration/configuration.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -31,6 +32,7 @@ const routes: Routes = [
         { path: 'details/:id', component: DetailsComponent, canActivate: [AdminGuard] },
         { path: 'newdetail', component: NewdetailComponent, canActivate: [AdminGuard] },
         { path: 'newdetail/:id', component: NewdetailComponent, canActivate: [AdminGuard] },
+        { path: 'configuration', component: ConfigurationComponent, canActivate: [AdminGuard] },
         { path: 'newrequest', component: CreateRequestComponent },
         { path: 'requests', component: ListRequestComponent },
         { path: 'request-details/:id', component: RequestDetailsComponent }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { Candidate } from '../../../../../../models/candidate';
 import { BsModalRef } from 'ngx-bootstrap';
 import swal from 'sweetalert2';
@@ -131,8 +131,8 @@ export class CandidateDetailsComponent implements OnInit {
     }
   }
 
-  // public goToTop() {
-  //   console.log('goToTop');
-  // }
+  public goToTop() {
+    document.querySelector('.modal').scrollTop = 0;
+  }
 
 }

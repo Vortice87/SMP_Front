@@ -16,6 +16,8 @@ import { ConfigurationService } from '../../../../services/configuration/configu
 import { Detalles } from '../../../../models/detalles';
 import { ComunicationService } from '../../../../services/shared/comunication.service';
 import { DateUtils } from '../../../../utils/date-utils';
+import { Configuration } from '../../../../models/configuration';
+import { ContextEmail } from '../../../../models/contextEmail';
 
 
 @Component({
@@ -51,6 +53,7 @@ export class CreateRequestComponent implements OnInit {
   public reqTechnicals: Array<ReqTechnical>;
   public isValid: boolean;
   public validDate: boolean;
+  public config: Configuration;
 
   constructor(
     private requestService: RequestService,
@@ -72,6 +75,13 @@ export class CreateRequestComponent implements OnInit {
     });
     this.getAllAreas();
     this.initializedNewRequest();
+    this.getConfig();
+  }
+
+  getConfig(): void {
+    this.configurationService.getConfiguration(1).subscribe(res => {
+      this.config = res;
+    });
   }
 
   private initializedNewRequest(): void {
@@ -94,7 +104,6 @@ export class CreateRequestComponent implements OnInit {
   public createRequest(form: NgForm): void {
 
     this.request.reqTechs = this.reqTechnicals;
-    console.log(this.request);
     this.requestService.createRequest(this.request).subscribe(
       (response: boolean) => {
         this.insertRequest = response;
@@ -105,6 +114,14 @@ export class CreateRequestComponent implements OnInit {
             showConfirmButton: false,
             timer: 1500
           });
+          if (this.config.notificationRequest === true) {
+            const context: ContextEmail = new ContextEmail();
+            context.from = this.request.petitioner.name + ' ' + this.request.petitioner.lastName;
+            context.subject = this.request.profile;
+            context.text = this.request.descTask;
+            this.requestService.sendEmail(context).subscribe(res => {
+            });
+          }
         } else {
           swal({
             type: 'error',
@@ -119,6 +136,7 @@ export class CreateRequestComponent implements OnInit {
         this.experience = '';
         this.requeriment = '';
         this.request = new RequestDTO(null, this.user, this.creationDate, '', '', this.startDate, 'Nueva', '', this.reqTechnicals, []);
+
       }
     );
   }

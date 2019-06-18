@@ -7,6 +7,7 @@ import 'rxjs/add/operator/catch';
 import { RequestDTO } from '../../models/request';
 import { UserAccountDTO } from '../../models/userAccountDTO';
 import { RequestFilter } from '../../models/request-filter';
+import { ContextEmail } from '../../models/contextEmail';
 
 const options = {
   headers: new HttpHeaders(
@@ -59,6 +60,11 @@ export class RequestService {
   handError(error: any) {
     console.log('error: ' + error);
     return Observable.throw(error);
+  }
+
+  sendEmail(context: ContextEmail): Observable<any> {
+    const body: any = JSON.stringify(context);
+    return this.http.post<any>(this.urlRequest + '/sendEmail', JSON.parse(body), options).catch(this.handError);
   }
 
 }

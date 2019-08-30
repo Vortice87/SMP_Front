@@ -114,14 +114,7 @@ export class CreateRequestComponent implements OnInit {
             showConfirmButton: false,
             timer: 1500
           });
-          if (this.config.notificationRequest === true) {
-            const context: ContextEmail = new ContextEmail();
-            context.from = this.request.petitioner.name + ' ' + this.request.petitioner.lastName;
-            context.subject = this.request.profile;
-            context.text = this.request.descTask;
-            this.requestService.sendEmail(context).subscribe(res => {
-            });
-          }
+          this.sendEmail();
         } else {
           swal({
             type: 'error',
@@ -139,6 +132,17 @@ export class CreateRequestComponent implements OnInit {
 
       }
     );
+  }
+
+  sendEmail(): any {
+    if (this.config.notificationRequest === true) {
+      const context: ContextEmail = new ContextEmail();
+      context.from = this.request.petitioner.name + ' ' + this.request.petitioner.lastName;
+      context.subject = this.request.profile;
+      context.text = this.request.descTask;
+      this.requestService.sendEmail(context).subscribe(res => {
+      });
+    }
   }
 
   public loadDetails() {

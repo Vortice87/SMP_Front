@@ -139,11 +139,16 @@ export class CreateRequestComponent implements OnInit {
       const context: ContextEmail = new ContextEmail();
       context.from = this.request.petitioner.name + ' ' + this.request.petitioner.lastName;
       context.subject = this.request.profile;
+      // this.buildRequestMsg();
       context.text = this.request.descTask;
       this.requestService.sendEmail(context).subscribe(res => {
       });
     }
   }
+
+  // buildRequestMsg(): ContextEmail {
+    
+  // }
 
   public loadDetails() {
     this.details = this.selectedArea.detalles;
